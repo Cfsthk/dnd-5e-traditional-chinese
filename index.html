@@ -313,7 +313,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = () => showClassDetail(key);
-                
+
                 const badges = [
                     `生命值: ${classData.hit_die}`,
                     `主屬性數正值: ${classData.primary_ability}`
@@ -335,7 +335,7 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = () => showRaceDetail(key);
-                
+
                 const badges = [
                     `主屏格: ${raceData.main_trait}`
                 ].map(b => `<span class="badge">${b}</span>`).join('');
@@ -360,7 +360,7 @@
                 Object.entries(classData.subclasses).forEach(([subkey, sub]) => {
                     subclassesHTML += `
 					<div class="subclass-container">
-						<div class="subclass-header" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+						<div class="subclass-header" onclick="event.stopPropagation(); this.nextElementSibling.classList.toggle('expanded'); this.querySelector('.toggle-icon').classList.toggle('expanded');">
 							<span>${sub.name}</span>
 							<span class="toggle-icon">▼</span>
 						</div>

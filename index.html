@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>龍與地下城 5E 能力查詢系統</title>
+    <title>龍與地下城 5E 完整資料庫</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
@@ -30,19 +30,74 @@
         header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
         }
         
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .subtitle {
-            font-size: 1.1em;
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
             opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 20px 30px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #495057;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
         }
         
         .search-container {
@@ -52,9 +107,9 @@
         }
         
         .search-box {
-            position: relative;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
         
         #searchInput {
@@ -78,125 +133,20 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.3em;
-            color: #6c757d;
         }
         
-        .suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 2px solid #dee2e6;
-            border-top: none;
-            border-radius: 0 0 15px 15px;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .suggestion-item {
-            padding: 12px 20px;
-            cursor: pointer;
-            transition: background 0.2s;
-            border-bottom: 1px solid #f1f3f5;
-        }
-        
-        .suggestion-item:hover {
-            background: #f8f9fa;
-        }
-        
-        .suggestion-item:last-child {
-            border-bottom: none;
-        }
-        
-        .main-content {
-            display: flex;
-            min-height: 600px;
-        }
-        
-        .sidebar {
-            width: 350px;
-            background: #f8f9fa;
-            padding: 30px 20px;
-            border-right: 2px solid #e9ecef;
-            overflow-y: auto;
-            max-height: calc(100vh - 300px);
-        }
-        
-        .filter-section {
-            margin-bottom: 30px;
-        }
-        
-        .filter-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #2a5298;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .filter-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .filter-item {
-            padding: 10px;
-            background: white;
-            border: 2px solid #dee2e6;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s;
-            font-size: 0.95em;
-        }
-        
-        .filter-item:hover {
-            border-color: #667eea;
-            background: #f0f3ff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-        }
-        
-        .filter-item.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-        }
-        
-        .content-area {
-            flex: 1;
+        .content {
             padding: 30px;
-            overflow-y: auto;
-            max-height: calc(100vh - 300px);
+            min-height: 500px;
         }
         
-        .welcome-message {
-            text-align: center;
-            color: #6c757d;
-            padding: 100px 20px;
-        }
-        
-        .welcome-message h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #495057;
-        }
-        
-        .abilities-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
         }
         
-        .ability-card {
+        .card {
             background: white;
             border: 2px solid #e9ecef;
             border-radius: 15px;
@@ -205,125 +155,119 @@
             transition: all 0.3s;
         }
         
-        .ability-card:hover {
+        .card:hover {
             border-color: #667eea;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .ability-name {
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
             font-size: 1.3em;
             font-weight: bold;
-            margin-bottom: 10px;
             color: #2a5298;
         }
         
-        .ability-type {
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e7f5ff;
-            color: #1971c2;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-bottom: 10px;
+        .card-subtitle {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 5px;
         }
         
-        .ability-summary {
-            color: #6c757d;
-            font-size: 0.95em;
+        .card-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        
+        .card-content {
+            color: #495057;
             line-height: 1.6;
         }
         
         .detail-view {
-            display: none;
-            animation: fadeIn 0.3s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
         }
         
         .detail-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .detail-title {
-            font-size: 2em;
+            font-size: 2.5em;
+            color: #2a5298;
             margin-bottom: 10px;
         }
         
-        .detail-meta {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            font-size: 0.95em;
-            opacity: 0.9;
-        }
-        
-        .meta-item {
-            background: rgba(255,255,255,0.2);
-            padding: 5px 12px;
-            border-radius: 20px;
+        .detail-subtitle {
+            font-size: 1.2em;
+            color: #6c757d;
         }
         
         .detail-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .section-title {
-            font-size: 1.2em;
-            font-weight: bold;
+            font-size: 1.5em;
             color: #2a5298;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-content {
-            color: #495057;
-            line-height: 1.8;
-            font-size: 1.05em;
-        }
-        
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .stat-item {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
+            margin-bottom: 15px;
+            padding-left: 15px;
             border-left: 4px solid #667eea;
         }
         
-        .stat-label {
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .info-label {
             font-weight: bold;
             color: #495057;
             margin-bottom: 5px;
+            font-size: 0.9em;
         }
         
-        .stat-value {
+        .info-value {
             color: #667eea;
             font-size: 1.1em;
+        }
+        
+        .description {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
         
         .back-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: #6c757d;
             color: white;
             border: none;
@@ -339,41 +283,43 @@
             transform: translateX(-3px);
         }
         
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        
+        .loading-spinner {
+            font-size: 3em;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
         .no-results {
             text-align: center;
             padding: 60px 20px;
             color: #6c757d;
         }
         
-        .no-results h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                max-height: none;
-                border-right: none;
-                border-bottom: 2px solid #e9ecef;
-            }
-            
-            .abilities-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         @media (max-width: 768px) {
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
             }
             
-            .filter-grid {
+            .grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .stats-bar {
+                gap: 15px;
+            }
+            
+            .stat-badge {
+                padding: 8px 15px;
             }
         }
     </style>
@@ -381,687 +327,354 @@
 <body>
     <div class="container">
         <header>
-            <h1>🐉 龍與地下城 5E 能力查詢系統</h1>
-            <p class="subtitle">完整的種族與職業能力資料庫</p>
+            <h1>🐉 龍與地下城 5E 完整資料庫</h1>
+            <p class="subtitle">包含所有種族、職業、法術、特性的完整資料</p>
+            <div class="stats-bar">
+                <div class="stat-badge">
+                    <div class="stat-number" id="raceCount">-</div>
+                    <div class="stat-label">種族</div>
+                </div>
+                <div class="stat-badge">
+                    <div class="stat-number" id="classCount">-</div>
+                    <div class="stat-label">職業</div>
+                </div>
+                <div class="stat-badge">
+                    <div class="stat-number" id="spellCount">-</div>
+                    <div class="stat-label">法術</div>
+                </div>
+                <div class="stat-badge">
+                    <div class="stat-number" id="featureCount">-</div>
+                    <div class="stat-label">特性</div>
+                </div>
+                <div class="stat-badge">
+                    <div class="stat-number" id="traitCount">-</div>
+                    <div class="stat-label">種族特質</div>
+                </div>
+            </div>
         </header>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="races">🏰 種族 (Races)</button>
+            <button class="tab" data-tab="subraces">🎯 亞種 (Subraces)</button>
+            <button class="tab" data-tab="classes">⚔️ 職業 (Classes)</button>
+            <button class="tab" data-tab="subclasses">🛡️ 子職業 (Subclasses)</button>
+            <button class="tab" data-tab="spells">✨ 法術 (Spells)</button>
+            <button class="tab" data-tab="features">💪 特性 (Features)</button>
+            <button class="tab" data-tab="traits">🌟 種族特質 (Traits)</button>
+        </div>
         
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜尋能力、特性、法術...">
+                <input type="text" id="searchInput" placeholder="搜尋種族、職業、法術、特性...">
                 <span class="search-icon">🔍</span>
-                <div class="suggestions" id="suggestions"></div>
             </div>
         </div>
         
-        <div class="main-content">
-            <aside class="sidebar">
-                <div class="filter-section">
-                    <div class="filter-title">⚔️ 種族 (Races)</div>
-                    <div class="filter-grid" id="raceFilters"></div>
-                </div>
-                
-                <div class="filter-section">
-                    <div class="filter-title">🎭 職業 (Classes)</div>
-                    <div class="filter-grid" id="classFilters"></div>
-                </div>
-            </aside>
-            
-            <main class="content-area">
-                <div id="welcomeView" class="welcome-message">
-                    <h2>歡迎使用 D&D 5E 能力查詢系統</h2>
-                    <p>請使用搜尋功能或選擇種族/職業來查看詳細資訊</p>
-                </div>
-                
-                <div id="listView" style="display: none;">
-                    <h2 id="listTitle" style="margin-bottom: 20px; color: #2a5298;"></h2>
-                    <div class="abilities-grid" id="abilitiesList"></div>
-                </div>
-                
-                <div id="detailView" class="detail-view"></div>
-            </main>
+        <div class="content">
+            <div id="listView"></div>
+            <div id="detailView" style="display: none;"></div>
         </div>
     </div>
     
     <script>
-        // 資料庫
-        const database = {
-            races: [
-                {
-                    id: 'human',
-                    name: '人類',
-                    nameEn: 'Human',
-                    abilities: [
-                        {
-                            id: 'human_versatility',
-                            name: '人類多才多藝',
-                            type: '種族特性',
-                            summary: '所有屬性值 +1',
-                            description: '人類以其適應性和多樣性聞名。你的所有屬性值各增加 1 點。',
-                            usage: '被動特性，角色創建時自動生效',
-                            effect: '力量 +1、敏捷 +1、體質 +1、智力 +1、感知 +1、魅力 +1',
-                            duration: '永久',
-                            range: '自身',
-                            materials: '無'
-                        },
-                        {
-                            id: 'human_language',
-                            name: '額外語言',
-                            type: '種族特性',
-                            summary: '額外學習一種語言',
-                            description: '人類善於學習其他種族的語言和習俗。你可以選擇一種額外的語言。',
-                            usage: '角色創建時選擇',
-                            effect: '學會一種額外的語言',
-                            duration: '永久',
-                            range: '無',
-                            materials: '無'
-                        }
-                    ]
-                },
-                {
-                    id: 'elf',
-                    name: '精靈',
-                    nameEn: 'Elf',
-                    abilities: [
-                        {
-                            id: 'elf_darkvision',
-                            name: '黑暗視覺',
-                            type: '種族特性',
-                            summary: '在黑暗中可以視物 60 呎',
-                            description: '習慣於暮光森林和夜空，你在黑暗和微光環境中有優異的視覺。',
-                            usage: '被動特性',
-                            effect: '在昏暗光線下，你可以如同明亮光線般視物，範圍 60 呎。在黑暗中，你可以如同昏暗光線般視物，但只能看到黑白色。',
-                            duration: '永久',
-                            range: '60 呎',
-                            materials: '無'
-                        },
-                        {
-                            id: 'elf_trance',
-                            name: '冥想',
-                            type: '種族特性',
-                            summary: '只需 4 小時冥想即可完成長休',
-                            description: '精靈不需要睡眠。相反，他們進行深度冥想，保持半清醒狀態，每天 4 小時。',
-                            usage: '替代睡眠',
-                            effect: '4 小時冥想提供與 8 小時睡眠相同的效果。冥想時你可以做夢。',
-                            duration: '4 小時',
-                            range: '自身',
-                            materials: '無'
-                        },
-                        {
-                            id: 'elf_charm_resistance',
-                            name: '魅惑抗性',
-                            type: '種族特性',
-                            summary: '對魅惑效果有優勢，免疫魔法睡眠',
-                            description: '你對抵抗魅惑的豁免檢定具有優勢，且魔法無法使你陷入睡眠。',
-                            usage: '被動特性，在受到魅惑效果時自動生效',
-                            effect: '對魅惑效果的豁免檢定具有優勢；免疫魔法睡眠效果',
-                            duration: '永久',
-                            range: '自身',
-                            materials: '無'
-                        }
-                    ]
-                },
-                {
-                    id: 'dwarf',
-                    name: '矮人',
-                    nameEn: 'Dwarf',
-                    abilities: [
-                        {
-                            id: 'dwarf_resilience',
-                            name: '矮人堅韌',
-                            type: '種族特性',
-                            summary: '對毒素傷害有抗性，對毒素豁免有優勢',
-                            description: '你對毒素傷害有抗性。你對抵抗中毒狀態的豁免檢定具有優勢。',
-                            usage: '被動特性',
-                            effect: '毒素傷害減半；對中毒狀態的豁免檢定具有優勢',
-                            duration: '永久',
-                            range: '自身',
-                            materials: '無'
-                        },
-                        {
-                            id: 'dwarf_stonecunning',
-                            name: '石匠直覺',
-                            type: '種族特性',
-                            summary: '對石製品的歷史檢定有雙倍熟練加值',
-                            description: '當你進行與石製品起源相關的智力（歷史）檢定時，你的熟練加值加倍。',
-                            usage: '進行相關檢定時',
-                            effect: '智力（歷史）檢定的熟練加值翻倍',
-                            duration: '永久',
-                            range: '觸及石製品',
-                            materials: '無'
-                        }
-                    ]
-                },
-                {
-                    id: 'halfling',
-                    name: '半身人',
-                    nameEn: 'Halfling',
-                    abilities: [
-                        {
-                            id: 'halfling_lucky',
-                            name: '幸運',
-                            type: '種族特性',
-                            summary: '擲出 1 時可以重擲',
-                            description: '當你的攻擊擲骰、屬性檢定或豁免擲骰擲出 1 時，你可以重擲該骰子，並必須使用新的結果。',
-                            usage: '擲出 1 時立即使用',
-                            effect: '重擲 1 次，使用新結果',
-                            duration: '每次擲骰',
-                            range: '自身',
-                            materials: '無'
-                        },
-                        {
-                            id: 'halfling_brave',
-                            name: '勇敢',
-                            type: '種族特性',
-                            summary: '對恐懼效果有優勢',
-                            description: '你對抵抗恐懼的豁免檢定具有優勢。',
-                            usage: '被動特性',
-                            effect: '對恐懼效果的豁免檢定具有優勢',
-                            duration: '永久',
-                            range: '自身',
-                            materials: '無'
-                        },
-                        {
-                            id: 'halfling_nimble',
-                            name: '半身人靈巧',
-                            type: '種族特性',
-                            summary: '可以穿過比你大的生物空間',
-                            description: '你可以穿過任何體型比你大的生物所佔據的空間。',
-                            usage: '移動時',
-                            effect: '可以穿過中型或更大體型生物的空間',
-                            duration: '永久',
-                            range: '移動範圍',
-                            materials: '無'
-                        }
-                    ]
-                }
-            ],
-            classes: [
-                {
-                    id: 'fighter',
-                    name: '戰士',
-                    nameEn: 'Fighter',
-                    abilities: [
-                        {
-                            id: 'fighter_second_wind',
-                            name: '回氣',
-                            type: '職業特性',
-                            summary: '恢復 1d10 + 戰士等級的生命值',
-                            description: '你在戰鬥中有源源不絕的耐力。在你的回合中，你可以使用附贈動作來恢復生命值。',
-                            usage: '附贈動作，短休或長休後恢復使用',
-                            effect: '恢復 1d10 + 你的戰士等級的生命值',
-                            duration: '立即',
-                            range: '自身',
-                            materials: '無',
-                            stats: {
-                                actionType: '附贈動作',
-                                recharge: '短休或長休'
-                            }
-                        },
-                        {
-                            id: 'fighter_action_surge',
-                            name: '動作如潮',
-                            type: '職業特性',
-                            summary: '在一個回合中獲得額外動作',
-                            description: '你可以在回合中超越正常極限片刻。在你的回合中，你可以額外進行一次動作。',
-                            usage: '每回合一次，短休或長休後恢復',
-                            effect: '獲得一個額外的動作（不包括附贈動作）',
-                            duration: '本回合',
-                            range: '自身',
-                            materials: '無',
-                            stats: {
-                                actionType: '特殊',
-                                recharge: '短休或長休',
-                                uses: '1 次（17 級時變為 2 次）'
-                            }
-                        },
-                        {
-                            id: 'fighter_extra_attack',
-                            name: '額外攻擊',
-                            type: '職業特性',
-                            summary: '進行攻擊動作時可以攻擊多次',
-                            description: '當你在你的回合中進行攻擊動作時，你可以進行兩次攻擊，而非一次。',
-                            usage: '被動特性，使用攻擊動作時',
-                            effect: '5 級：2 次攻擊；11 級：3 次攻擊；20 級：4 次攻擊',
-                            duration: '永久',
-                            range: '武器範圍',
-                            materials: '武器',
-                            stats: {
-                                level5: '2 次攻擊',
-                                level11: '3 次攻擊',
-                                level20: '4 次攻擊'
-                            }
-                        }
-                    ]
-                },
-                {
-                    id: 'wizard',
-                    name: '法師',
-                    nameEn: 'Wizard',
-                    abilities: [
-                        {
-                            id: 'wizard_arcane_recovery',
-                            name: '奧術回復',
-                            type: '職業特性',
-                            summary: '短休時恢復法術位',
-                            description: '你已學會在冥想中回復部分魔法能量。短休時，你可以恢復一些已使用的法術位。',
-                            usage: '短休時使用一次，長休後恢復',
-                            effect: '恢復法術位，總等級不超過你法師等級的一半（向上取整），且不能是 6 環或更高',
-                            duration: '立即',
-                            range: '自身',
-                            materials: '無',
-                            stats: {
-                                recharge: '長休後',
-                                limitation: '總等級 ≤ 法師等級 ÷ 2，最高 5 環'
-                            }
-                        },
-                        {
-                            id: 'wizard_spell_mastery',
-                            name: '法術精通',
-                            type: '職業特性（18 級）',
-                            summary: '可以隨意施放選定的低環法術',
-                            description: '你已精通特定法術的施法。選擇一個 1 環和一個 2 環法師法術。你可以隨意施放這些法術，無需消耗法術位。',
-                            usage: '被動特性',
-                            effect: '選定的 1 環和 2 環法術可以無限次施放，不消耗法術位',
-                            duration: '永久',
-                            range: '依法術',
-                            materials: '依法術',
-                            stats: {
-                                level: '18',
-                                spells: '1 環 × 1，2 環 × 1'
-                            }
-                        }
-                    ]
-                },
-                {
-                    id: 'rogue',
-                    name: '盜賊',
-                    nameEn: 'Rogue',
-                    abilities: [
-                        {
-                            id: 'rogue_sneak_attack',
-                            name: '偷襲',
-                            type: '職業特性',
-                            summary: '在有利情況下造成額外傷害',
-                            description: '當你對一個生物進行攻擊並命中時，如果你在攻擊擲骰上有優勢，你可以造成額外傷害。',
-                            usage: '每回合一次，當條件滿足時',
-                            effect: '額外傷害：1d6（1 級），每兩個盜賊等級增加 1d6',
-                            duration: '立即',
-                            range: '武器範圍',
-                            materials: '靈巧武器或遠程武器',
-                            stats: {
-                                damage: '1d6 + 1d6/2等級',
-                                condition: '有優勢，或敵人 5 呎內有你的盟友且你沒有劣勢'
-                            }
-                        },
-                        {
-                            id: 'rogue_cunning_action',
-                            name: '狡詐動作',
-                            type: '職業特性',
-                            summary: '使用附贈動作進行衝刺、脫離或躲藏',
-                            description: '你的快速思考和敏捷讓你移動和行動更迅速。你可以使用附贈動作進行衝刺、脫離或躲藏動作。',
-                            usage: '每回合的附贈動作',
-                            effect: '附贈動作可以執行：衝刺、脫離或躲藏',
-                            duration: '本回合',
-                            range: '自身',
-                            materials: '無',
-                            stats: {
-                                actionType: '附贈動作',
-                                options: '衝刺/脫離/躲藏'
-                            }
-                        },
-                        {
-                            id: 'rogue_evasion',
-                            name: '閃避',
-                            type: '職業特性（7 級）',
-                            summary: '成功豁免時不受傷害，失敗時只受一半傷害',
-                            description: '你能夠靈巧地避開某些區域效果。當你受到需要進行敏捷豁免的效果時，成功則不受傷害，失敗也只受一半傷害。',
-                            usage: '被動特性，對需要敏捷豁免的效果生效',
-                            effect: '豁免成功：無傷害；豁免失敗：一半傷害',
-                            duration: '永久',
-                            range: '自身',
-                            materials: '無',
-                            stats: {
-                                level: '7',
-                                saveType: '敏捷豁免'
-                            }
-                        }
-                    ]
-                },
-                {
-                    id: 'cleric',
-                    name: '牧師',
-                    nameEn: 'Cleric',
-                    abilities: [
-                        {
-                            id: 'cleric_channel_divinity',
-                            name: '引導神力',
-                            type: '職業特性',
-                            summary: '引導神聖能量產生特殊效果',
-                            description: '你可以直接引導來自神祇的神聖能量，使用該能量來產生魔法效果。',
-                            usage: '短休或長休後恢復，2 級時每次休息 1 次使用',
-                            effect: '效果取決於神域選擇。常見效果包括：驅散不死生物、增強盟友等',
-                            duration: '依效果',
-                            range: '依效果',
-                            materials: '聖徽',
-                            stats: {
-                                uses: '1 次/短休（6 級：2 次，18 級：3 次）',
-                                recharge: '短休或長休'
-                            }
-                        },
-                        {
-                            id: 'cleric_divine_intervention',
-                            name: '神聖介入',
-                            type: '職業特性（10 級）',
-                            summary: '請求神祇直接介入',
-                            description: '你可以呼喚你的神祇介入幫助你。描述你需要的幫助，擲 d100。如果擲出的數字等於或小於你的牧師等級，你的神祇介入。',
-                            usage: '7 天冷卻時間',
-                            effect: 'DM 選擇介入的性質；效果可能是任何牧師法術或牧師神域法術的效果',
-                            duration: '依效果',
-                            range: '依效果',
-                            materials: '無',
-                            stats: {
-                                level: '10',
-                                successRate: '等於或小於牧師等級%',
-                                cooldown: '7 天（成功時）',
-                                level20: '20 級時自動成功'
-                            }
-                        }
-                    ]
-                }
-            ]
-        };
+        let database = null;
+        let currentTab = 'races';
+        let currentView = 'list';
         
-        // 狀態管理
-        let currentView = 'welcome';
-        let currentFilter = null;
-        let searchTerm = '';
-        
-        // 初始化
-        function init() {
-            renderFilters();
-            setupEventListeners();
-        }
-        
-        // 渲染過濾器
-        function renderFilters() {
-            const raceFilters = document.getElementById('raceFilters');
-            const classFilters = document.getElementById('classFilters');
-            
-            database.races.forEach(race => {
-                const div = document.createElement('div');
-                div.className = 'filter-item';
-                div.textContent = race.name;
-                div.onclick = () => selectFilter('race', race.id);
-                raceFilters.appendChild(div);
-            });
-            
-            database.classes.forEach(cls => {
-                const div = document.createElement('div');
-                div.className = 'filter-item';
-                div.textContent = cls.name;
-                div.onclick = () => selectFilter('class', cls.id);
-                classFilters.appendChild(div);
-            });
-        }
-        
-        // 選擇過濾器
-        function selectFilter(type, id) {
-            // 移除所有 active 類別
-            document.querySelectorAll('.filter-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // 添加 active 到選中的項目
-            event.target.classList.add('active');
-            
-            currentFilter = { type, id };
-            showList();
-        }
-        
-        // 顯示列表視圖
-        function showList() {
-            hideAllViews();
-            document.getElementById('listView').style.display = 'block';
-            
-            let items, title;
-            
-            if (currentFilter.type === 'race') {
-                const race = database.races.find(r => r.id === currentFilter.id);
-                items = race.abilities;
-                title = `${race.name} (${race.nameEn}) - 種族能力`;
-            } else {
-                const cls = database.classes.find(c => c.id === currentFilter.id);
-                items = cls.abilities;
-                title = `${cls.name} (${cls.nameEn}) - 職業能力`;
+        // Load database
+        async function loadDatabase() {
+            try {
+                const response = await fetch('data/dnd5e_bilingual_database.json');
+                database = await response.json();
+                updateStats();
+                renderList();
+            } catch (error) {
+                console.error('Error loading database:', error);
+                document.getElementById('listView').innerHTML = `
+                    <div class="no-results">
+                        <h3>⚠️ 無法載入資料庫</h3>
+                        <p>請確保 dnd5e_bilingual_database.json 檔案存在於 data/ 目錄中</p>
+                    </div>
+                `;
             }
-            
-            document.getElementById('listTitle').textContent = title;
-            renderAbilitiesList(items);
         }
         
-        // 渲染能力列表
-        function renderAbilitiesList(abilities) {
-            const container = document.getElementById('abilitiesList');
-            container.innerHTML = '';
+        // Update statistics
+        function updateStats() {
+            if (!database) return;
+            document.getElementById('raceCount').textContent = database.metadata.total_items.races;
+            document.getElementById('classCount').textContent = database.metadata.total_items.classes;
+            document.getElementById('spellCount').textContent = database.metadata.total_items.spells;
+            document.getElementById('featureCount').textContent = database.metadata.total_items.features;
+            document.getElementById('traitCount').textContent = database.metadata.total_items.traits;
+        }
+        
+        // Render list view
+        function renderList(filterText = '') {
+            const listView = document.getElementById('listView');
+            const detailView = document.getElementById('detailView');
             
-            if (abilities.length === 0) {
-                container.innerHTML = '<div class="no-results"><h3>沒有找到相關能力</h3></div>';
+            listView.style.display = 'block';
+            detailView.style.display = 'none';
+            
+            if (!database) {
+                listView.innerHTML = '<div class="loading"><div class="loading-spinner">⏳</div><p>載入中...</p></div>';
                 return;
             }
             
-            abilities.forEach(ability => {
-                const card = document.createElement('div');
-                card.className = 'ability-card';
-                card.onclick = () => showDetail(ability);
+            let items = database[currentTab] || [];
+            
+            // Filter items
+            if (filterText) {
+                items = items.filter(item => {
+                    const nameMatch = item.name.toLowerCase().includes(filterText.toLowerCase());
+                    const nameEnMatch = item.index && item.index.toLowerCase().includes(filterText.toLowerCase());
+                    const nameZhMatch = item.name_zh && item.name_zh.includes(filterText);
+                    return nameMatch || nameEnMatch || nameZhMatch;
+                });
+            }
+            
+            if (items.length === 0) {
+                listView.innerHTML = '<div class="no-results"><h3>😕 沒有找到結果</h3><p>請嘗試其他搜尋關鍵字</p></div>';
+                return;
+            }
+            
+            let html = '<div class="grid">';
+            items.forEach(item => {
+                const displayName = item.name_zh || item.name;
+                const subtitle = item.name_zh ? item.name : '';
+                const badge = getBadgeText(item);
                 
-                card.innerHTML = `
-                    <div class="ability-name">${ability.name}</div>
-                    <span class="ability-type">${ability.type}</span>
-                    <div class="ability-summary">${ability.summary}</div>
+                html += `
+                    <div class="card" onclick="showDetail('${currentTab}', '${item.index || item.name}')">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">${displayName}</div>
+                                ${subtitle ? `<div class="card-subtitle">${subtitle}</div>` : ''}
+                            </div>
+                            ${badge ? `<div class="card-badge">${badge}</div>` : ''}
+                        </div>
+                        <div class="card-content">
+                            ${getCardPreview(item)}
+                        </div>
+                    </div>
                 `;
-                
-                container.appendChild(card);
             });
+            html += '</div>';
+            
+            listView.innerHTML = html;
         }
         
-        // 顯示詳細視圖
-        function showDetail(ability) {
-            hideAllViews();
+        // Get badge text for item
+        function getBadgeText(item) {
+            if (currentTab === 'spells') {
+                return item.level === 0 ? '戲法' : `${item.level} 環`;
+            } else if (currentTab === 'classes' && item.hit_die) {
+                return `d${item.hit_die}`;
+            } else if (currentTab === 'features' && item.level) {
+                return `Lv ${item.level}`;
+            }
+            return '';
+        }
+        
+        // Get card preview text
+        function getCardPreview(item) {
+            if (currentTab === 'spells') {
+                const school = item.school_zh || item.school?.name || '';
+                const range = item.range || '';
+                return `${school} • 範圍: ${range}`;
+            } else if (currentTab === 'races' || currentTab === 'subraces') {
+                const speed = item.speed || '';
+                const size = item.size_zh || item.size || '';
+                return `體型: ${size} • 速度: ${speed} 呎`;
+            } else if (currentTab === 'classes') {
+                const primary = item.primary_ability || '';
+                return `主要屬性: ${primary}`;
+            } else if (item.desc && item.desc.length > 0) {
+                return item.desc[0].substring(0, 100) + '...';
+            }
+            return '點擊查看詳情';
+        }
+        
+        // Show detail view
+        function showDetail(type, id) {
+            const listView = document.getElementById('listView');
             const detailView = document.getElementById('detailView');
+            
+            listView.style.display = 'none';
             detailView.style.display = 'block';
             
-            let statsHtml = '';
-            if (ability.stats) {
-                statsHtml = '<div class="detail-section"><div class="section-title">📊 數據統計</div><div class="stat-grid">';
-                for (const [key, value] of Object.entries(ability.stats)) {
-                    const label = formatStatLabel(key);
-                    statsHtml += `
-                        <div class="stat-item">
-                            <div class="stat-label">${label}</div>
-                            <div class="stat-value">${value}</div>
-                        </div>
-                    `;
-                }
-                statsHtml += '</div></div>';
-            }
-            
-            detailView.innerHTML = `
-                <button class="back-button" onclick="goBack()">← 返回</button>
-                
-                <div class="detail-header">
-                    <div class="detail-title">${ability.name}</div>
-                    <div class="detail-meta">
-                        <span class="meta-item">${ability.type}</span>
-                    </div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">📖 描述</div>
-                    <div class="section-content">${ability.description}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">🎯 使用方式</div>
-                    <div class="section-content">${ability.usage}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">✨ 效果</div>
-                    <div class="section-content">${ability.effect}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">⏱️ 持續時間</div>
-                    <div class="section-content">${ability.duration}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">📏 範圍</div>
-                    <div class="section-content">${ability.range}</div>
-                </div>
-                
-                <div class="detail-section">
-                    <div class="section-title">🎒 所需材料</div>
-                    <div class="section-content">${ability.materials}</div>
-                </div>
-                
-                ${statsHtml}
-            `;
-        }
-        
-        // 格式化統計標籤
-        function formatStatLabel(key) {
-            const labels = {
-                actionType: '動作類型',
-                recharge: '恢復方式',
-                uses: '使用次數',
-                damage: '傷害',
-                condition: '觸發條件',
-                level: '需要等級',
-                saveType: '豁免類型',
-                successRate: '成功率',
-                cooldown: '冷卻時間',
-                limitation: '限制',
-                spells: '法術數量',
-                options: '可選項',
-                level5: '5 級',
-                level11: '11 級',
-                level20: '20 級'
-            };
-            return labels[key] || key;
-        }
-        
-        // 返回按鈕
-        function goBack() {
-            if (currentFilter) {
-                showList();
-            } else {
-                showWelcome();
-            }
-        }
-        
-        // 顯示歡迎畫面
-        function showWelcome() {
-            hideAllViews();
-            document.getElementById('welcomeView').style.display = 'block';
-            document.querySelectorAll('.filter-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            currentFilter = null;
-        }
-        
-        // 隱藏所有視圖
-        function hideAllViews() {
-            document.getElementById('welcomeView').style.display = 'none';
-            document.getElementById('listView').style.display = 'none';
-            document.getElementById('detailView').style.display = 'none';
-        }
-        
-        // 搜尋功能
-        function setupEventListeners() {
-            const searchInput = document.getElementById('searchInput');
-            const suggestions = document.getElementById('suggestions');
-            
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                
-                if (query.length === 0) {
-                    suggestions.style.display = 'none';
-                    return;
-                }
-                
-                const results = searchAbilities(query);
-                showSuggestions(results);
-            });
-            
-            searchInput.addEventListener('blur', () => {
-                setTimeout(() => {
-                    suggestions.style.display = 'none';
-                }, 200);
-            });
-        }
-        
-        // 搜尋能力
-        function searchAbilities(query) {
-            const results = [];
-            
-            database.races.forEach(race => {
-                race.abilities.forEach(ability => {
-                    if (matchesQuery(ability, query)) {
-                        results.push({ ...ability, category: `${race.name} - 種族` });
-                    }
-                });
-            });
-            
-            database.classes.forEach(cls => {
-                cls.abilities.forEach(ability => {
-                    if (matchesQuery(ability, query)) {
-                        results.push({ ...ability, category: `${cls.name} - 職業` });
-                    }
-                });
-            });
-            
-            return results;
-        }
-        
-        // 匹配查詢
-        function matchesQuery(ability, query) {
-            return ability.name.toLowerCase().includes(query) ||
-                   ability.type.toLowerCase().includes(query) ||
-                   ability.summary.toLowerCase().includes(query) ||
-                   ability.description.toLowerCase().includes(query);
-        }
-        
-        // 顯示建議
-        function showSuggestions(results) {
-            const suggestions = document.getElementById('suggestions');
-            suggestions.innerHTML = '';
-            
-            if (results.length === 0) {
-                suggestions.innerHTML = '<div class="suggestion-item">沒有找到相關結果</div>';
-                suggestions.style.display = 'block';
+            const item = database[type].find(i => i.index === id || i.name === id);
+            if (!item) {
+                detailView.innerHTML = '<div class="no-results"><h3>找不到項目</h3></div>';
                 return;
             }
             
-            results.slice(0, 10).forEach(result => {
-                const div = document.createElement('div');
-                div.className = 'suggestion-item';
-                div.innerHTML = `
-                    <strong>${result.name}</strong><br>
-                    <small style="color: #6c757d;">${result.category} - ${result.summary}</small>
-                `;
-                div.onclick = () => {
-                    showDetail(result);
-                    document.getElementById('searchInput').value = '';
-                };
-                suggestions.appendChild(div);
-            });
+            let html = `
+                <button class="back-button" onclick="renderList()">
+                    ← 返回列表
+                </button>
+                <div class="detail-view">
+                    <div class="detail-header">
+                        <div class="detail-title">${item.name_zh || item.name}</div>
+                        <div class="detail-subtitle">${item.name_zh ? item.name : ''}</div>
+                    </div>
+            `;
             
-            suggestions.style.display = 'block';
+            // Add type-specific details
+            if (type === 'spells') {
+                html += renderSpellDetails(item);
+            } else if (type === 'races' || type === 'subraces') {
+                html += renderRaceDetails(item);
+            } else if (type === 'classes') {
+                html += renderClassDetails(item);
+            } else if (type === 'features' || type === 'traits') {
+                html += renderFeatureDetails(item);
+            }
+            
+            html += '</div>';
+            detailView.innerHTML = html;
         }
         
-        // 啟動應用
-        init();
+        // Render spell details
+        function renderSpellDetails(spell) {
+            let html = '<div class="info-grid">';
+            html += `<div class="info-item"><div class="info-label">等級</div><div class="info-value">${spell.level === 0 ? '戲法' : `${spell.level} 環`}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">學派</div><div class="info-value">${spell.school_zh || spell.school?.name || ''}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">施法時間</div><div class="info-value">${spell.casting_time || ''}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">範圍</div><div class="info-value">${spell.range || ''}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">成分</div><div class="info-value">${spell.components?.join(', ') || ''}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">持續時間</div><div class="info-value">${spell.duration || ''}</div></div>`;
+            html += '</div>';
+            
+            if (spell.desc && spell.desc.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">描述</div>';
+                spell.desc.forEach(desc => {
+                    html += `<div class="description">${desc}</div>`;
+                });
+                html += '</div>';
+            }
+            
+            if (spell.classes && spell.classes.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">可用職業</div><div class="description">';
+                html += spell.classes.map(c => c.name).join(', ');
+                html += '</div></div>';
+            }
+            
+            return html;
+        }
+        
+        // Render race details
+        function renderRaceDetails(race) {
+            let html = '<div class="info-grid">';
+            html += `<div class="info-item"><div class="info-label">體型</div><div class="info-value">${race.size_zh || race.size || ''}</div></div>`;
+            html += `<div class="info-item"><div class="info-label">速度</div><div class="info-value">${race.speed || ''} 呎</div></div>`;
+            
+            if (race.age) {
+                html += `<div class="info-item"><div class="info-label">壽命</div><div class="info-value">${race.age}</div></div>`;
+            }
+            
+            html += '</div>';
+            
+            if (race.ability_bonuses && race.ability_bonuses.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">屬性加值</div><div class="info-grid">';
+                race.ability_bonuses.forEach(bonus => {
+                    html += `<div class="info-item"><div class="info-label">${bonus.ability_score.name}</div><div class="info-value">+${bonus.bonus}</div></div>`;
+                });
+                html += '</div></div>';
+            }
+            
+            if (race.traits && race.traits.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">種族特質</div>';
+                race.traits.forEach(trait => {
+                    html += `<div class="description"><strong>${trait.name}</strong></div>`;
+                });
+                html += '</div>';
+            }
+            
+            return html;
+        }
+        
+        // Render class details
+        function renderClassDetails(cls) {
+            let html = '<div class="info-grid">';
+            html += `<div class="info-item"><div class="info-label">生命骰</div><div class="info-value">d${cls.hit_die}</div></div>`;
+            
+            if (cls.saving_throws && cls.saving_throws.length > 0) {
+                html += `<div class="info-item"><div class="info-label">擅長豁免</div><div class="info-value">${cls.saving_throws.map(s => s.name).join(', ')}</div></div>`;
+            }
+            
+            html += '</div>';
+            
+            if (cls.proficiencies && cls.proficiencies.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">熟練項目</div><div class="description">';
+                html += cls.proficiencies.map(p => p.name).join(', ');
+                html += '</div></div>';
+            }
+            
+            if (cls.all_levels && cls.all_levels.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">等級進程 (前 3 級)</div>';
+                cls.all_levels.slice(0, 3).forEach(level => {
+                    html += `<div class="description"><strong>等級 ${level.level}</strong> - 熟練加值: +${level.prof_bonus}`;
+                    if (level.features && level.features.length > 0) {
+                        html += `<br>特性: ${level.features.map(f => f.name).join(', ')}`;
+                    }
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+            
+            return html;
+        }
+        
+        // Render feature details
+        function renderFeatureDetails(feature) {
+            let html = '';
+            
+            if (feature.level || feature.class) {
+                html += '<div class="info-grid">';
+                if (feature.level) {
+                    html += `<div class="info-item"><div class="info-label">等級</div><div class="info-value">${feature.level}</div></div>`;
+                }
+                if (feature.class) {
+                    html += `<div class="info-item"><div class="info-label">職業</div><div class="info-value">${feature.class.name}</div></div>`;
+                }
+                html += '</div>';
+            }
+            
+            if (feature.desc && feature.desc.length > 0) {
+                html += '<div class="detail-section"><div class="section-title">描述</div>';
+                feature.desc.forEach(desc => {
+                    html += `<div class="description">${desc}</div>`;
+                });
+                html += '</div>';
+            }
+            
+            return html;
+        }
+        
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentTab = tab.dataset.tab;
+                renderList();
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                renderList(e.target.value);
+            }, 300);
+        });
+        
+        // Initialize
+        loadDatabase();
     </script>
 </body>
 </html>

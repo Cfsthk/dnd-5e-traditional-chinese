@@ -272,6 +272,59 @@
             margin-bottom: 8px;
         }
 
+        /* NEW: Expandable subrace/subclass styles */
+        .subrace-item, .subclass-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .subrace-item:hover, .subclass-item:hover {
+            background: #f0f0f0;
+        }
+
+        .subrace-header, .subclass-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .subrace-item.expanded .expand-icon,
+        .subclass-item.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .subrace-details, .subclass-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+
+        .subrace-item.expanded .subrace-details,
+        .subclass-item.expanded .subclass-details {
+            max-height: 2000px;
+            margin-top: 10px;
+        }
+
+        .subrace-details ul, .subclass-details ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .subrace-details li, .subclass-details li {
+            margin: 5px 0;
+        }
+
         .feature-level {
             background: #f9f9f9;
             padding: 15px;
@@ -481,9 +534,9 @@
         async function loadData() {
             try {
                 const [races, classes, spells] = await Promise.all([
-                    fetch('./data/dnd5e_races_complete_tc.json').then(r => r.json()),
-                    fetch('./data/dnd5e_classes_complete_tc.json').then(r => r.json()),
-                    fetch('./data/dnd5e_spells_complete_tc.json').then(r => r.json())
+                    fetch('data/dnd5e_races_complete_tc.json').then(r => r.json()),
+                    fetch('data/dnd5e_classes_complete_tc.json').then(r => r.json()),
+                    fetch('data/dnd5e_spells_complete_tc.json').then(r => r.json())
                 ]);
 
                 racesData = races;
@@ -656,7 +709,7 @@
             `).join('');
         }
 
-        // Show Race Detail
+        // Show Race Detail with EXPANDABLE SUBRACES
         function showRaceDetail(raceKey) {
             const race = racesData[raceKey];
             const modal = document.getElementById('modal');
@@ -687,25 +740,43 @@
                 bodyHTML += '</div>';
             }
 
-            // Subraces
+            // UPDATED: Expandable Subraces
             if (race.subraces && Object.keys(race.subraces).length > 0) {
-                bodyHTML += '<div class="section"><h3>子種族</h3><div class="subrace-list">';
+                bodyHTML += '<div class="section"><h3>子種族</h3>';
                 Object.entries(race.subraces).forEach(([key, subrace]) => {
                     bodyHTML += `
-                        <div class="subrace-card">
-                            <h5>${subrace.name}</h5>
-                            <p style="font-size: 0.9em; color: #666;">${subrace.description.substring(0, 100)}...</p>
-                        </div>
-                    `;
+                        <div class="subrace-item" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+                            <div class="subrace-header">
+                                <strong>${subrace.name}</strong>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="subrace-details">
+                                <p>${subrace.description || ''}</p>`;
+                    
+                    if (subrace.ability_bonuses && Object.keys(subrace.ability_bonuses).length > 0) {
+                        bodyHTML += '<div style="margin-top: 10px;"><strong>屬性加值:</strong> ';
+                        bodyHTML += Object.entries(subrace.ability_bonuses).map(([stat, bonus]) => 
+                            `${stat.toUpperCase()}: +${bonus}`).join(', ') + '</div>';
+                    }
+                    
+                    if (subrace.traits && Object.keys(subrace.traits).length > 0) {
+                        bodyHTML += '<div style="margin-top: 10px;"><strong>特性:</strong><ul>';
+                        Object.entries(subrace.traits).forEach(([traitKey, trait]) => {
+                            bodyHTML += `<li><strong>${trait.name || traitKey}:</strong> ${trait.description || ''}</li>`;
+                        });
+                        bodyHTML += '</ul></div>';
+                    }
+                    
+                    bodyHTML += '</div></div>';
                 });
-                bodyHTML += '</div></div>';
+                bodyHTML += '</div>';
             }
 
             document.getElementById('modalBody').innerHTML = bodyHTML;
             modal.classList.add('active');
         }
 
-        // Show Class Detail
+        // Show Class Detail with EXPANDABLE SUBCLASSES
         function showClassDetail(classKey) {
             const cls = classesData[classKey];
             const modal = document.getElementById('modal');
@@ -747,18 +818,30 @@
                 bodyHTML += '</div>';
             }
 
-            // Subclasses
+            // UPDATED: Expandable Subclasses
             if (cls.subclasses && Object.keys(cls.subclasses).length > 0) {
-                bodyHTML += '<div class="section"><h3>子職業</h3><div class="subclass-list">';
+                bodyHTML += '<div class="section"><h3>子職業</h3>';
                 Object.entries(cls.subclasses).forEach(([key, subclass]) => {
                     bodyHTML += `
-                        <div class="subclass-card">
-                            <h5>${subclass.name}</h5>
-                            <p style="font-size: 0.9em; color: #666;">${subclass.description.substring(0, 120)}...</p>
-                        </div>
-                    `;
+                        <div class="subclass-item" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+                            <div class="subclass-header">
+                                <strong>${subclass.name}</strong>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            <div class="subclass-details">
+                                <p>${subclass.description || ''}</p>`;
+                    
+                    if (subclass.features && Object.keys(subclass.features).length > 0) {
+                        bodyHTML += '<div style="margin-top: 10px;"><strong>特性:</strong><ul>';
+                        Object.entries(subclass.features).forEach(([featureKey, feature]) => {
+                            bodyHTML += `<li><strong>${feature.name || featureKey}:</strong> ${feature.description || ''}</li>`;
+                        });
+                        bodyHTML += '</ul></div>';
+                    }
+                    
+                    bodyHTML += '</div></div>';
                 });
-                bodyHTML += '</div></div>';
+                bodyHTML += '</div>';
             }
 
             document.getElementById('modalBody').innerHTML = bodyHTML;

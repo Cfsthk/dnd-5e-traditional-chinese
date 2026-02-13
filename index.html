@@ -604,7 +604,7 @@
             // Stats
             const totalSubclasses = classes.reduce((sum, [, cls]) => sum + Object.keys(cls.subclasses || {}).length, 0);
             const totalFeatures = classes.reduce((sum, [, cls]) => {
-                return sum + Object.values(cls.features || {}).reduce((s, f) => s + f.length, 0);
+                return sum + Object.values(cls.features || {}).reduce((s, f) => s + Object.keys(f).length, 0);
             }, 0);
 
             stats.innerHTML = `
@@ -803,12 +803,12 @@
                 const sortedLevels = Object.keys(cls.features).sort((a, b) => parseInt(a) - parseInt(b));
                 sortedLevels.forEach(level => {
                     const features = cls.features[level];
-                    if (features && features.length > 0) {
+                    if (features && Object.keys(features).length > 0) {
                         bodyHTML += `<div class="feature-level">
                             <h5>第 ${level} 級</h5>`;
-                        features.forEach(feature => {
+                        Object.entries(features).forEach(([featureKey, feature]) => {
                             bodyHTML += `
-                                <h4>${feature.name}</h4>
+                                <h4>${feature.name || featureKey}</h4>
                                 <p>${feature.description || '獲得此特性'}</p>
                             `;
                         });

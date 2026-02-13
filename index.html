@@ -74,6 +74,7 @@
 
         .content {
             padding: 30px;
+            min-height: 400px;
         }
 
         .tab-content {
@@ -88,6 +89,20 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #d32f2f;
+            font-size: 1.1em;
         }
 
         .grid {
@@ -224,22 +239,30 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>D&D 5E 完整資料庫 - 繁體中文</h1>
-            <p>點擊下方卡片，探索你的角色自定義選項</p>
+            <h1>🐉 D&D 5E 完整資料庫 - 繁體中文</h1>
+            <p>探索龍與地下城的奇幻世界</p>
         </div>
 
         <div class="tabs">
             <div class="tab active" onclick="switchTab('classes')">職業</div>
             <div class="tab" onclick="switchTab('races')">種族</div>
+            <div class="tab" onclick="switchTab('spells')">法術</div>
         </div>
 
         <div class="content">
             <div id="classes" class="tab-content active">
+                <div class="loading">載入職業資料中...</div>
                 <div id="classGrid" class="grid"></div>
             </div>
 
             <div id="races" class="tab-content">
+                <div class="loading">載入種族資料中...</div>
                 <div id="raceGrid" class="grid"></div>
+            </div>
+
+            <div id="spells" class="tab-content">
+                <div class="loading">載入法術資料中...</div>
+                <div id="spellGrid" class="grid"></div>
             </div>
         </div>
     </div>
@@ -255,6 +278,7 @@
     <script>
         let classesData = [];
         let racesData = [];
+        let spellsData = [];
 
         // Switch between tabs
         function switchTab(tabName) {
@@ -269,26 +293,84 @@
 
         // Load classes data
         fetch('data/dnd5e_classes_complete_tc.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 classesData = data.classes;
                 displayClasses();
             })
-            .catch(error => console.error('Error loading classes:', error));
+            .catch(error => {
+                console.error('Error loading classes:', error);
+                document.getElementById('classes').innerHTML = `
+                    <div class="error">
+                        ❌ 無法載入職業資料<br>
+                        <small>錯誤: ${error.message}</small>
+                    </div>
+                `;
+            });
 
         // Load races data
         fetch('data/dnd5e_races_complete_tc.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 racesData = data.races;
                 displayRaces();
             })
-            .catch(error => console.error('Error loading races:', error));
+            .catch(error => {
+                console.error('Error loading races:', error);
+                document.getElementById('races').innerHTML = `
+                    <div class="error">
+                        ❌ 無法載入種族資料<br>
+                        <small>錯誤: ${error.message}</small>
+                    </div>
+                `;
+            });
+
+        // Load spells data
+        fetch('data/dnd5e_spells_complete_tc.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                spellsData = data.spells;
+                displaySpells();
+            })
+            .catch(error => {
+                console.error('Error loading spells:', error);
+                document.getElementById('spells').innerHTML = `
+                    <div class="error">
+                        ❌ 無法載入法術資料<br>
+                        <small>錯誤: ${error.message}</small>
+                    </div>
+                `;
+            });
 
         // Display classes
         function displayClasses() {
+            const container = document.getElementById('classes');
             const grid = document.getElementById('classGrid');
+            
+            // Remove loading message
+            container.querySelector('.loading')?.remove();
+            
             grid.innerHTML = '';
+
+            if (!classesData || classesData.length === 0) {
+                container.innerHTML = '<div class="error">沒有找到職業資料</div>';
+                return;
+            }
 
             classesData.forEach(classItem => {
                 const card = document.createElement('div');
@@ -297,7 +379,7 @@
                 card.innerHTML = `
                     <h3>${classItem.name}</h3>
                     <div class="subtitle">${classItem.english_name}</div>
-                    <div class="description">${classItem.description.substring(0, 100)}...</div>
+                    <div class="description">${classItem.description ? classItem.description.substring(0, 100) + '...' : '無描述'}</div>
                 `;
                 grid.appendChild(card);
             });
@@ -305,8 +387,18 @@
 
         // Display races
         function displayRaces() {
+            const container = document.getElementById('races');
             const grid = document.getElementById('raceGrid');
+            
+            // Remove loading message
+            container.querySelector('.loading')?.remove();
+            
             grid.innerHTML = '';
+
+            if (!racesData || racesData.length === 0) {
+                container.innerHTML = '<div class="error">沒有找到種族資料</div>';
+                return;
+            }
 
             racesData.forEach(race => {
                 const card = document.createElement('div');
@@ -315,7 +407,35 @@
                 card.innerHTML = `
                     <h3>${race.name}</h3>
                     <div class="subtitle">${race.english_name}</div>
-                    <div class="description">${race.description.substring(0, 100)}...</div>
+                    <div class="description">${race.description ? race.description.substring(0, 100) + '...' : '無描述'}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Display spells
+        function displaySpells() {
+            const container = document.getElementById('spells');
+            const grid = document.getElementById('spellGrid');
+            
+            // Remove loading message
+            container.querySelector('.loading')?.remove();
+            
+            grid.innerHTML = '';
+
+            if (!spellsData || spellsData.length === 0) {
+                container.innerHTML = '<div class="error">沒有找到法術資料</div>';
+                return;
+            }
+
+            spellsData.forEach(spell => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => showSpellDetails(spell);
+                card.innerHTML = `
+                    <h3>${spell.name}</h3>
+                    <div class="subtitle">${spell.english_name} - ${spell.level}環${spell.school}</div>
+                    <div class="description">${spell.description ? spell.description.substring(0, 100) + '...' : '無描述'}</div>
                 `;
                 grid.appendChild(card);
             });
@@ -329,15 +449,15 @@
                 <h2>${classItem.name} (${classItem.english_name})</h2>
                 <div class="section">
                     <h3>簡介</h3>
-                    <p>${classItem.description}</p>
+                    <p>${classItem.description || '無描述'}</p>
                 </div>
                 <div class="section">
                     <h3>基本資訊</h3>
-                    <p>命中骰：${classItem.hit_die}</p>
-                    <p>主要屬性：${classItem.primary_ability}</p>
-                    <p>豁免投擲熟練：${classItem.save_throw_proficiencies}</p>
-                    <p>護甲熟練：${classItem.armor_proficiencies}</p>
-                    <p>武器熟練：${classItem.weapon_proficiencies}</p>
+                    <p><strong>命中骰：</strong>${classItem.hit_die || '未知'}</p>
+                    <p><strong>主要屬性：</strong>${classItem.primary_ability || '未知'}</p>
+                    <p><strong>豁免擲骰熟練：</strong>${classItem.save_throw_proficiencies || '未知'}</p>
+                    <p><strong>護甲熟練：</strong>${classItem.armor_proficiencies || '未知'}</p>
+                    <p><strong>武器熟練：</strong>${classItem.weapon_proficiencies || '未知'}</p>
                 </div>
             `;
 
@@ -368,21 +488,21 @@
                 <h2>${race.name} (${race.english_name})</h2>
                 <div class="section">
                     <h3>簡介</h3>
-                    <p>${race.description}</p>
+                    <p>${race.description || '無描述'}</p>
                 </div>
                 <div class="section">
                     <h3>基本屬性</h3>
-                    <p>體型：${race.size}</p>
-                    <p>速度：${race.speed}</p>
-                    <p>屬性值調整：${race.ability_score_increase}</p>
-                    <p>語言：${race.languages}</p>
+                    <p><strong>體型：</strong>${race.size || '未知'}</p>
+                    <p><strong>速度：</strong>${race.speed || '未知'}</p>
+                    <p><strong>屬性值調整：</strong>${race.ability_score_increase || '未知'}</p>
+                    <p><strong>語言：</strong>${race.languages || '未知'}</p>
                 </div>
             `;
 
             if (race.traits && race.traits.length > 0) {
                 html += `
                     <div class="section">
-                        <h3>種族特性</h3>
+                        <h3>種族特質</h3>
                         <ul>
                 `;
                 race.traits.forEach(trait => {
@@ -410,6 +530,49 @@
                     html += `</div>`;
                 });
                 html += `</div>`;
+            }
+
+            modalContent.innerHTML = html;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        // Show spell details in modal
+        function showSpellDetails(spell) {
+            const modalContent = document.getElementById('modalContent');
+            
+            let html = `
+                <h2>${spell.name} (${spell.english_name})</h2>
+                <div class="section">
+                    <h3>基本資訊</h3>
+                    <p><strong>等級：</strong>${spell.level || '未知'}環</p>
+                    <p><strong>學派：</strong>${spell.school || '未知'}</p>
+                    <p><strong>施法時間：</strong>${spell.casting_time || '未知'}</p>
+                    <p><strong>射程：</strong>${spell.range || '未知'}</p>
+                    <p><strong>成分：</strong>${spell.components || '未知'}</p>
+                    <p><strong>持續時間：</strong>${spell.duration || '未知'}</p>
+                </div>
+                <div class="section">
+                    <h3>描述</h3>
+                    <p>${spell.description || '無描述'}</p>
+                </div>
+            `;
+
+            if (spell.higher_levels) {
+                html += `
+                    <div class="section">
+                        <h3>高環施法</h3>
+                        <p>${spell.higher_levels}</p>
+                    </div>
+                `;
+            }
+
+            if (spell.classes && spell.classes.length > 0) {
+                html += `
+                    <div class="section">
+                        <h3>可用職業</h3>
+                        <p>${spell.classes.join('、')}</p>
+                    </div>
+                `;
             }
 
             modalContent.innerHTML = html;

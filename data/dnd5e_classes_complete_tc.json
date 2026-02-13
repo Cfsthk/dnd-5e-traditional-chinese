@@ -1,0 +1,2175 @@
+{
+  "barbarian": {
+    "name": "野蠻人",
+    "name_en": "Barbarian",
+    "description": "野蠻人是一個強大的職業。",
+    "hit_die": 12,
+    "primary_ability": "",
+    "saves": [
+      "STR",
+      "CON"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor",
+        "Medium Armor"
+      ],
+      "weapons": [
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Explorer's Pack",
+    "features": {
+      "1": [
+        {
+          "name": "Rage",
+          "name_en": "Rage",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Unarmored Defense",
+          "name_en": "Unarmored Defense",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Reckless Attack",
+          "name_en": "Reckless Attack",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Danger Sense",
+          "name_en": "Danger Sense",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Primal Path",
+          "name_en": "Primal Path",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "name_en": "Extra Attack",
+          "description": "在5級獲得此特性"
+        },
+        {
+          "name": "Fast Movement",
+          "name_en": "Fast Movement",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Path feature",
+          "name_en": "Path feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Feral Instinct",
+          "name_en": "Feral Instinct",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Brutal Critical (1 die)",
+          "name_en": "Brutal Critical (1 die)",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Path feature",
+          "name_en": "Path feature",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Relentless Rage",
+          "name_en": "Relentless Rage",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Brutal Critical (2 dice)",
+          "name_en": "Brutal Critical (2 dice)",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Path feature",
+          "name_en": "Path feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Persistent Rage",
+          "name_en": "Persistent Rage",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Brutal Critical (3 dice)",
+          "name_en": "Brutal Critical (3 dice)",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Indomitable Might",
+          "name_en": "Indomitable Might",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Primal Champion",
+          "name_en": "Primal Champion",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "berserker": {
+        "name": "Berserker",
+        "name_en": "Berserker",
+        "description": "For some barbarians, rage is a means to an end--that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker's rage, you thrill in the chaos of battle, heedless of your own health or well-being.",
+        "flavor": "Primal Path",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "bard": {
+    "name": "吟遊詩人",
+    "name_en": "Bard",
+    "description": "吟遊詩人是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "DEX",
+      "CHA"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor"
+      ],
+      "weapons": [
+        "Simple Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇3項技能"
+    },
+    "equipment": "Leather Armor",
+    "features": {
+      "1": [
+        {
+          "name": "Spellcasting: Bard",
+          "name_en": "Spellcasting: Bard",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Bardic Inspiration (d6)",
+          "name_en": "Bardic Inspiration (d6)",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Jack of All Trades",
+          "name_en": "Jack of All Trades",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Song of Rest (d6)",
+          "name_en": "Song of Rest (d6)",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Expertise",
+          "name_en": "Expertise",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Bard College",
+          "name_en": "Bard College",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Bardic Inspiration (d8)",
+          "name_en": "Bardic Inspiration (d8)",
+          "description": "在5級獲得此特性"
+        },
+        {
+          "name": "Font of Inspiration",
+          "name_en": "Font of Inspiration",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Countercharm",
+          "name_en": "Countercharm",
+          "description": "在6級獲得此特性"
+        },
+        {
+          "name": "Bard College feature",
+          "name_en": "Bard College feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Song of Rest (d8)",
+          "name_en": "Song of Rest (d8)",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Expertise",
+          "name_en": "Expertise",
+          "description": "在10級獲得此特性"
+        },
+        {
+          "name": "Bardic Inspiration (d10)",
+          "name_en": "Bardic Inspiration (d10)",
+          "description": "在10級獲得此特性"
+        },
+        {
+          "name": "Magical Secrets",
+          "name_en": "Magical Secrets",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Song of Rest (d10)",
+          "name_en": "Song of Rest (d10)",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Magical Secrets",
+          "name_en": "Magical Secrets",
+          "description": "在14級獲得此特性"
+        },
+        {
+          "name": "Bard College feature",
+          "name_en": "Bard College feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Bardic Inspiration (d12)",
+          "name_en": "Bardic Inspiration (d12)",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Song of Rest (d12)",
+          "name_en": "Song of Rest (d12)",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Magical Secrets",
+          "name_en": "Magical Secrets",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Superior Inspiration",
+          "name_en": "Superior Inspiration",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "lore": {
+        "name": "Lore",
+        "name_en": "Lore",
+        "description": "Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held ",
+        "flavor": "Bard College",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "cleric": {
+    "name": "牧師",
+    "name_en": "Cleric",
+    "description": "牧師是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "WIS",
+      "CHA"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor",
+        "Medium Armor"
+      ],
+      "weapons": [
+        "Simple Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Shield",
+    "features": {
+      "1": [
+        {
+          "name": "Spellcasting: Cleric",
+          "name_en": "Spellcasting: Cleric",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Divine Domain",
+          "name_en": "Divine Domain",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Domain Spells",
+          "name_en": "Domain Spells",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Channel Divinity (1/rest)",
+          "name_en": "Channel Divinity (1/rest)",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Channel Divinity: Turn Undead",
+          "name_en": "Channel Divinity: Turn Undead",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Divine Domain feature",
+          "name_en": "Divine Domain feature",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Domain Spells",
+          "name_en": "Domain Spells",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Domain Spells",
+          "name_en": "Domain Spells",
+          "description": "在5級獲得此特性"
+        },
+        {
+          "name": "Destroy Undead (CR 1/2 or below)",
+          "name_en": "Destroy Undead (CR 1/2 or below)",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Channel Divinity (2/rest)",
+          "name_en": "Channel Divinity (2/rest)",
+          "description": "在6級獲得此特性"
+        },
+        {
+          "name": "Divine Domain feature",
+          "name_en": "Divine Domain feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Domain Spells",
+          "name_en": "Domain Spells",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        },
+        {
+          "name": "Destroy Undead (CR 1 or below)",
+          "name_en": "Destroy Undead (CR 1 or below)",
+          "description": "在8級獲得此特性"
+        },
+        {
+          "name": "Divine Domain feature",
+          "name_en": "Divine Domain feature",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Domain Spells",
+          "name_en": "Domain Spells",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Divine Intervention",
+          "name_en": "Divine Intervention",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Destroy Undead (CR 2 or below)",
+          "name_en": "Destroy Undead (CR 2 or below)",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Destroy Undead (CR 3 or below)",
+          "name_en": "Destroy Undead (CR 3 or below)",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Destroy Undead (CR 4 or below)",
+          "name_en": "Destroy Undead (CR 4 or below)",
+          "description": "在17級獲得此特性"
+        },
+        {
+          "name": "Divine Domain feature",
+          "name_en": "Divine Domain feature",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Channel Divinity (3/rest)",
+          "name_en": "Channel Divinity (3/rest)",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Divine Intervention Improvement",
+          "name_en": "Divine Intervention Improvement",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "life": {
+        "name": "Life",
+        "name_en": "Life",
+        "description": "The Life domain focuses on the vibrant positive energy--one of the fundamental forces of the universe--that sustains all life. The gods of life promote vitality and health through healing the sick and wounded, caring for those in need, and driving away the forces of death and undeath. Almost any non-evil deity can claim influence over this domain, particularly agricultural deities, sun gods, gods ",
+        "flavor": "Divine Domain",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "druid": {
+    "name": "德魯伊",
+    "name_en": "Druid",
+    "description": "德魯伊是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "INT",
+      "WIS"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor",
+        "Medium Armor"
+      ],
+      "weapons": [],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Leather Armor",
+    "features": {
+      "1": [
+        {
+          "name": "Spellcasting: Druid",
+          "name_en": "Spellcasting: Druid",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Druidic",
+          "name_en": "Druidic",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Wild Shape (CR 1/4 or below, no flying or swim speed)",
+          "name_en": "Wild Shape (CR 1/4 or below, no flying or swim speed)",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Druid Circle",
+          "name_en": "Druid Circle",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [],
+      "4": [
+        {
+          "name": "Wild Shape (CR 1/2 or below, no flying speed)",
+          "name_en": "Wild Shape (CR 1/2 or below, no flying speed)",
+          "description": "在4級獲得此特性"
+        },
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [],
+      "6": [
+        {
+          "name": "Druid Circle feature",
+          "name_en": "Druid Circle feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [],
+      "8": [
+        {
+          "name": "Wild Shape (CR 1 or below)",
+          "name_en": "Wild Shape (CR 1 or below)",
+          "description": "在8級獲得此特性"
+        },
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Druid Circle feature",
+          "name_en": "Druid Circle feature",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Druid Circle feature",
+          "name_en": "Druid Circle feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [],
+      "18": [
+        {
+          "name": "Timeless Body",
+          "name_en": "Timeless Body",
+          "description": "在18級獲得此特性"
+        },
+        {
+          "name": "Beast Spells",
+          "name_en": "Beast Spells",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Archdruid",
+          "name_en": "Archdruid",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "land": {
+        "name": "Land",
+        "name_en": "Land",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of t",
+        "flavor": "Druid Circle",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "fighter": {
+    "name": "戰士",
+    "name_en": "Fighter",
+    "description": "戰士是一個強大的職業。",
+    "hit_die": 10,
+    "primary_ability": "",
+    "saves": [
+      "STR",
+      "CON"
+    ],
+    "proficiencies": {
+      "armor": [],
+      "weapons": [
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "",
+    "features": {
+      "1": [
+        {
+          "name": "Fighting Style",
+          "name_en": "Fighting Style",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Second Wind",
+          "name_en": "Second Wind",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Action Surge (1 use)",
+          "name_en": "Action Surge (1 use)",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Martial Archetype",
+          "name_en": "Martial Archetype",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "name_en": "Extra Attack",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Martial Archetype feature",
+          "name_en": "Martial Archetype feature",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Indomitable (1 use)",
+          "name_en": "Indomitable (1 use)",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Martial Archetype feature",
+          "name_en": "Martial Archetype feature",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Extra Attack (2)",
+          "name_en": "Extra Attack (2)",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Indomitable (2 uses)",
+          "name_en": "Indomitable (2 uses)",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Martial Archetype feature",
+          "name_en": "Martial Archetype feature",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Action Surge (2 uses)",
+          "name_en": "Action Surge (2 uses)",
+          "description": "在17級獲得此特性"
+        },
+        {
+          "name": "Indomitable (3 uses)",
+          "name_en": "Indomitable (3 uses)",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Martial Archetype feature",
+          "name_en": "Martial Archetype feature",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Extra Attack (3)",
+          "name_en": "Extra Attack (3)",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "champion": {
+        "name": "Champion",
+        "name_en": "Champion",
+        "description": "The archetypal Champion focuses on the development of raw physical power honed to deadly perfection. Those who model themselves on this archetype combine rigorous training with physical excellence to deal devastating blows.",
+        "flavor": "Martial Archetype",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "monk": {
+    "name": "武僧",
+    "name_en": "Monk",
+    "description": "武僧是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "STR",
+      "DEX"
+    ],
+    "proficiencies": {
+      "armor": [],
+      "weapons": [
+        "Simple Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Dart",
+    "features": {
+      "1": [
+        {
+          "name": "Unarmored Defense",
+          "name_en": "Unarmored Defense",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Martial Arts",
+          "name_en": "Martial Arts",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Ki",
+          "name_en": "Ki",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Flurry of Blows",
+          "name_en": "Flurry of Blows",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Patient Defense",
+          "name_en": "Patient Defense",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Step of the Wind",
+          "name_en": "Step of the Wind",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Unarmored Movement",
+          "name_en": "Unarmored Movement",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Monastic Tradition",
+          "name_en": "Monastic Tradition",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Deflect Missiles",
+          "name_en": "Deflect Missiles",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        },
+        {
+          "name": "Slow Fall",
+          "name_en": "Slow Fall",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "name_en": "Extra Attack",
+          "description": "在5級獲得此特性"
+        },
+        {
+          "name": "Stunning Strike",
+          "name_en": "Stunning Strike",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Ki Empowered Strikes",
+          "name_en": "Ki Empowered Strikes",
+          "description": "在6級獲得此特性"
+        },
+        {
+          "name": "Monastic Tradition feature",
+          "name_en": "Monastic Tradition feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Evasion",
+          "name_en": "Evasion",
+          "description": "在7級獲得此特性"
+        },
+        {
+          "name": "Stillness of Mind",
+          "name_en": "Stillness of Mind",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Unarmored Movement",
+          "name_en": "Unarmored Movement",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Purity of Body",
+          "name_en": "Purity of Body",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Monastic Tradition feature",
+          "name_en": "Monastic Tradition feature",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Tongue of the Sun and Moon",
+          "name_en": "Tongue of the Sun and Moon",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Diamond Soul",
+          "name_en": "Diamond Soul",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Timeless Body",
+          "name_en": "Timeless Body",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Monastic Tradition feature",
+          "name_en": "Monastic Tradition feature",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Empty Body",
+          "name_en": "Empty Body",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Perfect Self",
+          "name_en": "Perfect Self",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "open-hand": {
+        "name": "Open Hand",
+        "name_en": "Open Hand",
+        "description": "Monks of the Way of the Open Hand are the ultimate masters of martial arts combat, whether armed or unarmed. They learn techniques to push and trip their opponents, manipulate ki to heal damage to their bodies, and practice advanced meditation that can protect them from harm.",
+        "flavor": "Monastic Tradition",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "paladin": {
+    "name": "聖武士",
+    "name_en": "Paladin",
+    "description": "聖武士是一個強大的職業。",
+    "hit_die": 10,
+    "primary_ability": "",
+    "saves": [
+      "WIS",
+      "CHA"
+    ],
+    "proficiencies": {
+      "armor": [],
+      "weapons": [
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Chain Mail",
+    "features": {
+      "1": [
+        {
+          "name": "Divine Sense",
+          "name_en": "Divine Sense",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Lay on Hands",
+          "name_en": "Lay on Hands",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Fighting Style",
+          "name_en": "Fighting Style",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Spellcasting: Paladin",
+          "name_en": "Spellcasting: Paladin",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Divine Smite",
+          "name_en": "Divine Smite",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Divine Health",
+          "name_en": "Divine Health",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Sacred Oath",
+          "name_en": "Sacred Oath",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Oath Spells",
+          "name_en": "Oath Spells",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Channel Divinity",
+          "name_en": "Channel Divinity",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "name_en": "Extra Attack",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Aura of Protection",
+          "name_en": "Aura of Protection",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Sacred Oath feature",
+          "name_en": "Sacred Oath feature",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Aura of Courage",
+          "name_en": "Aura of Courage",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Improved Divine Smite",
+          "name_en": "Improved Divine Smite",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Cleansing Touch",
+          "name_en": "Cleansing Touch",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Sacred Oath feature",
+          "name_en": "Sacred Oath feature",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [],
+      "18": [
+        {
+          "name": "Aura improvements",
+          "name_en": "Aura improvements",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Sacred Oath feature",
+          "name_en": "Sacred Oath feature",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "devotion": {
+        "name": "Devotion",
+        "name_en": "Devotion",
+        "description": "The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the s",
+        "flavor": "Sacred Oath",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "ranger": {
+    "name": "遊俠",
+    "name_en": "Ranger",
+    "description": "遊俠是一個強大的職業。",
+    "hit_die": 10,
+    "primary_ability": "",
+    "saves": [
+      "STR",
+      "DEX"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor",
+        "Medium Armor"
+      ],
+      "weapons": [
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇3項技能"
+    },
+    "equipment": "Longbow",
+    "features": {
+      "1": [
+        {
+          "name": "Favored Enemy (1 type)",
+          "name_en": "Favored Enemy (1 type)",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Natural Explorer (1 terrain type)",
+          "name_en": "Natural Explorer (1 terrain type)",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Fighting Style",
+          "name_en": "Fighting Style",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Spellcasting: Ranger",
+          "name_en": "Spellcasting: Ranger",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Ranger Archetype",
+          "name_en": "Ranger Archetype",
+          "description": "在3級獲得此特性"
+        },
+        {
+          "name": "Primeval Awareness",
+          "name_en": "Primeval Awareness",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Extra Attack",
+          "name_en": "Extra Attack",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Favored Enemy (2 types)",
+          "name_en": "Favored Enemy (2 types)",
+          "description": "在6級獲得此特性"
+        },
+        {
+          "name": "Natural Explorer (2 terrain types)",
+          "name_en": "Natural Explorer (2 terrain types)",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Ranger Archetype feature",
+          "name_en": "Ranger Archetype feature",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        },
+        {
+          "name": "Land's Stride",
+          "name_en": "Land's Stride",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Natural Explorer (3 terrain types)",
+          "name_en": "Natural Explorer (3 terrain types)",
+          "description": "在10級獲得此特性"
+        },
+        {
+          "name": "Hide in Plain Sight",
+          "name_en": "Hide in Plain Sight",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Ranger Archetype feature",
+          "name_en": "Ranger Archetype feature",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Favored Enemy (3 enemies)",
+          "name_en": "Favored Enemy (3 enemies)",
+          "description": "在14級獲得此特性"
+        },
+        {
+          "name": "Vanish",
+          "name_en": "Vanish",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Ranger Archetype feature",
+          "name_en": "Ranger Archetype feature",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [],
+      "18": [
+        {
+          "name": "Feral Senses",
+          "name_en": "Feral Senses",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Foe Slayer",
+          "name_en": "Foe Slayer",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "hunter": {
+        "name": "Hunter",
+        "name_en": "Hunter",
+        "description": "Emulating the Hunter archetype means accepting your place as a bulwark between civilization and the terrors of the wilderness. As you walk the Hunter's path, you learn specialized techniques for fighting the threats you face, from rampaging ogres and hordes of orcs to towering giants and terrifying dragons.",
+        "flavor": "Ranger Archetype",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "rogue": {
+    "name": "盜賊",
+    "name_en": "Rogue",
+    "description": "盜賊是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "DEX",
+      "INT"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor"
+      ],
+      "weapons": [
+        "Simple Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇4項技能"
+    },
+    "equipment": "Leather Armor",
+    "features": {
+      "1": [
+        {
+          "name": "Expertise",
+          "name_en": "Expertise",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Sneak Attack",
+          "name_en": "Sneak Attack",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Thieves' Cant",
+          "name_en": "Thieves' Cant",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Cunning Action",
+          "name_en": "Cunning Action",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Roguish Archetype",
+          "name_en": "Roguish Archetype",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [
+        {
+          "name": "Uncanny Dodge",
+          "name_en": "Uncanny Dodge",
+          "description": "在5級獲得此特性"
+        }
+      ],
+      "6": [
+        {
+          "name": "Expertise",
+          "name_en": "Expertise",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [
+        {
+          "name": "Evasion",
+          "name_en": "Evasion",
+          "description": "在7級獲得此特性"
+        }
+      ],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [
+        {
+          "name": "Roguish Archetype feature",
+          "name_en": "Roguish Archetype feature",
+          "description": "在9級獲得此特性"
+        }
+      ],
+      "10": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Reliable Talent",
+          "name_en": "Reliable Talent",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Roguish Archetype feature",
+          "name_en": "Roguish Archetype feature",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Blindsense",
+          "name_en": "Blindsense",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Slippery Mind",
+          "name_en": "Slippery Mind",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Roguish Archetype feature",
+          "name_en": "Roguish Archetype feature",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Elusive",
+          "name_en": "Elusive",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Stroke of Luck",
+          "name_en": "Stroke of Luck",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "thief": {
+        "name": "Thief",
+        "name_en": "Thief",
+        "description": "You hone your skills in the larcenous arts. Burglars, bandits, cutpurses, and other criminals typically follow this archetype, but so do rogues who prefer to think of themselves as professional treasure seekers, explorers, delvers, and investigators. In addition to improving your agility and stealth, you learn skills useful for delving into ancient ruins, reading unfamiliar languages, and using ma",
+        "flavor": "Roguish Archetype",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "sorcerer": {
+    "name": "術士",
+    "name_en": "Sorcerer",
+    "description": "術士是一個強大的職業。",
+    "hit_die": 6,
+    "primary_ability": "",
+    "saves": [
+      "CON",
+      "CHA"
+    ],
+    "proficiencies": {
+      "armor": [],
+      "weapons": [],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Dagger",
+    "features": {
+      "1": [
+        {
+          "name": "Spellcasting: Sorcerer",
+          "name_en": "Spellcasting: Sorcerer",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Sorcerous Origin",
+          "name_en": "Sorcerous Origin",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Font of Magic",
+          "name_en": "Font of Magic",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Flexible Casting: Creating Spell Slots",
+          "name_en": "Flexible Casting: Creating Spell Slots",
+          "description": "在2級獲得此特性"
+        },
+        {
+          "name": "Flexible Casting: Converting Spell Slot",
+          "name_en": "Flexible Casting: Converting Spell Slot",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Metamagic",
+          "name_en": "Metamagic",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [],
+      "6": [
+        {
+          "name": "Sorcerous Origin feature",
+          "name_en": "Sorcerous Origin feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Metamagic",
+          "name_en": "Metamagic",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Sorcerous Origin feature",
+          "name_en": "Sorcerous Origin feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Metamagic",
+          "name_en": "Metamagic",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [
+        {
+          "name": "Sorcerous Origin feature",
+          "name_en": "Sorcerous Origin feature",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Sorcerous Restoration",
+          "name_en": "Sorcerous Restoration",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "draconic": {
+        "name": "Draconic",
+        "name_en": "Draconic",
+        "description": "Your innate magic comes from draconic magic that was mingled with your blood or that of your ancestors. Most often, sorcerers with this origin trace their descent back to a mighty sorcerer of ancient times who made a bargain with a dragon or who might even have claimed a dragon parent. Some of these bloodlines are well established in the world, but most are obscure. Any given sorcerer could be the",
+        "flavor": "Sorcerous Origin",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "warlock": {
+    "name": "邪術師",
+    "name_en": "Warlock",
+    "description": "邪術師是一個強大的職業。",
+    "hit_die": 8,
+    "primary_ability": "",
+    "saves": [
+      "WIS",
+      "CHA"
+    ],
+    "proficiencies": {
+      "armor": [
+        "Light Armor"
+      ],
+      "weapons": [
+        "Simple Weapons"
+      ],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Dagger",
+    "features": {
+      "1": [
+        {
+          "name": "Otherworldly Patron",
+          "name_en": "Otherworldly Patron",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Pact Magic",
+          "name_en": "Pact Magic",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Eldritch Invocations",
+          "name_en": "Eldritch Invocations",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [
+        {
+          "name": "Pact Boon",
+          "name_en": "Pact Boon",
+          "description": "在3級獲得此特性"
+        }
+      ],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [],
+      "6": [
+        {
+          "name": "Otherworldly Patron feature",
+          "name_en": "Otherworldly Patron feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Otherworldly Patron feature",
+          "name_en": "Otherworldly Patron feature",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [
+        {
+          "name": "Mystic Arcanum (6th level)",
+          "name_en": "Mystic Arcanum (6th level)",
+          "description": "在11級獲得此特性"
+        }
+      ],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [
+        {
+          "name": "Mystic Arcanum (7th level)",
+          "name_en": "Mystic Arcanum (7th level)",
+          "description": "在13級獲得此特性"
+        }
+      ],
+      "14": [
+        {
+          "name": "Otherworldly Patron feature",
+          "name_en": "Otherworldly Patron feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [
+        {
+          "name": "Mystic Arcanum (8th level)",
+          "name_en": "Mystic Arcanum (8th level)",
+          "description": "在15級獲得此特性"
+        }
+      ],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [
+        {
+          "name": "Mystic Arcanum (9th level)",
+          "name_en": "Mystic Arcanum (9th level)",
+          "description": "在17級獲得此特性"
+        }
+      ],
+      "18": [],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Eldritch Master",
+          "name_en": "Eldritch Master",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "fiend": {
+        "name": "Fiend",
+        "name_en": "Fiend",
+        "description": "You have made a pact with a fiend from the lower planes of existence, a being whose aims are evil, even if you strive against those aims. Such beings desire the corruption or destruction of all things, ultimately including you. Fiends powerful enough to forge a pact include demon lords such as Demogorgon, Orcus, Fraz'Urb-luu, and Baphomet; archdevils such as Asmodeus, Dispater, Mephistopheles, and",
+        "flavor": "Otherworldly Patron",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  },
+  "wizard": {
+    "name": "法師",
+    "name_en": "Wizard",
+    "description": "法師是一個強大的職業。",
+    "hit_die": 6,
+    "primary_ability": "",
+    "saves": [
+      "INT",
+      "WIS"
+    ],
+    "proficiencies": {
+      "armor": [],
+      "weapons": [],
+      "tools": [],
+      "skills": "選擇2項技能"
+    },
+    "equipment": "Spellbook",
+    "features": {
+      "1": [
+        {
+          "name": "Spellcasting: Wizard",
+          "name_en": "Spellcasting: Wizard",
+          "description": "在1級獲得此特性"
+        },
+        {
+          "name": "Arcane Recovery",
+          "name_en": "Arcane Recovery",
+          "description": "在1級獲得此特性"
+        }
+      ],
+      "2": [
+        {
+          "name": "Arcane Tradition",
+          "name_en": "Arcane Tradition",
+          "description": "在2級獲得此特性"
+        }
+      ],
+      "3": [],
+      "4": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在4級獲得此特性"
+        }
+      ],
+      "5": [],
+      "6": [
+        {
+          "name": "Arcane Tradition feature",
+          "name_en": "Arcane Tradition feature",
+          "description": "在6級獲得此特性"
+        }
+      ],
+      "7": [],
+      "8": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在8級獲得此特性"
+        }
+      ],
+      "9": [],
+      "10": [
+        {
+          "name": "Arcane Tradition feature",
+          "name_en": "Arcane Tradition feature",
+          "description": "在10級獲得此特性"
+        }
+      ],
+      "11": [],
+      "12": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在12級獲得此特性"
+        }
+      ],
+      "13": [],
+      "14": [
+        {
+          "name": "Arcane Tradition feature",
+          "name_en": "Arcane Tradition feature",
+          "description": "在14級獲得此特性"
+        }
+      ],
+      "15": [],
+      "16": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在16級獲得此特性"
+        }
+      ],
+      "17": [],
+      "18": [
+        {
+          "name": "Spell Mastery",
+          "name_en": "Spell Mastery",
+          "description": "在18級獲得此特性"
+        }
+      ],
+      "19": [
+        {
+          "name": "Ability Score Improvement",
+          "name_en": "Ability Score Improvement",
+          "description": "在19級獲得此特性"
+        }
+      ],
+      "20": [
+        {
+          "name": "Signature Spell",
+          "name_en": "Signature Spell",
+          "description": "在20級獲得此特性"
+        }
+      ]
+    },
+    "subclasses": {
+      "evocation": {
+        "name": "Evocation",
+        "name_en": "Evocation",
+        "description": "You focus your study on magic that creates powerful elemental effects such as bitter cold, searing flame, rolling thunder, crackling lightning, and burning acid. Some evokers find employment in military forces, serving as artillery to blast enemy armies from afar. Others use their spectacular power to protect the weak, while some seek their own gain as bandits, adventurers, or aspiring tyrants.",
+        "flavor": "Arcane Tradition",
+        "features": {
+          "": [],
+          "3": []
+        }
+      }
+    }
+  }
+}

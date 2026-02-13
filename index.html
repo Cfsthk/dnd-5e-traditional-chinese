@@ -406,15 +406,15 @@
             .header h1 {
                 font-size: 1.8em;
             }
-            
+
             .tabs {
                 flex-direction: column;
             }
-            
+
             .grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .modal-content {
                 margin: 10px;
             }
@@ -481,9 +481,9 @@
         async function loadData() {
             try {
                 const [races, classes, spells] = await Promise.all([
-                    fetch('data/dnd5e_races_complete_tc.json').then(r => r.json()),
-                    fetch('data/dnd5e_classes_complete_tc.json').then(r => r.json()),
-                    fetch('data/dnd5e_spells_complete_tc.json').then(r => r.json())
+                    fetch('./data/dnd5e_races_complete_tc.json').then(r => r.json()),
+                    fetch('./data/dnd5e_classes_complete_tc.json').then(r => r.json()),
+                    fetch('./data/dnd5e_spells_complete_tc.json').then(r => r.json())
                 ]);
 
                 racesData = races;
@@ -504,9 +504,9 @@
         function renderRaces(searchTerm = '') {
             const grid = document.getElementById('racesGrid');
             const stats = document.getElementById('raceStats');
-            
+
             const races = Object.entries(racesData).filter(([key, race]) =>
-                searchTerm === '' || 
+                searchTerm === '' ||
                 race.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 race.name_en.toLowerCase().includes(searchTerm.toLowerCase())
             );
@@ -541,9 +541,9 @@
         function renderClasses(searchTerm = '') {
             const grid = document.getElementById('classesGrid');
             const stats = document.getElementById('classStats');
-            
+
             const classes = Object.entries(classesData).filter(([key, cls]) =>
-                searchTerm === '' || 
+                searchTerm === '' ||
                 cls.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 cls.name_en.toLowerCase().includes(searchTerm.toLowerCase())
             );
@@ -587,17 +587,17 @@
             const grid = document.getElementById('spellsGrid');
             const stats = document.getElementById('spellStats');
             const filters = document.getElementById('spellFilters');
-            
+
             // Setup level filters
             if (!filters.innerHTML) {
                 filters.innerHTML = `
                     <button class="filter-btn active" data-level="all">全部</button>
                     <button class="filter-btn" data-level="0">戲法</button>
-                    ${[1,2,3,4,5,6,7,8,9].map(l => 
+                    ${[1,2,3,4,5,6,7,8,9].map(l =>
                         `<button class="filter-btn" data-level="${l}">${l}環</button>`
                     ).join('')}
                 `;
-                
+
                 filters.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
                         filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -609,13 +609,13 @@
             }
 
             const spells = Object.entries(spellsData).filter(([key, spell]) => {
-                const matchesSearch = searchTerm === '' || 
+                const matchesSearch = searchTerm === '' ||
                     spell.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     spell.name_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
                     (spell.classes || []).some(c => c.toLowerCase().includes(searchTerm.toLowerCase()));
-                
+
                 const matchesLevel = levelFilter === null || spell.level === levelFilter;
-                
+
                 return matchesSearch && matchesLevel;
             });
 
@@ -660,10 +660,10 @@
         function showRaceDetail(raceKey) {
             const race = racesData[raceKey];
             const modal = document.getElementById('modal');
-            
+
             document.getElementById('modalTitle').textContent = race.name;
             document.getElementById('modalSubtitle').textContent = race.name_en;
-            
+
             let bodyHTML = `
                 <div class="section">
                     <h3>基本資訊</h3>
@@ -709,10 +709,10 @@
         function showClassDetail(classKey) {
             const cls = classesData[classKey];
             const modal = document.getElementById('modal');
-            
+
             document.getElementById('modalTitle').textContent = cls.name;
             document.getElementById('modalSubtitle').textContent = cls.name_en;
-            
+
             let bodyHTML = `
                 <div class="section">
                     <h3>基本資訊</h3>
@@ -769,10 +769,10 @@
         function showSpellDetail(spellKey) {
             const spell = spellsData[spellKey];
             const modal = document.getElementById('modal');
-            
+
             document.getElementById('modalTitle').textContent = spell.name;
             document.getElementById('modalSubtitle').textContent = `${spell.level === 0 ? '戲法' : spell.level + '環'} ${spell.school}`;
-            
+
             let bodyHTML = `
                 <div class="section">
                     <h3>基本資訊</h3>
@@ -813,7 +813,7 @@
                 tab.addEventListener('click', () => {
                     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    
+
                     tab.classList.add('active');
                     document.getElementById(tab.dataset.tab).classList.add('active');
                 });

@@ -481,9 +481,9 @@
         async function loadData() {
             try {
                 const [races, classes, spells] = await Promise.all([
-                    fetch('../data/dnd5e_races_complete_tc.json').then(r => r.json()),
-                    fetch('../data/dnd5e_classes_complete_tc.json').then(r => r.json()),
-                    fetch('../data/dnd5e_spells_complete_tc.json').then(r => r.json())
+                    fetch('data/dnd5e_races_complete_tc.json').then(r => r.json()),
+                    fetch('data/dnd5e_classes_complete_tc.json').then(r => r.json()),
+                    fetch('data/dnd5e_spells_complete_tc.json').then(r => r.json())
                 ]);
 
                 racesData = races;

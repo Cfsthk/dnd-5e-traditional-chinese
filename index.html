@@ -103,7 +103,7 @@
             padding: 20px;
             cursor: pointer;
             transition: all 0.3s;
-            border: 2px solid trans`arent;
+            border: 2px solid transparent;
         }
 
         .card:hover {
@@ -225,12 +225,12 @@
     <div class="container">
         <div class="header">
             <h1>D&D 5E 完整資料庫 - 繁體中文</h1>
-            <p>富下方法，扒遛你的宮晿自定慧遶寷</p>
+            <p>點擊下方卡片，探索你的角色自定義選項</p>
         </div>
 
         <div class="tabs">
-            <div class="tab active" onclick="switchTab('classes')">職立</div>
-            <div class="tab" onclick="switchTab('races')">種族7/div>
+            <div class="tab active" onclick="switchTab('classes')">職業</div>
+            <div class="tab" onclick="switchTab('races')">種族</div>
         </div>
 
         <div class="content">
@@ -328,24 +328,23 @@
             let html = `
                 <h2>${classItem.name} (${classItem.english_name})</h2>
                 <div class="section">
-                    <h3>細介</h3>
+                    <h3>簡介</h3>
                     <p>${classItem.description}</p>
                 </div>
-            </div>
                 <div class="section">
-                    <h3>基本言息</h3>
-                    <p>命中隔：${classItem.hit_die}</p>
-                    <p>主要用屬性：${classItem.primary_ability}</p>
-                    <p>支援廨免投酲值鉻：${classItem.save_throw_proficiencies}</p>
-                    <p>控手杀限：${classItem.armor_proficiencies}</p>
-                    <p>正器控熺：${classItem.weapon_proficiencies}</p>
+                    <h3>基本資訊</h3>
+                    <p>命中骰：${classItem.hit_die}</p>
+                    <p>主要屬性：${classItem.primary_ability}</p>
+                    <p>豁免投擲熟練：${classItem.save_throw_proficiencies}</p>
+                    <p>護甲熟練：${classItem.armor_proficiencies}</p>
+                    <p>武器熟練：${classItem.weapon_proficiencies}</p>
                 </div>
             `;
 
             if (classItem.features && classItem.features.length > 0) {
                 html += `
                     <div class="section">
-                        <h3>職立特技></h3>
+                        <h3>職業特性</h3>
                         <ul>
                 `;
                 classItem.features.forEach(feature => {
@@ -368,14 +367,14 @@
             let html = `
                 <h2>${race.name} (${race.english_name})</h2>
                 <div class="section">
-                    <h3>紹介</h3>
+                    <h3>簡介</h3>
                     <p>${race.description}</p>
                 </div>
                 <div class="section">
-                    <h3>纯文属性</h3>
-                    <p>屋大：${race.size}</p>
-                    <p>速度約：${race.speed}</p>
-                    <p>屬性值訪整：${race.ability_score_increase}</p>
+                    <h3>基本屬性</h3>
+                    <p>體型：${race.size}</p>
+                    <p>速度：${race.speed}</p>
+                    <p>屬性值調整：${race.ability_score_increase}</p>
                     <p>語言：${race.languages}</p>
                 </div>
             `;
@@ -383,7 +382,7 @@
             if (race.traits && race.traits.length > 0) {
                 html += `
                     <div class="section">
-                        <h3>種旇特認</h3>
+                        <h3>種族特性</h3>
                         <ul>
                 `;
                 race.traits.forEach(trait => {
@@ -396,7 +395,7 @@
             }
 
             if (race.subraces && race.subraces.length > 0) {
-                html += `<div class="section"><h3>子種旇</h3>`;
+                html += `<div class="section"><h3>子種族</h3>`;
                 race.subraces.forEach(subrace => {
                     html += `<div class="subrace">`;
                     html += `<h4>${subrace.name} (${subrace.english_name})</h4>`;

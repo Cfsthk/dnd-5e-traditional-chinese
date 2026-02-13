@@ -120,15 +120,18 @@
 
         .card .subtitle {
             color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
         }
 
-        .card .description {
-            color: #444;
-            font-size: 0.95em;
-            line-height: 1.5;
-            margin-top: 10px;
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin: 3px;
+            background: #e0e7ff;
+            color: #667eea;
         }
 
         .modal {
@@ -141,795 +144,323 @@
             background: rgba(0,0,0,0.7);
             z-index: 1000;
             overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .modal-content {
             background: white;
+            margin: 50px auto;
+            max-width: 800px;
             border-radius: 15px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
+            padding: 30px;
             position: relative;
+            animation: modalFadeIn 0.3s;
         }
 
-        .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px 15px 0 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .modal-header h2 {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-
-        .modal-header .subtitle {
-            opacity: 0.9;
-            font-size: 1.1em;
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .close-btn {
             position: absolute;
             top: 20px;
-            right: 25px;
-            font-size: 2em;
+            right: 20px;
+            font-size: 2.5em;
             cursor: pointer;
-            color: white;
-            background: rgba(255,255,255,0.2);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+            color: #999;
         }
 
         .close-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
+            color: #333;
         }
 
-        .modal-body {
-            padding: 30px;
+        .modal h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 2em;
         }
 
-        .section {
+        .modal .category-section {
             margin-bottom: 25px;
-        }
-
-        .section h3 {
-            color: #1e3c72;
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .section h4 {
-            color: #2a5298;
-            font-size: 1.2em;
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        .section p, .section ul {
-            color: #444;
-            line-height: 1.7;
-            margin-bottom: 10px;
-        }
-
-        .section ul {
-            margin-left: 20px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            background: #667eea;
-            color: white;
-        }
-
-        .subclass-list, .subrace-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .subclass-card, .subrace-card {
-            background: #f0f4ff;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .subclass-card:hover, .subrace-card:hover {
-            background: #e0e8ff;
-            transform: translateX(5px);
-        }
-
-        .subclass-card h5, .subrace-card h5 {
-            color: #1e3c72;
-            margin-bottom: 8px;
-        }
-
-        /* NEW: Expandable subrace/subclass styles */
-        .subrace-item, .subclass-item {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px 0;
-            cursor: pointer;
+            padding: 20px;
             background: #f9f9f9;
-            transition: all 0.3s ease;
+            border-radius: 10px;
         }
 
-        .subrace-item:hover, .subclass-item:hover {
-            background: #f0f0f0;
+        .modal .category-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 10px;
         }
 
-        .subrace-header, .subclass-header {
+        .modal .category-section p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subclass-container {
+            margin-top: 15px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 2px solid #e0e7ff;
+        }
+
+        .subclass-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            transition: all 0.2s;
         }
 
-        .expand-icon {
-            transition: transform 0.3s ease;
-            font-size: 1.2em;
+        .subclass-header:hover {
+            background: #e0e7ff;
         }
 
-        .subrace-item.expanded .expand-icon,
-        .subclass-item.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .subrace-details, .subclass-details {
+        .subclass-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
-            margin-top: 0;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
         }
 
-        .subrace-item.expanded .subrace-details,
-        .subclass-item.expanded .subclass-details {
-            max-height: 2000px;
-            margin-top: 10px;
+        .subclass-details.expanded {
+            max-height: 1000px;
+            padding: 20px 20px;
+            transition: max-height 0.5s ease-in;
         }
 
-        .subrace-details ul, .subclass-details ul {
-            margin: 10px 0;
-            padding-left: 20px;
+        .toggle-icon {
+            transition: transform 0.3s;
         }
 
-        .subrace-details li, .subclass-details li {
-            margin: 5px 0;
-        }
-
-        .feature-level {
-            background: #f9f9f9;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #764ba2;
-        }
-
-        .feature-level h5 {
-            color: #764ba2;
-            margin-bottom: 10px;
-        }
-
-        .spell-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        .spell-card {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .spell-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .spell-level {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .spell-level-0 { background: #95a5a6; color: white; }
-        .spell-level-1 { background: #3498db; color: white; }
-        .spell-level-2 { background: #2ecc71; color: white; }
-        .spell-level-3 { background: #f39c12; color: white; }
-        .spell-level-4 { background: #e74c3c; color: white; }
-        .spell-level-5 { background: #9b59b6; color: white; }
-        .spell-level-6 { background: #1abc9c; color: white; }
-        .spell-level-7 { background: #34495e; color: white; }
-        .spell-level-8 { background: #c0392b; color: white; }
-        .spell-level-9 { background: #8e44ad; color: white; }
-
-        .search-box {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1em;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 10px rgba(102,126,234,0.3);
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .filter-btn:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .filter-btn.active {
-            background: #667eea;
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-box .number {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .stat-box .label {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 1.2em;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .tabs {
-                flex-direction: column;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                margin: 10px;
-            }
+        .toggle-icon.expanded {
+            transform: rotate(180deg);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🐉 D&D 5E 完整資料庫</h1>
-            <p>繁體中文 | 種族、職業、法術完整資料</p>
+            <h1>D&D 5E 完整資料庫 - 繁體中文</h1>
+            <p>化身英雄、宏偉冒險旅手建陣，開始你的史詩生涯</p>
         </div>
 
         <div class="tabs">
-            <div class="tab active" data-tab="races">種族 Races</div>
-            <div class="tab" data-tab="classes">職業 Classes</div>
-            <div class="tab" data-tab="spells">法術 Spells</div>
+            <div class="tab active" onclick="switchTab('classes')">職業（Classes）</div>
+            <div class="tab" onclick="switchTab('races')">種族（Races）</div>
         </div>
 
         <div class="content">
-            <!-- Races Tab -->
-            <div class="tab-content active" id="races">
-                <input type="text" class="search-box" id="raceSearch" placeholder="🔍 搜尋種族...">
-                <div class="stats-grid" id="raceStats"></div>
-                <div class="grid" id="racesGrid"></div>
-            </div>
-
-            <!-- Classes Tab -->
-            <div class="tab-content" id="classes">
-                <input type="text" class="search-box" id="classSearch" placeholder="🔍 搜尋職業...">
-                <div class="stats-grid" id="classStats"></div>
+            <div id="classes" class="tab-content active">
                 <div class="grid" id="classesGrid"></div>
             </div>
 
-            <!-- Spells Tab -->
-            <div class="tab-content" id="spells">
-                <input type="text" class="search-box" id="spellSearch" placeholder="🔍 搜尋法術...">
-                <div class="filter-buttons" id="spellFilters"></div>
-                <div class="stats-grid" id="spellStats"></div>
-                <div class="spell-grid" id="spellsGrid"></div>
+            <div id="races" class="tab-content">
+                <div class="grid" id="racesGrid"></div>
             </div>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close-btn" onclick="closeModal()">&times;</span>
-                <h2 id="modalTitle"></h2>
-                <div class="subtitle" id="modalSubtitle"></div>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
+    <div id="modal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
         </div>
     </div>
 
     <script>
-        // Global data storage
-        let racesData = {};
         let classesData = {};
-        let spellsData = {};
+        let racesData = {};
 
-        // Load all data
-        async function loadData() {
-            try {
-                const [races, classes, spells] = await Promise.all([
-                    fetch('data/dnd5e_races_complete_tc.json').then(r => r.json()),
-                    fetch('data/dnd5e_classes_complete_tc.json').then(r => r.json()),
-                    fetch('data/dnd5e_spells_complete_tc.json').then(r => r.json())
-                ]);
-
-                racesData = races;
-                classesData = classes;
-                spellsData = spells;
-
-                renderRaces();
+        // Load classes data
+        fetch('data/dnd5e_classes_complete_tc.json')
+            .then(response => response.json())
+            .then(data => {
+                classesData = data;
                 renderClasses();
-                renderSpells();
-                setupEventListeners();
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.querySelector('.content').innerHTML = '<div class="loading">❌ 載入資料時發生錯誤</div>';
-            }
+            })
+            .catch(error => console.error('加載職業資料', error));
+
+        // Load races data
+        fetch('data/dnd5e_races_complete_tc.json')
+            .then(response => response.json())
+            .then(data => {
+                racesData = data;
+                renderRaces();
+            })
+            .catch(error => console.error('加載種族資料', error));
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
         }
 
-        // Render Races
-        function renderRaces(searchTerm = '') {
-            const grid = document.getElementById('racesGrid');
-            const stats = document.getElementById('raceStats');
-
-            const races = Object.entries(racesData).filter(([key, race]) =>
-                searchTerm === '' ||
-                race.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                race.name_en.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-
-            // Stats
-            const totalSubraces = races.reduce((sum, [, race]) => sum + Object.keys(race.subraces || {}).length, 0);
-            stats.innerHTML = `
-                <div class="stat-box">
-                    <div class="number">${races.length}</div>
-                    <div class="label">種族</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${totalSubraces}</div>
-                    <div class="label">子種族</div>
-                </div>
-            `;
-
-            grid.innerHTML = races.map(([key, race]) => `
-                <div class="card" onclick="showRaceDetail('${key}')">
-                    <h3>${race.name}</h3>
-                    <div class="subtitle">${race.name_en}</div>
-                    <div class="description">${race.description.substring(0, 150)}...</div>
-                    <div style="margin-top: 10px;">
-                        <span class="badge">速度: ${race.speed}</span>
-                        <span class="badge">${Object.keys(race.subraces || {}).length} 子種族</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Render Classes
-        function renderClasses(searchTerm = '') {
+        function renderClasses() {
             const grid = document.getElementById('classesGrid');
-            const stats = document.getElementById('classStats');
+            grid.innerHTML = '';
+            Object.entries(classesData).forEach(([key, classData]) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => showClassDetail(key);
+                
+                const badges = [
+                    `生命值: ${classData.hit_die}`,
+                    `主屬性數正值: ${classData.primary_ability}`
+                ].map(b => `<span class="badge">${b}</span>`).join('');
 
-            const classes = Object.entries(classesData).filter(([key, cls]) =>
-                searchTerm === '' ||
-                cls.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                cls.name_en.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-
-            // Stats
-            const totalSubclasses = classes.reduce((sum, [, cls]) => sum + Object.keys(cls.subclasses || {}).length, 0);
-            const totalFeatures = classes.reduce((sum, [, cls]) => {
-                return sum + Object.values(cls.features || {}).reduce((s, f) => s + Object.keys(f).length, 0);
-            }, 0);
-
-            stats.innerHTML = `
-                <div class="stat-box">
-                    <div class="number">${classes.length}</div>
-                    <div class="label">職業</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${totalSubclasses}</div>
-                    <div class="label">子職業</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${totalFeatures}</div>
-                    <div class="label">職業特性</div>
-                </div>
-            `;
-
-            grid.innerHTML = classes.map(([key, cls]) => `
-                <div class="card" onclick="showClassDetail('${key}')">
-                    <h3>${cls.name}</h3>
-                    <div class="subtitle">${cls.name_en}</div>
-                    <div class="description">${cls.description.substring(0, 150)}...</div>
-                    <div style="margin-top: 10px;">
-                        <span class="badge">生命骰: d${cls.hit_die}</span>
-                        <span class="badge">${Object.keys(cls.subclasses || {}).length} 子職業</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Render Spells
-        function renderSpells(searchTerm = '', levelFilter = null) {
-            const grid = document.getElementById('spellsGrid');
-            const stats = document.getElementById('spellStats');
-            const filters = document.getElementById('spellFilters');
-
-            // Setup level filters
-            if (!filters.innerHTML) {
-                filters.innerHTML = `
-                    <button class="filter-btn active" data-level="all">全部</button>
-                    <button class="filter-btn" data-level="0">戲法</button>
-                    ${[1,2,3,4,5,6,7,8,9].map(l =>
-                        `<button class="filter-btn" data-level="${l}">${l}環</button>`
-                    ).join('')}
+                card.innerHTML = `
+                    <h3>${classData.name}</h3>
+                    <div class="subtitle">${classData.description.substring(0, 100)}...</div>
+                    ${badges}
                 `;
-
-                filters.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        const level = btn.dataset.level === 'all' ? null : parseInt(btn.dataset.level);
-                        renderSpells(document.getElementById('spellSearch').value, level);
-                    });
-                });
-            }
-
-            const spells = Object.entries(spellsData).filter(([key, spell]) => {
-                const matchesSearch = searchTerm === '' ||
-                    spell.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    spell.name_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    (spell.classes || []).some(c => c.toLowerCase().includes(searchTerm.toLowerCase()));
-
-                const matchesLevel = levelFilter === null || spell.level === levelFilter;
-
-                return matchesSearch && matchesLevel;
+                grid.appendChild(card);
             });
-
-            // Stats by level
-            const levelCounts = {};
-            Object.values(spellsData).forEach(spell => {
-                levelCounts[spell.level] = (levelCounts[spell.level] || 0) + 1;
-            });
-
-            stats.innerHTML = `
-                <div class="stat-box">
-                    <div class="number">${Object.keys(spellsData).length}</div>
-                    <div class="label">總法術數</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${levelCounts[0] || 0}</div>
-                    <div class="label">戲法</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">${Object.entries(levelCounts).filter(([l]) => l > 0).reduce((s, [,c]) => s + c, 0)}</div>
-                    <div class="label">環級法術</div>
-                </div>
-            `;
-
-            grid.innerHTML = spells.map(([key, spell]) => `
-                <div class="spell-card" onclick="showSpellDetail('${key}')">
-                    <div class="spell-level spell-level-${spell.level}">
-                        ${spell.level === 0 ? '戲法' : spell.level + '環'}
-                    </div>
-                    <h3 style="color: #1e3c72; margin: 8px 0;">${spell.name}</h3>
-                    <div style="color: #666; font-size: 0.9em; margin-bottom: 8px;">
-                        ${spell.school} | ${spell.casting_time}
-                    </div>
-                    <div style="color: #444; font-size: 0.85em;">
-                        ${(spell.classes || []).slice(0, 3).join(', ')}
-                    </div>
-                </div>
-            `).join('');
         }
 
-        // Show Race Detail with EXPANDABLE SUBRACES
-        function showRaceDetail(raceKey) {
-            const race = racesData[raceKey];
-            const modal = document.getElementById('modal');
+        function renderRaces() {
+            const grid = document.getElementById('racesGrid');
+            grid.innerHTML = '';
+            Object.entries(racesData).forEach(([key, raceData]) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => showRaceDetail(key);
+                
+                const badges = [
+                    `主屏格: ${raceData.main_trait}`
+                ].map(b => `<span class="badge">${b}</span>`).join('');
 
-            document.getElementById('modalTitle').textContent = race.name;
-            document.getElementById('modalSubtitle').textContent = race.name_en;
-
-            let bodyHTML = `
-                <div class="section">
-                    <h3>基本資訊</h3>
-                    <p><strong>速度:</strong> ${race.speed}</p>
-                    <p><strong>體型:</strong> ${race.size}</p>
-                    <p><strong>語言:</strong> ${race.languages}</p>
-                    ${race.age ? `<p><strong>年齡:</strong> ${race.age}</p>` : ''}
-                    <p>${race.description}</p>
-                </div>
-            `;
-
-            // Traits
-            if (race.traits && Object.keys(race.traits).length > 0) {
-                bodyHTML += '<div class="section"><h3>種族特質</h3>';
-                Object.entries(race.traits).forEach(([key, trait]) => {
-                    bodyHTML += `
-                        <h4>${trait.name}</h4>
-                        <p>${trait.description}</p>
-                    `;
-                });
-                bodyHTML += '</div>';
-            }
-
-            // UPDATED: Expandable Subraces
-            if (race.subraces && Object.keys(race.subraces).length > 0) {
-                bodyHTML += '<div class="section"><h3>子種族</h3>';
-                Object.entries(race.subraces).forEach(([key, subrace]) => {
-                    bodyHTML += `
-                        <div class="subrace-item" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
-                            <div class="subrace-header">
-                                <strong>${subrace.name}</strong>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="subrace-details">
-                                <p>${subrace.description || ''}</p>`;
-                    
-                    if (subrace.ability_bonuses && Object.keys(subrace.ability_bonuses).length > 0) {
-                        bodyHTML += '<div style="margin-top: 10px;"><strong>屬性加值:</strong> ';
-                        bodyHTML += Object.entries(subrace.ability_bonuses).map(([stat, bonus]) => 
-                            `${stat.toUpperCase()}: +${bonus}`).join(', ') + '</div>';
-                    }
-                    
-                    if (subrace.traits && Object.keys(subrace.traits).length > 0) {
-                        bodyHTML += '<div style="margin-top: 10px;"><strong>特性:</strong><ul>';
-                        Object.entries(subrace.traits).forEach(([traitKey, trait]) => {
-                            bodyHTML += `<li><strong>${trait.name || traitKey}:</strong> ${trait.description || ''}</li>`;
-                        });
-                        bodyHTML += '</ul></div>';
-                    }
-                    
-                    bodyHTML += '</div></div>';
-                });
-                bodyHTML += '</div>';
-            }
-
-            document.getElementById('modalBody').innerHTML = bodyHTML;
-            modal.classList.add('active');
+                card.innerHTML = `
+                    <h3>${raceData.name}</h3>
+                    <div class="subtitle">${raceData.description.substring(0, 100)}...</div>
+                    ${badges}
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        // Show Class Detail with EXPANDABLE SUBCLASSES
         function showClassDetail(classKey) {
-            const cls = classesData[classKey];
-            const modal = document.getElementById('modal');
+            const classData = classesData[classKey];
+            const modalContent = document.getElementById('modalContent');
 
-            document.getElementById('modalTitle').textContent = cls.name;
-            document.getElementById('modalSubtitle').textContent = cls.name_en;
+            // Build subclassesHTML
+            let subclassesHTML = '';
+            if (classData.subclasses) {
+                subclassesHTML = '<div class="category-section"><h3>專屬自趣（Subclasses）</h3>';
+                Object.entries(classData.subclasses).forEach(([subkey, sub]) => {
+                    subclassesHTML += `
+					<div class="subclass-container">
+						<div class="subclass-header" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+							<span>${sub.name}</span>
+							<span class="toggle-icon">▼</span>
+						</div>
+						<div id="subclass-${subkey}" class="subclass-details">
+							<p>${sub.description}</p>
+						</div>
+					</div>
+				` ;
+                });
+                subclassesHTML += '</div>';
+            }
 
-            let bodyHTML = `
-                <div class="section">
-                    <h3>基本資訊</h3>
-                    <p>${cls.description}</p>
-                    <p><strong>生命骰:</strong> d${cls.hit_die}</p>
-                    <p><strong>豁免熟練:</strong> ${cls.saves.join(', ')}</p>
-                    ${cls.proficiencies ? `
-                        <p><strong>護甲熟練:</strong> ${(cls.proficiencies.armor || []).join(', ') || '無'}</p>
-                        <p><strong>武器熟練:</strong> ${(cls.proficiencies.weapons || []).join(', ') || '無'}</p>
-                    ` : ''}
+            modalContent.innerHTML = `
+                <h2>${classData.name}</h2>
+                <div class="category-section">
+                    <h3>簡介</h3>
+                    <p>${classData.description}</p>
+                </div>
+                <div class="category-section">
+                    <h3>基本能力</h3>
+                    <p>命中值: ${classData.hit_die}</p>
+                    <p>主屬性數正值: ${classData.primary_ability}</p>
+                    <p>豁免能證(豁豁)、偏蝕： ${classData.saving_throw_proficiencies}</p>
+                </div>
+                ${subclassesHTML}
+                <div class="category-section">
+                    <h3>裝備能力</h3>
+                    <p>${classData.equipment_proficiencies}</p>
+                </div>
+                <div class="category-section">
+                    <h3>職業特效</h3>
+                    ${Object.entries(classData.class_features).map(([level, features]) => `
+                        <p><strong>等圈、${level}:</strong> ${features}</p>
+                    `).join('')}
                 </div>
             `;
-
-            // Features by level
-            if (cls.features && Object.keys(cls.features).length > 0) {
-                bodyHTML += '<div class="section"><h3>職業特性</h3>';
-                const sortedLevels = Object.keys(cls.features).sort((a, b) => parseInt(a) - parseInt(b));
-                sortedLevels.forEach(level => {
-                    const features = cls.features[level];
-                    if (features && Object.keys(features).length > 0) {
-                        bodyHTML += `<div class="feature-level">
-                            <h5>第 ${level} 級</h5>`;
-                        Object.entries(features).forEach(([featureKey, feature]) => {
-                            bodyHTML += `
-                                <h4>${feature.name || featureKey}</h4>
-                                <p>${feature.description || '獲得此特性'}</p>
-                            `;
-                        });
-                        bodyHTML += '</div>';
-                    }
-                });
-                bodyHTML += '</div>';
-            }
-
-            // UPDATED: Expandable Subclasses
-            if (cls.subclasses && Object.keys(cls.subclasses).length > 0) {
-                bodyHTML += '<div class="section"><h3>子職業</h3>';
-                Object.entries(cls.subclasses).forEach(([key, subclass]) => {
-                    bodyHTML += `
-                        <div class="subclass-item" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
-                            <div class="subclass-header">
-                                <strong>${subclass.name}</strong>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                            <div class="subclass-details">
-                                <p>${subclass.description || ''}</p>`;
-                    
-                    if (subclass.features && Object.keys(subclass.features).length > 0) {
-                        bodyHTML += '<div style="margin-top: 10px;"><strong>特性:</strong><ul>';
-                        Object.entries(subclass.features).forEach(([featureKey, feature]) => {
-                            bodyHTML += `<li><strong>${feature.name || featureKey}:</strong> ${feature.description || ''}</li>`;
-                        });
-                        bodyHTML += '</ul></div>';
-                    }
-                    
-                    bodyHTML += '</div></div>';
-                });
-                bodyHTML += '</div>';
-            }
-
-            document.getElementById('modalBody').innerHTML = bodyHTML;
-            modal.classList.add('active');
+            document.getElementById('modal').style.display = 'block';
         }
 
-        // Show Spell Detail
-        function showSpellDetail(spellKey) {
-            const spell = spellsData[spellKey];
-            const modal = document.getElementById('modal');
+        function showRaceDetail(raceKey) {
+            const raceData = racesData[raceKey];
+            const modalContent = document.getElementById('modalContent');
 
-            document.getElementById('modalTitle').textContent = spell.name;
-            document.getElementById('modalSubtitle').textContent = `${spell.level === 0 ? '戲法' : spell.level + '環'} ${spell.school}`;
+            // Build subracesHTML
+            let subracesHTML = '';
+            if (raceData.subraces) {
+                subracesHTML = '<div class="category-section"><h3>一級變型</h3>';
+                Object.entries(raceData.subraces).forEach(([subkey, sub]) => {
+                    subracesHTML += `
+					<div class="subclass-container">
+						<div class="subclass-header" onclick="event.stopPropagation(); this.classList.toggle('expanded')">
+							<span>${sub.name}</span>
+							<span class="toggle-icon">▼</span>
+						</div>
+						<div id="subclass-${subkey}" class="subclass-details">
+							<p>${sub.description}</p>
+						</div>
+					</div>
+				` ;
+                });
+                subracesHTML += '</div>';
+            }
 
-            let bodyHTML = `
-                <div class="section">
-                    <h3>基本資訊</h3>
-                    <p><strong>施法時間:</strong> ${spell.casting_time}</p>
-                    <p><strong>射程:</strong> ${spell.range}</p>
-                    <p><strong>成分:</strong> ${spell.components}</p>
-                    <p><strong>持續時間:</strong> ${spell.duration}</p>
-                    <p><strong>職業:</strong> ${(spell.classes || []).join(', ')}</p>
+            modalContent.innerHTML = `
+                <h2>${raceData.name}</h2>
+                <div class="category-section">
+                    <h3>簡介</h3>
+                    <p>${raceData.description}</p>
                 </div>
-                <div class="section">
-                    <h3>描述</h3>
-                    <p>${spell.description}</p>
+                ${subracesHTML}
+                <div class="category-section">
+                    <h3>大級表該</h3>
+                    <p>單長調預： ${raceData.size}</p>
+                    <p>移動速度: ${raceData.speed}</p>
+                </div>
+                <div class="category-section">
+                    <h3>能力數據</h3>
+                    <p>${raceData.ability_bonus} </p>
+                </div>
+                <div class="category-section">
+                    <h3>種族特效</h3>
+                    ${Object.entries(raceData.traits).map(([traitName, traitDesc]) => `
+                        <p><strong>${traitName}:</strong> ${traitDesc}</p>
+                    `).join('')}
                 </div>
             `;
-
-            if (spell.upcast) {
-                bodyHTML += `
-                    <div class="section">
-                        <h3>高環施放</h3>
-                        <p>${spell.upcast}</p>
-                    </div>
-                `;
-            }
-
-            document.getElementById('modalBody').innerHTML = bodyHTML;
-            modal.classList.add('active');
+            document.getElementById('modal').style.display = 'block';
         }
 
-        // Close Modal
         function closeModal() {
-            document.getElementById('modal').classList.remove('active');
+            document.getElementById('modal').style.display = 'none';
         }
 
-        // Setup Event Listeners
-        function setupEventListeners() {
-            // Tab switching
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-                    tab.classList.add('active');
-                    document.getElementById(tab.dataset.tab).classList.add('active');
-                });
-            });
-
-            // Search boxes
-            document.getElementById('raceSearch').addEventListener('input', (e) => {
-                renderRaces(e.target.value);
-            });
-
-            document.getElementById('classSearch').addEventListener('input', (e) => {
-                renderClasses(e.target.value);
-            });
-
-            document.getElementById('spellSearch').addEventListener('input', (e) => {
-                const activeFilter = document.querySelector('#spellFilters .filter-btn.active');
-                const level = activeFilter && activeFilter.dataset.level !== 'all' ? parseInt(activeFilter.dataset.level) : null;
-                renderSpells(e.target.value, level);
-            });
-
-            // Close modal on background click
-            document.getElementById('modal').addEventListener('click', (e) => {
-                if (e.target.id === 'modal') closeModal();
-            });
-
-            // Close modal on Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
-            });
+        function toggleSubclass(subkey, event) {
+            event.stopPropagation();
+            const details = document.getElementById(`subclass-${subkey}`);
+            const icon = event.currentTarget.querySelector('.toggle-icon');
+            details.classList.toggle('expanded');
+            icon.classList.toggle('expanded');
         }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>

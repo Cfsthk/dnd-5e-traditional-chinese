@@ -124,9 +124,16 @@
             margin-bottom: 15px;
         }
 
-        .card .description {
-            color: #333;
-            line-height: 1.6;
+        .card .property {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        .card .property strong {
+            color: #667eea;
         }
 
         .modal {
@@ -148,76 +155,32 @@
 
         .modal-content {
             background: white;
-            border-radius: 15px;
             padding: 30px;
+            border-radius: 15px;
             max-width: 800px;
             max-height: 80%;
             overflow-y: auto;
             position: relative;
-            animation: slideUp 0.3s;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-btn {
+        .close {
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: 20px;
-            font-size: 28px;
+            font-size: 2em;
             cursor: pointer;
             color: #999;
-            transition: color 0.3s;
         }
 
-        .close-btn:hover {
+        .close:hover {
             color: #333;
         }
 
-        .modal-content h2 {
-            color: #1e3c72;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .modal-content .section {
-            margin-bottom: 25px;
-        }
-
-        .modal-content h3 {
-            color: #667eea;
-            margin-bottom: 10px;
+        .loading {
+            text-align: center;
+            padding: 40px;
             font-size: 1.2em;
-        }
-
-        .modal-content p {
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .modal-content ul {
-            margin-left: 20px;
-            line-height: 1.8;
-        }
-
-        .modal-content li {
-            margin-bottom: 8px;
-        }
-
-        .subrace {
-            margin-left: 20px;
-            padding-left: 15px;
-            border-left: 3px solid #667eea;
-            margin-top: 10px;
-        }
-
-        .subrace h4 {
-            color: #2a5298;
-            margin-bottom: 8px;
+            color: #667eea;
         }
     </style>
 </head>
@@ -225,208 +188,197 @@
     <div class="container">
         <div class="header">
             <h1>D&D 5E 完整資料庫 - 繁體中文</h1>
-            <p>選擇下方標籤，探索你的角色自定義選項</p>
+            <p>完整的龍與地下城第五版資料庫</p>
         </div>
-
         <div class="tabs">
             <div class="tab active" onclick="switchTab('classes')">職業</div>
             <div class="tab" onclick="switchTab('races')">種族</div>
+            <div class="tab" onclick="switchTab('spells')">法術</div>
         </div>
-
         <div class="content">
             <div id="classes" class="tab-content active">
-                <div id="classGrid" class="grid"></div>
+                <div class="loading">載入中...</div>
+                <div id="classes-grid" class="grid"></div>
             </div>
-
             <div id="races" class="tab-content">
-                <div id="raceGrid" class="grid"></div>
+                <div class="loading">載入中...</div>
+                <div id="races-grid" class="grid"></div>
+            </div>
+            <div id="spells" class="tab-content">
+                <div class="loading">載入中...</div>
+                <div id="spells-grid" class="grid"></div>
             </div>
         </div>
     </div>
 
-    <!-- Modal for detailed information -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modalContent"></div>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
         </div>
     </div>
 
     <script>
-        let classesData = [];
-        let racesData = [];
+        let classesData = {};
+        let racesData = {};
+        let spellsData = {};
 
-        // Switch between tabs
+        // Load data and handle object structure
+        async function loadData() {
+            try {
+                const [classesResponse, racesResponse, spellsResponse] = await Promise.all([
+                    fetch('data/dnd5e_classes_complete_tc.json'),
+                    fetch('data/dnd5e_races_complete_tc.json'),
+                    fetch('data/dnd5e_spells_complete_tc.json')
+                ]);
+
+                classesData = await classesResponse.json();
+                racesData = await racesResponse.json();
+                spellsData = await spellsResponse.json();
+
+                displayClasses();
+            } catch (error) {
+                console.error('數據載入錯誤:', error);
+                document.querySelectorAll('.loading').forEach(el => {
+                    el.textContent = '載入失敗，請重新整理頁面';
+                });
+            }
+        }
+
         function switchTab(tabName) {
-            // Remove active class from all tabs and content
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            // Add active class to selected tab and content
             event.target.classList.add('active');
             document.getElementById(tabName).classList.add('active');
+
+            if (tabName === 'classes') displayClasses();
+            if (tabName === 'races') displayRaces();
+            if (tabName === 'spells') displaySpells();
         }
 
-        // Load classes data
-        fetch('data/dnd5e_classes_complete_tc.json')
-            .then(response => response.json())
-            .then(data => {
-                classesData = data.classes;
-                displayClasses();
-            })
-            .catch(error => console.error('Error loading classes:', error));
-
-        // Load races data
-        fetch('data/dnd5e_races_complete_tc.json')
-            .then(response => response.json())
-            .then(data => {
-                racesData = data.races;
-                displayRaces();
-            })
-            .catch(error => console.error('Error loading races:', error));
-
-        // Display classes
         function displayClasses() {
-            const grid = document.getElementById('classGrid');
+            const grid = document.getElementById('classes-grid');
+            const loading = document.querySelector('#classes .loading');
+            
+            if (loading) loading.style.display = 'none';
             grid.innerHTML = '';
 
-            classesData.forEach(classItem => {
+            // Convert object to array
+            Object.entries(classesData).forEach(([key, cls]) => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.onclick = () => showClassDetails(classItem);
+                card.onclick = () => showClassDetail(cls);
                 card.innerHTML = `
-                    <h3>${classItem.name}</h3>
-                    <div class="subtitle">${classItem.english_name}</div>
-                    <div class="description">${classItem.description.substring(0, 100)}...</div>
+                    <h3>${cls.name || key}</h3>
+                    <div class="subtitle">${cls.name_en || ''}</div>
+                    <div class="property"><strong>描述:</strong> ${cls.description || '無描述'}</div>
+                    <div class="property"><strong>生命骰:</strong> ${cls.hit_die || 'N/A'}</div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Display races
         function displayRaces() {
-            const grid = document.getElementById('raceGrid');
+            const grid = document.getElementById('races-grid');
+            const loading = document.querySelector('#races .loading');
+            
+            if (loading) loading.style.display = 'none';
             grid.innerHTML = '';
 
-            racesData.forEach(race => {
+            // Convert object to array
+            Object.entries(racesData).forEach(([key, race]) => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.onclick = () => showRaceDetails(race);
+                card.onclick = () => showRaceDetail(race);
                 card.innerHTML = `
-                    <h3>${race.name}</h3>
-                    <div class="subtitle">${race.english_name}</div>
-                    <div class="description">${race.description.substring(0, 100)}...</div>
+                    <h3>${race.name || key}</h3>
+                    <div class="subtitle">${race.name_en || ''}</div>
+                    <div class="property"><strong>描述:</strong> ${race.description || '無描述'}</div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Show class details in modal
-        function showClassDetails(classItem) {
-            const modalContent = document.getElementById('modalContent');
+        function displaySpells() {
+            const grid = document.getElementById('spells-grid');
+            const loading = document.querySelector('#spells .loading');
             
-            let html = `
-                <h2>${classItem.name} (${classItem.english_name})</h2>
-                <div class="section">
-                    <h3>簡介</h3>
-                    <p>${classItem.description}</p>
-                </div>
-                <div class="section">
-                    <h3>基本資訊</h3>
-                    <p>命中骰：${classItem.hit_die}</p>
-                    <p>主要屬性：${classItem.primary_ability}</p>
-                    <p>豁免投擲值精通：${classItem.save_throw_proficiencies}</p>
-                    <p>護甲精通：${classItem.armor_proficiencies}</p>
-                    <p>武器精通：${classItem.weapon_proficiencies}</p>
-                </div>
-            `;
+            if (loading) loading.style.display = 'none';
+            grid.innerHTML = '';
 
-            if (classItem.features && classItem.features.length > 0) {
-                html += `
-                    <div class="section">
-                        <h3>職業特性</h3>
-                        <ul>
+            // Convert object to array
+            Object.entries(spellsData).forEach(([key, spell]) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => showSpellDetail(spell);
+                card.innerHTML = `
+                    <h3>${spell.name || key} ${spell.level ? '(' + spell.level + '環)' : ''}</h3>
+                    <div class="subtitle">${spell.name_en || ''}</div>
+                    <div class="property"><strong>學派:</strong> ${spell.school || 'N/A'}</div>
+                    <div class="property"><strong>施法時間:</strong> ${spell.casting_time || 'N/A'}</div>
                 `;
-                classItem.features.forEach(feature => {
-                    html += `<li><strong>${feature.name} (LV.${feature.level})</strong>: ${feature.description}</li>`;
-                });
-                html += `
-                        </ul>
-                    </div>
-                `;
-            }
-
-            modalContent.innerHTML = html;
-            document.getElementById('modal').classList.add('active');
+                grid.appendChild(card);
+            });
         }
 
-        // Show race details in modal
-        function showRaceDetails(race) {
-            const modalContent = document.getElementById('modalContent');
+        function showClassDetail(cls) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
             
-            let html = `
-                <h2>${race.name} (${race.english_name})</h2>
-                <div class="section">
-                    <h3>簡介</h3>
-                    <p>${race.description}</p>
-                </div>
-                <div class="section">
-                    <h3>基本屬性</h3>
-                    <p>體型：${race.size}</p>
-                    <p>速度：${race.speed}</p>
-                    <p>屬性值調整：${race.ability_score_increase}</p>
-                    <p>語言：${race.languages}</p>
-                </div>
+            modalBody.innerHTML = `
+                <h2>${cls.name || ''}</h2>
+                <h3>${cls.name_en || ''}</h3>
+                <p><strong>描述:</strong> ${cls.description || ''}</p>
+                <p><strong>生命骰:</strong> ${cls.hit_die || ''}</p>
+                <p><strong>主要屬性:</strong> ${(cls.primary_ability || []).join(', ')}</p>
+                <p><strong>豁免檢定:</strong> ${(cls.saving_throws || []).join(', ')}</p>
             `;
-
-            if (race.traits && race.traits.length > 0) {
-                html += `
-                    <div class="section">
-                        <h3>種族特性</h3>
-                        <ul>
-                `;
-                race.traits.forEach(trait => {
-                    html += `<li><strong>${trait.name}</strong>: ${trait.description}</li>`;
-                });
-                html += `
-                        </ul>
-                    </div>
-                `;
-            }
-
-            if (race.subraces && race.subraces.length > 0) {
-                html += `<div class="section"><h3>子種族</h3>`;
-                race.subraces.forEach(subrace => {
-                    html += `<div class="subrace">`;
-                    html += `<h4>${subrace.name} (${subrace.english_name})</h4>`;
-                    html += `<p>${subrace.description}</p>`;
-                    if (subrace.traits && subrace.traits.length > 0) {
-                        html += `<ul>`;
-                        subrace.traits.forEach(trait => {
-                            html += `<li><strong>${trait.name}</strong>: ${trait.description}</li>`;
-                        });
-                        html += `</ul>`;
-                    }
-                    html += `</div>`;
-                });
-                html += `</div>`;
-            }
-
-            modalContent.innerHTML = html;
-            document.getElementById('modal').classList.add('active');
+            
+            modal.classList.add('active');
         }
 
-        // Close modal
+        function showRaceDetail(race) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `
+                <h2>${race.name || ''}</h2>
+                <h3>${race.name_en || ''}</h3>
+                <p><strong>描述:</strong> ${race.description || ''}</p>
+                <p><strong>屬性值提升:</strong> ${JSON.stringify(race.ability_score_increase || {})}</p>
+                <p><strong>年齡:</strong> ${race.age || ''}</p>
+                <p><strong>體型:</strong> ${race.size || ''}</p>
+                <p><strong>速度:</strong> ${race.speed || ''}</p>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        function showSpellDetail(spell) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `
+                <h2>${spell.name || ''}</h2>
+                <h3>${spell.name_en || ''}</h3>
+                <p><strong>環級:</strong> ${spell.level || ''}</p>
+                <p><strong>學派:</strong> ${spell.school || ''}</p>
+                <p><strong>施法時間:</strong> ${spell.casting_time || ''}</p>
+                <p><strong>射程:</strong> ${spell.range || ''}</p>
+                <p><strong>成分:</strong> ${spell.components || ''}</p>
+                <p><strong>持續時間:</strong> ${spell.duration || ''}</p>
+                <p><strong>描述:</strong> ${spell.description || ''}</p>
+            `;
+            
+            modal.classList.add('active');
+        }
+
         function closeModal() {
             document.getElementById('modal').classList.remove('active');
         }
 
-        // Close modal on outside click
-        document.getElementById('modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        // Load data on page load
+        loadData();
     </script>
 </body>
 </html>

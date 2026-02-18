@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&D 5E 完整資料庫 - 繁體中文</title>
+    <link rel="icon" href="data:,">
     <style>
         :root {
             --primary-color: #4a69bd;
@@ -27,10 +28,10 @@
             align-items: flex-start;
         }
 
-        /* Main Container holding everything */
+        /* Main Container */
         .main-container {
             width: 100%;
-            max-width: 600px; /* Limits width for mobile look on desktop */
+            max-width: 600px;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -66,7 +67,7 @@
 
         /* --- Landing View (Menu Buttons) --- */
         #landing-view {
-            display: block; /* Default visible */
+            display: block;
         }
 
         .menu-buttons {
@@ -99,7 +100,7 @@
 
         /* --- Content View (Grids and Filters) --- */
         #content-view {
-            display: none; /* Hidden initially */
+            display: none;
             padding: 20px;
             background: #f9f9f9;
             min-height: 500px;
@@ -133,8 +134,8 @@
         }
         
         .filter-select {
-            display: none; /* Hidden by default, shown only for spells */
-             background: white;
+            display: none;
+            background: white;
         }
 
         .section-title {
@@ -146,7 +147,7 @@
         /* --- Grid and Cards --- */
         .grid {
             display: grid;
-            grid-template-columns: 1fr; /* Single column on mobile */
+            grid-template-columns: 1fr;
             gap: 15px;
         }
         
@@ -264,7 +265,7 @@
                 
                 <select id="spellClassFilter" class="filter-select">
                     <option value="">所有職業的法術</option>
-                    </select>
+                </select>
             </div>
 
             <div id="content-grid" class="grid"></div>
@@ -287,13 +288,12 @@
         };
         
         // State Management
-        let currentSection = null; // 'classes', 'races', or 'spells'
-        let spellClassesSet = new Set(); // To store unique classes found in spell data
+        let currentSection = null;
+        let spellClassesSet = new Set(); 
 
         // --- Initialization ---
         async function loadData() {
             try {
-                // Note: Assuming data files are in a 'data' folder relative to index.html
                 const [classesRes, racesRes, spellsRes] = await Promise.all([
                     fetch('data/dnd5e_classes_complete_tc.json'),
                     fetch('data/dnd5e_races_complete_tc.json'),
@@ -306,10 +306,8 @@
                 db.races = await racesRes.json();
                 db.spells = await spellsRes.json();
 
-                // Pre-process spells to find all available classes for the filter
                 extractSpellClasses();
 
-                // Data loaded successfully
                 document.getElementById('global-loading').style.display = 'none';
                 document.getElementById('landing-view').style.display = 'block';
 
@@ -320,20 +318,16 @@
             }
         }
 
-        // Helper to extract unique class names from spell data for the filter dropdown
+        // Helper to extract unique class names from spell data
         function extractSpellClasses() {
             spellClassesSet.clear();
             Object.values(db.spells).forEach(spell => {
-                 // IMPORTANT: This assumes spell objects have a 'classes' array property.
-                 // e.g., "classes": ["Wizard", "Sorcerer"]
                 if (spell.classes && Array.isArray(spell.classes)) {
                     spell.classes.forEach(className => spellClassesSet.add(className));
                 }
             });
 
-            // Populate the select dropdown
             const filterSelect = document.getElementById('spellClassFilter');
-            // keep first option
             filterSelect.innerHTML = '<option value="">所有職業的法術</option>'; 
             const sortedClasses = Array.from(spellClassesSet).sort();
             sortedClasses.forEach(className => {
@@ -343,7 +337,6 @@
                 filterSelect.appendChild(option);
             });
         }
-
 
         // --- Navigation ---
         function navigateTo(section) {
@@ -355,11 +348,9 @@
             document.getElementById('searchInput').value = '';
             document.getElementById('spellClassFilter').value = '';
 
-            // Setup UI based on section
             const titleMap = { races: '種族 Races', classes: '職業 Classes', spells: '法術 Spells' };
             document.getElementById('section-title').textContent = titleMap[section];
             
-            // Show/hide specific filters
             document.getElementById('spellClassFilter').style.display = (section === 'spells') ? 'block' : 'none';
 
             renderContent();
@@ -371,7 +362,6 @@
             document.getElementById('landing-view').style.display = 'block';
         }
 
-
         // --- Rendering Engine ---
         function renderContent() {
             const grid = document.getElementById('content-grid');
@@ -380,23 +370,22 @@
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const selectedSpellClass = document.getElementById('spellClassFilter').value;
 
-            let data Source = db[currentSection];
+            // FIX: Removed the space in 'dataSource'
+            let dataSource = db[currentSection];
             if (!dataSource) return;
 
             Object.entries(dataSource).forEach(([key, item]) => {
-                // 1. Name Search Filter (Applies to all)
+                // 1. Name Search Filter
                 const fullName = (item.name + (item.name_en || '')).toLowerCase();
                 if (!fullName.includes(searchTerm)) return;
 
                 // 2. Spell-Specific Class Filter
                 if (currentSection === 'spells' && selectedSpellClass) {
-                     // If the spell doesn't have classes data, or doesn't include the selected class, skip it
                     if (!item.classes || !Array.isArray(item.classes) || !item.classes.includes(selectedSpellClass)) {
                         return;
                     }
                 }
 
-                // 3. Create and append card
                 grid.appendChild(createCard(key, item));
             });
         }
@@ -410,12 +399,10 @@
                 <div class="subtitle">${item.name_en || ''}</div>
             `;
 
-            // Customize card content based on section type
             if (currentSection === 'classes') {
                 contentHtml += `<div class="property"><strong>生命骰:</strong> ${item.hit_die || 'N/A'}</div>`;
                 card.onclick = () => showClassDetail(item);
             } else if (currentSection === 'races') {
-                 // Truncate long descriptions for the card view
                 const shortDesc = item.description ? (item.description.substring(0, 60) + '...') : '無描述';
                  contentHtml += `<div class="property">${shortDesc}</div>`;
                 card.onclick = () => showRaceDetail(item);
@@ -426,7 +413,6 @@
                     <div class="subtitle">${item.name_en || ''}</div>
                     <div class="property"><strong>學派:</strong> ${item.school || 'N/A'}</div>
                 `;
-                 // Optional: Show classes on the card itself
                  if(item.classes && item.classes.length > 0) {
                      contentHtml += `<div class="property" style="font-size:0.85em; color:#666;">${item.classes.join(', ')}</div>`
                  }
@@ -437,9 +423,7 @@
             return card;
         }
 
-
-        // --- Event Listeners for Inputs ---
-        // Debounce search input slightly for performance
+        // --- Event Listeners ---
         let debounceTimer;
         document.getElementById('searchInput').addEventListener('input', () => {
             clearTimeout(debounceTimer);
@@ -448,8 +432,7 @@
 
         document.getElementById('spellClassFilter').addEventListener('change', renderContent);
 
-
-        // --- Modal Functions (Largely unchanged from original) ---
+        // --- Modal Functions ---
         function showClassDetail(cls) {
             const modalBody = document.getElementById('modal-body');
             modalBody.innerHTML = `

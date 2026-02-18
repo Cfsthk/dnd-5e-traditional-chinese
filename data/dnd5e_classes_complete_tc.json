@@ -10,26 +10,38 @@
     "description": "來自荒野的兇猛戰士，能進入狂暴狀態。",
     "features": {
       "1": [
-        { "name": "狂暴 (Rage)", "description": "戰鬥中可用附贈動作進入狂暴。優勢：力量檢定/豁免優勢、近戰傷害+2(隨等級提升)、鈍擊/穿刺/揮砍抗性。持續1分鐘。" },
-        { "name": "無甲防禦", "description": "未穿甲時，AC = 10 + 敏捷調整值 + 體質調整值。可持盾。" }
+        { "name": "狂暴 (Rage)", "description": "附贈動作進入狂暴。優勢：力量檢定/豁免優勢、近戰傷害+2(隨等級提升)、鈍擊/穿刺/揮砍抗性。持續1分鐘。" },
+        { "name": "無甲防禦", "description": "未穿甲時，AC = 10 + 敏捷 + 體質。可持盾。" }
       ],
       "2": [
-        { "name": "魯莽攻擊", "description": "近戰攻擊可選擇獲得優勢，但敵對生物攻擊你也有優勢。" },
+        { "name": "魯莽攻擊", "description": "近戰攻擊可獲優勢，但被攻擊也受優勢。" },
         { "name": "危險感知", "description": "對可見效應的敏捷豁免有優勢。" }
       ],
-      "5": [{ "name": "額外攻擊", "description": "攻擊動作可進行兩次攻擊。" }],
-      "7": [{ "name": "野性直覺", "description": "先攻檢定有優勢。" }],
-      "20": [{ "name": "原初勇士", "description": "力量與體質+4，上限變為24。" }]
+      "5": [{ "name": "額外攻擊", "description": "攻擊動作可進行兩次攻擊。" }]
     },
     "subclasses": {
       "berserker": {
         "name": "狂暴者之途",
         "description": "忽視自身防禦，追求極致暴力的戰士。",
         "features": {
-          "3": [{ "name": "狂亂", "description": "狂暴時可進入狂亂。每回合可用附贈動作進行近戰攻擊，但狂暴結束後獲得一級力竭。" }],
-          "6": [{ "name": "無心狂暴", "description": "狂暴時免疫魅惑和恐懼。若已受此狀態，狂暴期間無效化。" }],
-          "10": [{ "name": "威嚇氣場", "description": "可用動作恐嚇30呎內的一個生物(基於魅力)。" }],
-          "14": [{ "name": "報復", "description": "受到5呎內傷害時，可用反應對攻擊者進行一次近戰攻擊。" }]
+          "3": [{ "name": "狂亂", "description": "狂暴時可進入狂亂，每回合附贈動作攻擊，結束後力竭。" }],
+          "6": [{ "name": "無心狂暴", "description": "狂暴時免疫魅惑和恐懼。" }]
+        }
+      },
+      "totem_warrior": {
+        "name": "圖騰武者之途",
+        "description": "接受動物精魂指引的戰士 (PHB)。",
+        "features": {
+          "3": [{ "name": "圖騰之魂", "description": "熊(全抗性除心靈)、鷹(機動性)或狼(盟友優勢)。" }],
+          "6": [{ "name": "圖騰特質", "description": "獲得與圖騰動物相關的探索能力（如視力、負重）。" }]
+        }
+      },
+      "zealot": {
+        "name": "狂熱者之途",
+        "description": "受神力鼓舞的狂戰士 (XGE)。",
+        "features": {
+          "3": [{ "name": "神聖狂怒", "description": "狂暴時，首發攻擊造成額外壞死或光耀傷害。" }],
+          "3": [{ "name": "狂熱信仰", "description": "復活你無需任何材料成分。" }]
         }
       }
     }
@@ -45,27 +57,33 @@
     "tool_proficiency": ["三種樂器"],
     "description": "用音樂與言語編織魔法的藝術家。",
     "features": {
-      "1": [
-        { "name": "施法能力", "description": "使用魅力作為施法屬性。可施展儀式。" },
-        { "name": "詩人激勵 (d6)", "description": "附贈動作給予60呎內生物一顆激勵骰。10分鐘內可用於屬性檢定、攻擊檢定或豁免檢定。" }
-      ],
-      "2": [
-        { "name": "多才多藝", "description": "未具熟練項的屬性檢定可加上一半熟練加值。" },
-        { "name": "休憩之歌", "description": "短休時，友方額外恢復 1d6 生命值。" }
-      ],
-      "5": [{ "name": "激勵字體", "description": "詩人激勵骰可在短休後恢復。" }]
+      "1": [{ "name": "詩人激勵 (d6)", "description": "附贈動作給予60呎內生物一顆激勵骰。" }],
+      "2": [{ "name": "多才多藝", "description": "未熟練技能獲得一半熟練加值。" }],
+      "3": [{ "name": "專精", "description": "選擇兩個技能熟練度翻倍。" }]
     },
     "subclasses": {
       "lore": {
         "name": "學識學院",
-        "description": "追求古老知識與秘密的詩人。",
+        "description": "追求古老知識與秘密的詩人 (PHB)。",
         "features": {
-          "3": [
-            { "name": "額外熟練", "description": "獲得三項自選技能熟練。" },
-            { "name": "尖銳諷刺", "description": "可用反應和激勵骰來減少敵人的攻擊檢定、屬性檢定或傷害。" }
-          ],
-          "6": [{ "name": "額外魔法秘密", "description": "從任何職業法術列表學習兩個法術。" }],
-          "14": [{ "name": "無雙技藝", "description": "進行屬性檢定時，可消耗激勵骰並將結果加到檢定中。" }]
+          "3": [{ "name": "尖銳諷刺", "description": "用反應消耗激勵骰，減少敵人攻擊或檢定數值。" }],
+          "6": [{ "name": "額外魔法秘密", "description": "從任何職業表額外學兩個法術。" }]
+        }
+      },
+      "valor": {
+        "name": "勇氣學院",
+        "description": "傳頌英雄並投身戰鬥的詩人 (PHB)。",
+        "features": {
+          "3": [{ "name": "戰鬥激勵", "description": "激勵骰可用於增加傷害或防禦(AC)。" }],
+          "6": [{ "name": "額外攻擊", "description": "攻擊動作可攻擊兩次。" }]
+        }
+      },
+      "swords": {
+        "name": "劍舞學院",
+        "description": "精通刀劍表演的詩人 (XGE)。",
+        "features": {
+          "3": [{ "name": "劍舞", "description": "攻擊命中時消耗激勵骰發動特殊劍技（推開、防禦或順勢斬）。" }],
+          "6": [{ "name": "額外攻擊", "description": "攻擊動作可攻擊兩次。" }]
         }
       }
     }
@@ -80,22 +98,40 @@
     "weapon_proficiency": ["簡易武器"],
     "description": "神祇的代理人，擁有神聖魔法。",
     "features": {
-      "1": [{ "name": "施法能力", "description": "使用感知作為施法屬性。每日需準備法術。" }],
-      "2": [{ "name": "引導神力：驅散不死生物", "description": "使用聖徽譴責不死生物，使其陷入恐懼或逃跑。" }],
-      "10": [{ "name": "神聖干預", "description": "祈求神祇直接介入協助。" }]
+      "1": [{ "name": "施法", "description": "準備施法者，感知為關鍵屬性。" }],
+      "2": [{ "name": "引導神力", "description": "驅散不死生物或使用領域能力。" }]
     },
     "subclasses": {
       "life": {
         "name": "生命領域",
-        "description": "專注於治療與活力的領域。",
+        "description": "專注於治療與活力 (SRD)。",
         "features": {
-          "1": [
-            { "name": "額外熟練", "description": "獲得重型護甲熟練。" },
-            { "name": "生命門徒", "description": "治療法術額外回復 2 + 法術環階 點生命。" }
-          ],
-          "2": [{ "name": "引導神力：以此護生", "description": "分配 5 × 牧師等級 的生命值給30呎內的生物（無法治療至半血以上）。" }],
-          "6": [{ "name": "受福治療者", "description": "對他人施放治療法術時，你也恢復 2 + 法術環階 點生命。" }],
-          "8": [{ "name": "神聖擊", "description": "武器攻擊額外造成 1d8 光耀傷害。" }]
+          "1": [{ "name": "生命門徒", "description": "治療法術額外回復 2+環階 點生命。" }],
+          "2": [{ "name": "以此護生", "description": "分配治療點數給範圍內生物。" }]
+        }
+      },
+      "light": {
+        "name": "光明領域",
+        "description": "奉獻給真理與光輝 (PHB)。",
+        "features": {
+          "1": [{ "name": "守護閃光", "description": "用反應使攻擊你的敵人獲得劣勢。" }],
+          "2": [{ "name": "黎明曙光", "description": "引導神力消除魔法黑暗並造成光耀傷害。" }]
+        }
+      },
+      "tempest": {
+        "name": "風暴領域",
+        "description": "操控雷霆與海洋 (PHB)。",
+        "features": {
+          "1": [{ "name": "風暴之怒", "description": "被攻擊時反擊造成雷鳴或閃電傷害。" }],
+          "2": [{ "name": "破壞之怒", "description": "造成雷鳴/閃電傷害時直接取最大值。" }]
+        }
+      },
+      "war": {
+        "name": "戰爭領域",
+        "description": "戰場上的神聖鬥士 (PHB)。",
+        "features": {
+          "1": [{ "name": "戰爭祭司", "description": "攻擊後可用附贈動作再攻擊一次(限次數)。" }],
+          "2": [{ "name": "引導打擊", "description": "攻擊檢定 +10。" }]
         }
       }
     }
@@ -106,32 +142,34 @@
     "hit_die": "d8",
     "primary_ability": ["感知"],
     "saving_throws": ["智力", "感知"],
-    "armor_proficiency": ["輕型護甲", "中型護甲", "盾牌 (不使用金屬)"],
-    "weapon_proficiency": ["木棒", "短刀", "飛鏢", "矛", "彎刀", "長棍"],
-    "tool_proficiency": ["草藥工具"],
+    "armor_proficiency": ["輕/中甲", "盾牌 (非金屬)"],
+    "weapon_proficiency": ["木棒", "彎刀", "矛", "法杖", "飛鏢", "投石索"],
     "description": "大自然力量的守護者。",
     "features": {
-      "1": [
-        { "name": "德魯伊語", "description": "習得祕密的德魯伊語。" },
-        { "name": "施法能力", "description": "使用感知作為施法屬性。" }
-      ],
-      "2": [{ "name": "荒野型態", "description": "可用動作變身為你看過的野獸。持續時間為等級一半的小時數。" }],
-      "18": [
-          { "name": "永恆軀體", "description": "老化速度變為1/10。" },
-          { "name": "獸語", "description": "可隨意施放與動物交談。" }
-      ]
+      "1": [{ "name": "德魯伊語", "description": "習得秘密語言。" }],
+      "2": [{ "name": "荒野型態", "description": "變身為野獸。" }]
     },
     "subclasses": {
       "land": {
         "name": "大地結社",
-        "description": "守護特定生態環境的德魯伊。",
+        "description": "施法型德魯伊 (PHB)。",
         "features": {
-          "2": [
-            { "name": "額外戲法", "description": "多學一個德魯伊戲法。" },
-            { "name": "自然恢復", "description": "短休時恢復法術位（環階總和等於等級的一半）。" }
-          ],
-          "6": [{ "name": "大地行者", "description": "通過非魔法困難地形不減速，對植物造成的傷害有優勢。" }],
-          "10": [{ "name": "自然結界", "description": "免疫魅惑和恐懼，免疫毒素與疾病。" }]
+          "2": [{ "name": "自然恢復", "description": "短休回復法術位。" }]
+        }
+      },
+      "moon": {
+        "name": "月亮結社",
+        "description": "強化的戰鬥變身 (PHB)。",
+        "features": {
+          "2": [{ "name": "戰鬥荒野型態", "description": "附贈動作變身，可變身為更強大的野獸（CR 1）。" }],
+          "6": [{ "name": "原始擊", "description": "野獸攻擊視為魔法武器。" }]
+        }
+      },
+      "shepherd": {
+        "name": "牧羊人結社",
+        "description": "召喚精魂守護盟友 (XGE)。",
+        "features": {
+          "2": [{ "name": "精魂圖騰", "description": "召喚圖騰靈光給予盟友臨時生命或優勢。" }]
         }
       }
     }
@@ -143,33 +181,43 @@
     "primary_ability": ["力量 或 敏捷"],
     "saving_throws": ["力量", "體質"],
     "armor_proficiency": ["所有護甲", "盾牌"],
-    "weapon_proficiency": ["簡易武器", "軍用武器"],
-    "description": "精通所有武器與護甲的戰鬥大師。",
+    "weapon_proficiency": ["全武器"],
+    "description": "精通戰鬥的大師。",
     "features": {
       "1": [
-        { "name": "戰鬥風格", "description": "選擇一項專精（如箭術、防禦、決鬥、巨武器等）。" },
-        { "name": "回氣", "description": "附贈動作回復 1d10 + 戰士等級 生命值（短休一次）。" }
+          { "name": "戰鬥風格", "description": "選擇箭術、防禦、對決或巨武器等。" },
+          { "name": "回氣", "description": "附贈動作回血 1d10+等級。" }
       ],
-      "2": [{ "name": "動作如潮", "description": "回合內可進行額外一個動作（短休一次）。" }],
-      "5": [{ "name": "額外攻擊", "description": "攻擊動作可進行兩次攻擊。" }]
+      "2": [{ "name": "動作如潮", "description": "爆發一回合額外動作。" }]
     },
     "subclasses": {
       "champion": {
         "name": "冠軍勇士",
-        "description": "依靠純粹體能與爆擊的戰士。",
+        "description": "極致的體能與重擊 (PHB)。",
         "features": {
-          "3": [{ "name": "重擊提升", "description": "武器攻擊擲出 19 或 20 即視為重擊。" }],
-          "7": [{ "name": "非凡體能", "description": "力量、敏捷或體質檢定（非熟練）可加上一半熟練加值；跳躍距離增加。" }],
-          "10": [{ "name": "額外戰鬥風格", "description": "選擇第二個戰鬥風格。" }],
-          "18": [{ "name": "倖存者", "description": "若生命值低於一半，每回合開始時恢復 5 + 體質調整值 點生命。" }]
+          "3": [{ "name": "重擊提升", "description": "擲出 19-20 視為重擊。" }]
         }
       },
       "battle_master": {
         "name": "戰鬥大師",
-        "description": "將戰鬥視為學術，掌握多種戰技。",
+        "description": "使用戰技骰掌控戰場 (PHB)。",
         "features": {
-          "3": [{ "name": "卓越戰技", "description": "獲得戰技骰（d8），可用於施展特殊戰技（如繳械、推撞、反擊等）。DC = 8 + 熟練 + 力量/敏捷。" }],
-          "7": [{ "name": "戰爭觀察者", "description": "觀察敵人1分鐘，可獲知其能力數值相對於你的高低。" }]
+          "3": [{ "name": "卓越戰技", "description": "獲得戰技骰(d8)施展繳械、絆摔、反擊等戰術。" }]
+        }
+      },
+      "eldritch_knight": {
+        "name": "奧法騎士",
+        "description": "融合魔法的戰士 (PHB)。",
+        "features": {
+          "3": [{ "name": "施法 & 武器同調", "description": "可施展法師法術，並隨時召喚同調武器。" }],
+          "7": [{ "name": "戰爭魔法", "description": "施放戲法後可附贈動作攻擊一次。" }]
+        }
+      },
+      "arcane_archer": {
+        "name": "祕法射手",
+        "description": "將魔法注入箭矢 (XGE)。",
+        "features": {
+          "3": [{ "name": "祕法射擊", "description": "射擊時附加魔法效果（如爆破、魅惑或追蹤）。" }]
         }
       }
     }
@@ -182,30 +230,32 @@
     "saving_throws": ["力量", "敏捷"],
     "armor_proficiency": ["無"],
     "weapon_proficiency": ["簡易武器", "短劍"],
-    "tool_proficiency": ["一種工匠工具 或 樂器"],
-    "description": "運用氣來強化身體的武術家。",
+    "description": "運用氣的武術家。",
     "features": {
-      "1": [
-        { "name": "無甲防禦", "description": "未穿甲時，AC = 10 + 敏捷 + 感知。" },
-        { "name": "武藝", "description": "徒手或武僧武器可使用敏捷攻擊；附贈動作可徒手打擊；傷害骰隨等級提升。" }
-      ],
-      "2": [
-        { "name": "氣", "description": "獲得氣點數。可用於疾風連擊（連打兩拳）、堅忍防禦（閃避）或飛簷走壁（疾走/撤離）。" },
-        { "name": "運氣調息", "description": "移動速度增加。" }
-      ],
-      "5": [
-          { "name": "額外攻擊", "description": "攻擊動作可攻擊兩次。" },
-          { "name": "震懾拳", "description": "消耗1氣點，擊中時嘗試震懾敵人。" }
-      ]
+      "1": [{ "name": "武藝", "description": "敏捷攻擊，附贈動作徒手打擊。" }],
+      "2": [{ "name": "氣", "description": "使用氣點進行疾風連擊、閃避或疾走。" }]
     },
     "subclasses": {
       "open_hand": {
         "name": "敞手之道",
-        "description": "精通徒手格鬥與控制氣流。",
+        "description": "經典武術宗派 (PHB)。",
         "features": {
-          "3": [{ "name": "敞手技術", "description": "疾風連擊擊中時，可附加效果：擊倒（敏捷豁免）、推開15呎（力量豁免）或封鎖反應。" }],
-          "6": [{ "name": "混元體", "description": "可用動作恢復 3 × 武僧等級 的生命值（長休一次）。" }],
-          "17": [{ "name": "震懾拳", "description": "消耗3點氣擊中生物，可隨後觸發致死震動（體質豁免失敗則歸0生命，成功受10d10傷害）。" }]
+          "3": [{ "name": "敞手技術", "description": "疾風連擊可擊倒、推開敵人或封鎖反應。" }]
+        }
+      },
+      "shadow": {
+        "name": "暗影宗",
+        "description": "忍者般的刺客 (PHB)。",
+        "features": {
+          "3": [{ "name": "暗影法術", "description": "消耗氣施放黑暗術、沈默術、行動無蹤。" }],
+          "6": [{ "name": "暗影步", "description": "附贈動作在陰影間傳送60呎。" }]
+        }
+      },
+      "kensei": {
+        "name": "劍聖宗",
+        "description": "人劍合一的武器大師 (XGE)。",
+        "features": {
+          "3": [{ "name": "劍聖之道", "description": "選擇特定武器作為劍聖武器，獲得AC加值或額外傷害。" }]
         }
       }
     }
@@ -216,30 +266,43 @@
     "hit_die": "d10",
     "primary_ability": ["力量", "魅力"],
     "saving_throws": ["感知", "魅力"],
-    "armor_proficiency": ["所有護甲", "盾牌"],
-    "weapon_proficiency": ["簡易武器", "軍用武器"],
-    "description": "發下神聖誓言的聖戰士。",
+    "armor_proficiency": ["全護甲", "盾牌"],
+    "weapon_proficiency": ["全武器"],
+    "description": "立下誓言的聖戰士。",
     "features": {
-      "1": [
-        { "name": "神聖感知", "description": "感知周圍的天界、邪魔、不死生物。" },
-        { "name": "聖療", "description": "擁有治療池（等級x5）。可觸碰治療或移除疾病（花費5點）。" }
-      ],
-      "2": [
-        { "name": "至聖斬", "description": "近戰擊中時消耗法術位，造成額外光耀傷害（2d8起）。" },
-        { "name": "戰鬥風格", "description": "選擇一項戰鬥專精。" }
-      ],
-      "6": [{ "name": "守護靈光", "description": "你與10呎內友軍的豁免檢定獲得+魅力調整值加值。" }]
+      "1": [{ "name": "聖療", "description": "觸碰治療傷口或移除疾病。" }],
+      "2": [{ "name": "至聖斬", "description": "消耗法術位造成爆發性光耀傷害。" }]
     },
     "subclasses": {
       "devotion": {
         "name": "奉獻之誓",
-        "description": "正義、美德與秩序的騎士。",
+        "description": "傳統的白騎士 (PHB)。",
         "features": {
-          "3": [
-              { "name": "神聖武器", "description": "引導神力：武器發光，攻擊檢定+魅力調整值，持續1分鐘。" },
-              { "name": "驅散不潔", "description": "引導神力：驅散邪魔與不死生物。" }
-          ],
-          "7": [{ "name": "奉獻靈光", "description": "你與10呎內友軍免疫魅惑。" }]
+          "3": [{ "name": "神聖武器", "description": "武器發光，命中+魅力調整值。" }]
+        }
+      },
+      "ancients": {
+        "name": "遠古之誓",
+        "description": "守護自然與光輝 (PHB)。",
+        "features": {
+          "3": [{ "name": "自然之怒", "description": "束縛敵人。" }],
+          "7": [{ "name": "守護靈光", "description": "對法術傷害有抗性。" }]
+        }
+      },
+      "vengeance": {
+        "name": "復仇之誓",
+        "description": "不擇手段的獵殺者 (PHB)。",
+        "features": {
+          "3": [{ "name": "敵意誓言", "description": "對單一敵人攻擊優勢。" }],
+          "7": [{ "name": "無情復仇者", "description": "借機攻擊後可移動。" }]
+        }
+      },
+      "conquest": {
+        "name": "征服之誓",
+        "description": "以恐懼統治戰場 (XGE)。",
+        "features": {
+          "3": [{ "name": "征服臨在", "description": "恐懼周圍敵人。" }],
+          "7": [{ "name": "征服靈光", "description": "恐懼的敵人速度歸零並受傷。" }]
         }
       }
     }
@@ -250,26 +313,33 @@
     "hit_die": "d10",
     "primary_ability": ["敏捷", "感知"],
     "saving_throws": ["力量", "敏捷"],
-    "armor_proficiency": ["輕型護甲", "中型護甲", "盾牌"],
-    "weapon_proficiency": ["簡易武器", "軍用武器"],
-    "description": "荒野的獵手與追蹤者。",
+    "armor_proficiency": ["輕/中甲", "盾牌"],
+    "weapon_proficiency": ["全武器"],
+    "description": "荒野追蹤者與獵人。",
     "features": {
-      "1": [
-        { "name": "宿敵", "description": "對特定類型敵人有追蹤優勢與額外傷害。" },
-        { "name": "自然探索者", "description": "在特定地形（如森林、沙漠）中移動與追蹤能力增強。" }
-      ],
-      "2": [
-        { "name": "戰鬥風格", "description": "選擇一項戰鬥專精（如箭術、雙武器）。" },
-        { "name": "施法", "description": "使用感知施展遊俠法術。" }
-      ]
+      "1": [{ "name": "宿敵 & 自然探索者", "description": "針對特定敵人與地形的優勢。" }],
+      "2": [{ "name": "法術與風格", "description": "遊俠施法能力與戰鬥風格。" }]
     },
     "subclasses": {
       "hunter": {
         "name": "獵人範型",
-        "description": "專精戰鬥技巧的遊俠。",
+        "description": "適應各種戰鬥的獵手 (PHB)。",
         "features": {
-          "3": [{ "name": "獵手獵物", "description": "選擇一項：巨像殺手（受傷目標額外1d8傷害）、巨人殺手（反擊大型生物）或破群者（額外攻擊相鄰敵人）。" }],
-          "7": [{ "name": "防禦戰術", "description": "選擇一項：逃脫大群（借機攻擊劣勢）、多重防禦（受傷後AC+4）或鋼鐵意志（抗恐懼）。" }]
+          "3": [{ "name": "獵手獵物", "description": "選擇巨像殺手(增傷)、巨人殺手(反擊)或破群者(額外攻擊)。" }]
+        }
+      },
+      "beast_master": {
+        "name": "野獸大師",
+        "description": "擁有動物夥伴 (PHB)。",
+        "features": {
+          "3": [{ "name": "遊俠伴侶", "description": "獲得一隻野獸夥伴協助戰鬥。" }]
+        }
+      },
+      "gloom_stalker": {
+        "name": "幽影追蹤者",
+        "description": "黑暗中的伏擊者 (XGE)。",
+        "features": {
+          "3": [{ "name": "恐怖伏擊", "description": "首回合額外移動與攻擊，該攻擊增傷。對黑暗視覺隱形。" }]
         }
       }
     }
@@ -281,28 +351,43 @@
     "primary_ability": ["敏捷"],
     "saving_throws": ["敏捷", "智力"],
     "armor_proficiency": ["輕型護甲"],
-    "weapon_proficiency": ["簡易武器", "手弩", "長劍", "細劍", "短劍"],
+    "weapon_proficiency": ["簡易", "細劍", "短劍", "手弩"],
     "tool_proficiency": ["盜賊工具"],
-    "description": "潛伏於陰影中的專家。",
+    "description": "潛行與弱點攻擊專家。",
     "features": {
       "1": [
-        { "name": "偷襲", "description": "對有優勢或隊友在旁的敵人造成額外傷害（1d6起，隨等級增加）。" },
-        { "name": "專精", "description": "選擇兩個技能熟練，其加值翻倍。" },
-        { "name": "盜賊黑話", "description": "懂得秘密的暗語與符號。" }
+          { "name": "偷襲", "description": "有優勢或盟友在旁時造成額外傷害(1d6起)。" },
+          { "name": "專精", "description": "兩項技能熟練翻倍。" }
       ],
-      "2": [{ "name": "狡詐動作", "description": "每回合可用附贈動作進行：疾走、撤離或躲藏。" }],
-      "5": [{ "name": "直覺閃避", "description": "被看見的攻擊者擊中時，可用反應使傷害減半。" }]
+      "2": [{ "name": "狡詐動作", "description": "附贈動作：疾走、撤離、躲藏。" }]
     },
     "subclasses": {
       "thief": {
         "name": "盜賊範型",
-        "description": "專精潛入與手上功夫。",
+        "description": "傳統的竊賊與探險家 (PHB)。",
         "features": {
-          "3": [
-              { "name": "快手", "description": "附贈動作可進行巧手檢定、使用盜賊工具或使用物件。" },
-              { "name": "樑上君子", "description": "攀爬不再減速，跳躍距離增加敏捷調整值呎數。" }
-          ],
-          "9": [{ "name": "超級潛行", "description": "若移動不超過速度一半，敏捷（隱匿）檢定有優勢。" }]
+          "3": [{ "name": "快手", "description": "附贈動作使用物件/開鎖。" }, { "name": "樑上君子", "description": "攀爬不減速。" }]
+        }
+      },
+      "assassin": {
+        "name": "刺客",
+        "description": "精通伏擊與偽裝 (PHB)。",
+        "features": {
+          "3": [{ "name": "暗殺術", "description": "對未行動者優勢；對驚喜目標必定重擊。" }]
+        }
+      },
+      "arcane_trickster": {
+        "name": "奧法詭術師",
+        "description": "使用幻術與附魔的盜賊 (PHB)。",
+        "features": {
+          "3": [{ "name": "施法", "description": "獲得法師之手與法術位。" }, { "name": "法師之手戲法", "description": "隱形法師之手，可進行精細操作。" }]
+        }
+      },
+      "swashbuckler": {
+        "name": "劍客",
+        "description": "擅長單挑的決鬥者 (XGE)。",
+        "features": {
+          "3": [{ "name": "花俏步法", "description": "攻擊後敵人無法對你藉機攻擊。" }, { "name": "大膽無畏", "description": "單挑時可觸發偷襲。" }]
         }
       }
     }
@@ -314,23 +399,32 @@
     "primary_ability": ["魅力"],
     "saving_throws": ["體質", "魅力"],
     "armor_proficiency": ["無"],
-    "weapon_proficiency": ["匕首", "飛鏢", "投石索", "長棍", "輕弩"],
-    "description": "擁有天生魔力的施法者。",
+    "weapon_proficiency": ["簡易武器"],
+    "description": "天生魔力擁有者。",
     "features": {
-      "1": [{ "name": "施法", "description": "使用魅力施法。擁有天生魔法源頭。" }],
-      "2": [{ "name": "術法點", "description": "獲得術法點，可用於轉換法術位。" }],
-      "3": [{ "name": "超魔", "description": "獲得兩個超魔選項（如強效法術、瞬發法術），可消耗術法點強化法術。" }]
+      "2": [{ "name": "術法點", "description": "轉換法術位或驅動超魔。" }],
+      "3": [{ "name": "超魔", "description": "強化法術(如瞬發、孿生)。" }]
     },
     "subclasses": {
       "draconic": {
         "name": "龍脈血統",
-        "description": "體內流淌巨龍之血。",
+        "description": "龍族後裔 (PHB)。",
         "features": {
-          "1": [
-              { "name": "龍族韌性", "description": "HP每級額外+1。無甲時 AC = 13 + 敏捷。" },
-              { "name": "龍族祖先", "description": "選擇一種龍，獲得其對應傷害類型關聯並能說龍語。" }
-          ],
-          "6": [{ "name": "元素親和", "description": "施放對應屬性法術時，傷害增加魅力調整值；可花費術法點獲得該屬性抗性。" }]
+          "1": [{ "name": "龍族韌性", "description": "HP增加，自帶AC 13。" }]
+        }
+      },
+      "wild_magic": {
+        "name": "狂野魔法",
+        "description": "混亂的魔法源頭 (PHB)。",
+        "features": {
+          "1": [{ "name": "狂野浪潮", "description": "施法可能觸發隨機魔法效果。" }]
+        }
+      },
+      "divine_soul": {
+        "name": "神聖靈魂",
+        "description": "擁有神性血統 (XGE)。",
+        "features": {
+          "1": [{ "name": "神聖魔法", "description": "可學習牧師法術。" }, { "name": "諸神恩寵", "description": "檢定失敗可加2d4。" }]
         }
       }
     }
@@ -341,22 +435,33 @@
     "hit_die": "d8",
     "primary_ability": ["魅力"],
     "saving_throws": ["感知", "魅力"],
-    "armor_proficiency": ["輕型護甲"],
-    "weapon_proficiency": ["簡易武器"],
-    "description": "與異界存在訂立契約的施法者。",
+    "armor_proficiency": ["輕甲"],
+    "weapon_proficiency": ["簡易"],
+    "description": "契約施法者。",
     "features": {
-      "1": [{ "name": "契約魔法", "description": "法術位數量少但皆為最高環階，短休即可恢復。" }],
-      "2": [{ "name": "魔能祈喚", "description": "獲得兩個祈喚（特殊魔法能力或恆定效果）。" }],
-      "3": [{ "name": "魔羅恩澤", "description": "選擇鍊之魔羅（魔寵）、刃之魔羅（魔法武器）或書之魔羅（儀式書）。" }]
+      "1": [{ "name": "契約魔法", "description": "短休回復的高環法術位。" }],
+      "2": [{ "name": "魔能祈喚", "description": "獲得特殊被動能力。" }]
     },
     "subclasses": {
       "fiend": {
         "name": "邪魔宗主",
-        "description": "與惡魔或魔鬼交易，換取毀滅性力量。",
+        "description": "與惡魔交易 (PHB)。",
         "features": {
-          "1": [{ "name": "黑暗以此賜福", "description": "將敵對生物降至0 HP時，獲得 魅力調整值 + 邪術師等級 點臨時生命。" }],
-          "6": [{ "name": "黑暗以此強運", "description": "屬性或豁免檢定可加1d10（短休一次）。" }],
-          "10": [{ "name": "邪魔韌性", "description": "短休後選擇一種傷害類型獲得抗性（魔法武器或銀製武器可無視）。" }]
+          "1": [{ "name": "黑暗賜福", "description": "殺敵獲得臨時生命。" }]
+        }
+      },
+      "archfey": {
+        "name": "精類宗主",
+        "description": "與妖精領主交易 (PHB)。",
+        "features": {
+          "1": [{ "name": "精類威儀", "description": "魅惑或恐懼敵人。" }]
+        }
+      },
+      "hexblade": {
+        "name": "咒劍宗主",
+        "description": "來自墮影冥界的感知武器 (XGE)。",
+        "features": {
+          "1": [{ "name": "黑克斯戰士", "description": "中甲熟練，使用魅力進行武器攻擊。" }, { "name": "黑克斯詛咒", "description": "對單體增傷並提升爆擊率。" }]
         }
       }
     }
@@ -368,27 +473,32 @@
     "primary_ability": ["智力"],
     "saving_throws": ["智力", "感知"],
     "armor_proficiency": ["無"],
-    "weapon_proficiency": ["匕首", "飛鏢", "投石索", "長棍", "輕弩"],
-    "description": "研習奧術知識的學者。",
+    "weapon_proficiency": ["簡易"],
+    "description": "法術書的研習者。",
     "features": {
-      "1": [
-          { "name": "施法", "description": "使用智力施法。需使用法術書準備法術。" },
-          { "name": "奧術回想", "description": "短休一次，可恢復消耗的法術位（環階總和為等級一半）。" }
-      ],
-      "18": [{ "name": "精通法術", "description": "選擇一個1環和一個2環法術，可隨意施放。" }]
+      "1": [{ "name": "奧術回想", "description": "短休回復法術位。" }],
+      "2": [{ "name": "學派專精", "description": "選擇八大學派之一。" }]
     },
     "subclasses": {
       "evocation": {
         "name": "塑能學派",
-        "description": "專注於創造強大元素能量效果（如火焰、閃電）的學派。",
-        "features": {
-          "2": [
-              { "name": "塑能學者", "description": "抄錄塑能法術的時間與金錢減半。" },
-              { "name": "法術塑形", "description": "施放塑能法術時，可指定 1 + 法術環階 個生物不受傷害並通過豁免。" }
-          ],
-          "6": [{ "name": "強力和聲", "description": "生物成功通過你的戲法豁免仍受一半傷害。" }],
-          "10": [{ "name": "強效塑能", "description": "施放法師塑能法術時，傷害擲骰可加上智力調整值。" }]
-        }
+        "description": "破壞性魔法專家 (PHB)。",
+        "features": { "2": [{ "name": "法術塑形", "description": "範圍法術保護友軍。" }] }
+      },
+      "abjuration": {
+        "name": "防護學派",
+        "description": "防禦魔法專家 (PHB)。",
+        "features": { "2": [{ "name": "秘法守護", "description": "施法獲得護盾吸收傷害。" }] }
+      },
+      "divination": {
+        "name": "預言學派",
+        "description": "預知未來 (PHB)。",
+        "features": { "2": [{ "name": "預兆", "description": "預骰兩個d20替換結果。" }] }
+      },
+      "bladesinging": {
+        "name": "劍詠學派",
+        "description": "精靈的劍法與魔法融合 (TCE)。",
+        "features": { "2": [{ "name": "劍歌", "description": "獲得AC、速度與專注加值。" }] }
       }
     }
   }

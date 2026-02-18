@@ -1,215 +1,66 @@
-<script>
-        let db = { races: {}, classes: {}, spells: {} };
-        let currentSec = '';
-        const abilityMap = { str:'力量', dex:'敏捷', con:'體質', int:'智力', wis:'感知', cha:'魅力' };
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>D&D 5E 除錯模式</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #222; color: #eee; }
+        .log { padding: 10px; margin: 5px 0; border-radius: 5px; }
+        .success { background: #1b5e20; }
+        .error { background: #b71c1c; border: 1px solid #ff5252; }
+        h1 { color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>數據庫連線診斷 (Debug Mode)</h1>
+    <div id="console"></div>
 
-        // Load Data
-        async function init() {
+    <script>
+        const logDiv = document.getElementById('console');
+        function log(msg, type = 'neutral') {
+            const div = document.createElement('div');
+            div.className = `log ${type}`;
+            div.innerHTML = msg;
+            logDiv.appendChild(div);
+        }
+
+        async function checkFile(filename) {
             try {
-                const [r, c, s] = await Promise.all([
-                    fetch('data/dnd5e_races_complete_tc.json').then(res=>res.json()),
-                    fetch('data/dnd5e_classes_complete_tc.json').then(res=>res.json()),
-                    fetch('data/dnd5e_spells_complete_tc.json').then(res=>res.json())
-                ]);
-                db = { races: r, classes: c, spells: s };
+                log(`正在嘗試讀取 <strong>${filename}</strong>...`);
+                const res = await fetch(`data/${filename}`);
                 
-                // Populate Spell Filter
-                const classes = new Set();
-                Object.values(s).forEach(sp => sp.classes?.forEach(c => classes.add(c)));
-                const sel = document.getElementById('spell-filter');
-                Array.from(classes).sort().forEach(c => {
-                    sel.innerHTML += `<option value="${c}">${c}</option>`;
-                });
-            } catch(e) { alert('資料載入失敗，請確認 JSON 檔案格式正確。'); console.error(e); }
-        }
-
-        function nav(sec) {
-            currentSec = sec;
-            document.getElementById('menu-view').style.display = 'none';
-            document.getElementById('content-view').style.display = 'block';
-            document.getElementById('spell-filter').style.display = sec === 'spells' ? 'block' : 'none';
-            document.getElementById('search').value = '';
-            render();
-        }
-
-        function showMenu() {
-            document.getElementById('content-view').style.display = 'none';
-            document.getElementById('menu-view').style.display = 'flex';
-        }
-
-        function render() {
-            const term = document.getElementById('search').value.toLowerCase();
-            const filter = document.getElementById('spell-filter').value;
-            const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-            
-            const data = db[currentSec];
-            if(!data) return;
-
-            Object.entries(data).forEach(([k, v]) => {
-                if(currentSec === 'spells' && filter && !v.classes?.includes(filter)) return;
-                const name = (v.name || k).toLowerCase();
-                const en = (v.name_en || '').toLowerCase();
-                if(!name.includes(term) && !en.includes(term)) return;
-
-                const div = document.createElement('div');
-                div.className = 'card';
-                div.innerHTML = `<h3>${v.name}</h3><small>${v.name_en || ''}</small>`;
-                
-                if(currentSec === 'races') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.size || ''} | ${v.speed}呎</div>`;
-                if(currentSec === 'classes') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">HD: ${v.hit_die} | ${v.primary_ability?.join('/')}</div>`;
-                if(currentSec === 'spells') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.level==0?'戲法':v.level+'環'} | ${v.school}</div>`;
-
-                div.onclick = () => openModal(k, v);
-                grid.appendChild(div);
-            });
-        }
-
-        function openModal(key, item) {
-            const box = document.getElementById('modal-content');
-            let html = `<h2>${item.name} <small style="color:#888; font-size:0.6em">(${item.name_en})</small></h2><hr style="margin:15px 0; border:0; border-top:1px solid #eee;">`;
-            
-            // --- RACES ---
-            if(currentSec === 'races') {
-                html += formatBonuses(item.ability_bonuses);
-                html += `<p style="margin:10px 0; line-height:1.6;">${item.description}</p>`;
-                html += `<p><strong>速度:</strong> ${item.speed} 呎</p>`;
-                html += `<p><strong>體型:</strong> ${item.size}</p>`;
-                
-                if(item.traits) {
-                    html += `<div style="margin-top:15px;"><strong>種族特質:</strong></div>`;
-                    html += `<ul style="padding-left:20px; margin-top:5px;">`;
-                    Object.values(item.traits).forEach(t => {
-                        html += `<li><strong>${t.name}:</strong> ${t.description}</li>`;
-                    });
-                    html += `</ul>`;
+                if (!res.ok) {
+                    throw new Error(`HTTP 錯誤: ${res.status} (找不到檔案?)`);
                 }
 
-                if(item.subraces) {
-                    html += `<h3 style="margin-top:20px;">亞種 / 子種族</h3><div class="accordion">`;
-                    Object.values(item.subraces).forEach((sub) => {
-                        html += `
-                        <div class="acc-item">
-                            <button class="acc-btn" onclick="toggleAcc(this)">${sub.name}</button>
-                            <div class="acc-panel">
-                                ${formatBonuses(sub.ability_bonuses)}
-                                <p>${sub.description}</p>
-                                ${sub.traits ? renderTraits(sub.traits) : ''}
-                            </div>
-                        </div>`;
-                    });
-                    html += `</div>`;
+                const text = await res.text();
+                try {
+                    JSON.parse(text);
+                    log(`✅ ${filename} 格式正確！`, 'success');
+                } catch (e) {
+                    // 嘗試找出錯誤位置
+                    const match = e.message.match(/position (\d+)/);
+                    let locationInfo = '';
+                    if (match) {
+                        const pos = parseInt(match[1]);
+                        const before = text.substring(Math.max(0, pos - 20), pos);
+                        const after = text.substring(pos, Math.min(text.length, pos + 20));
+                        locationInfo = `<br>錯誤位置附近的內容: "...${before} <strong style='color:yellow'>[這裡錯誤]</strong> ${after}..."`;
+                    }
+                    throw new Error(`JSON 格式錯誤 (SyntaxError): ${e.message} ${locationInfo}`);
                 }
+            } catch (err) {
+                log(`❌ <strong>${filename}</strong> 失敗:<br>${err.message}`, 'error');
             }
-            
-            // --- CLASSES ---
-            else if(currentSec === 'classes') {
-                html += `<p style="margin-bottom:15px; font-style:italic; color:#555;">${item.description}</p>`;
-                
-                // 1. 基礎數值與熟練項
-                html += `<div style="background:#f9f9f9; padding:15px; border-radius:8px; margin-bottom:20px;">`;
-                html += `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
-                    <span class="stat-tag">生命骰: ${item.hit_die}</span>
-                    <span class="stat-tag">主要屬性: ${(item.primary_ability||[]).join(', ')}</span>
-                    <span class="stat-tag">豁免: ${(item.saving_throws||[]).join(', ')}</span>
-                </div>`;
-                html += `<p><strong>護甲熟練:</strong> ${(item.armor_proficiency||['無']).join(', ')}</p>`;
-                html += `<p><strong>武器熟練:</strong> ${(item.weapon_proficiency||['無']).join(', ')}</p>`;
-                if(item.tool_proficiency) html += `<p><strong>工具熟練:</strong> ${item.tool_proficiency.join(', ')}</p>`;
-                html += `</div>`;
-
-                // 2. 核心職業特性 (Base Features)
-                if(item.features) {
-                     html += `<h3 style="margin-bottom:10px; color:#2a4a8b;">核心職業特性</h3>`;
-                     html += renderFeatures(item.features);
-                }
-
-                // 3. 子職業 (Subclasses)
-                if(item.subclasses) {
-                    html += `<h3 style="margin-top:25px; margin-bottom:10px; color:#2a4a8b;">子職業選項 (Subclasses)</h3><div class="accordion">`;
-                    Object.values(item.subclasses).forEach(sub => {
-                        html += `
-                        <div class="acc-item">
-                            <button class="acc-btn" onclick="toggleAcc(this)">${sub.name}</button>
-                            <div class="acc-panel">
-                                <p style="font-style:italic; color:#555; margin-bottom:10px;">${sub.description}</p>
-                                ${renderFeatures(sub.features)}
-                            </div>
-                        </div>`;
-                    });
-                    html += `</div>`;
-                }
-            }
-
-            // --- SPELLS ---
-            else {
-                html += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; background:#f9f9f9; padding:15px; border-radius:8px; margin-bottom:15px;">
-                    <div><strong>環級:</strong> ${item.level==0?'戲法':item.level+'環'}</div>
-                    <div><strong>學派:</strong> ${item.school}</div>
-                    <div><strong>施法時間:</strong> ${item.casting_time}</div>
-                    <div><strong>射程:</strong> ${item.range}</div>
-                    <div><strong>成分:</strong> ${item.components}</div>
-                    <div><strong>持續:</strong> ${item.duration}</div>
-                </div>`;
-                html += `<p style="line-height:1.8;">${item.description}</p>`;
-                if(item.classes) html += `<p style="margin-top:15px; color:#666; font-size:0.9em;"><strong>可用職業:</strong> ${item.classes.join(', ')}</p>`;
-            }
-
-            box.innerHTML = html;
-            document.getElementById('modal').classList.add('active');
         }
 
-        // Helpers
-        function formatBonuses(bonuses) {
-            if(!bonuses) return '';
-            let html = '<div style="margin-bottom:10px;">';
-            Object.entries(bonuses).forEach(([k, v]) => {
-                const label = abilityMap[k] || k;
-                html += `<span class="stat-tag" style="background:#e3f2fd; color:#1565c0; border:1px solid #bbdefb;">${label} +${v}</span>`;
-            });
-            html += '</div>';
-            return html;
+        async function runDiagnostics() {
+            await checkFile('dnd5e_races_complete_tc.json');
+            await checkFile('dnd5e_classes_complete_tc.json');
+            await checkFile('dnd5e_spells_complete_tc.json');
         }
 
-        function renderTraits(traits) {
-            let html = '<ul style="margin-top:10px; padding-left:20px;">';
-            Object.values(traits).forEach(t => {
-                html += `<li style="margin-bottom:5px;"><strong>${t.name}:</strong> ${t.description}</li>`;
-            });
-            html += '</ul>';
-            return html;
-        }
-
-        function renderFeatures(features) {
-            if(!features) return '';
-            // Sort keys nicely (1, 2, 3... 10... 20)
-            const levels = Object.keys(features).sort((a,b)=>parseInt(a)-parseInt(b));
-            let html = '';
-            
-            levels.forEach(lv => {
-                const featGroup = features[lv];
-                // Handle array of features or single object map
-                const featArray = Array.isArray(featGroup) ? featGroup : Object.values(featGroup);
-                
-                featArray.forEach(f => {
-                    html += `<div class="feature-block">
-                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-                            <strong style="color:#333;">${f.name}</strong>
-                            <span style="font-size:0.8em; color:#888; background:#eee; padding:2px 6px; border-radius:4px;">Lv.${lv}</span>
-                        </div>
-                        <p style="font-size:0.95em; color:#555; margin-top:5px; line-height:1.5;">${f.description}</p>
-                    </div>`;
-                });
-            });
-            return html;
-        }
-
-        function toggleAcc(btn) {
-            btn.classList.toggle('active');
-            const panel = btn.nextElementSibling;
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function closeModal() { document.getElementById('modal').classList.remove('active'); }
-        init();
+        runDiagnostics();
     </script>
+</body>
+</html>

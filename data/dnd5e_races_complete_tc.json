@@ -1,211 +1,314 @@
 {
-  "dwarf": {
-    "name": "矮人",
-    "name_en": "Dwarf",
-    "description": "矮人是堅韌如同大地本身的戰士與工匠，他們居住在山脈深處的宏偉廳堂中。",
-    "speed": 25,
+  "human": {
+    "name": "人類",
+    "name_en": "Human",
+    "description": "最適應力強且雄心勃勃的種族，在多元宇宙中繁衍最廣。",
+    "ability_bonuses": { "str": 1, "dex": 1, "con": 1, "int": 1, "wis": 1, "cha": 1 },
     "size": "中型",
-    "ability_bonuses": { "con": 2 },
+    "speed": 30,
     "traits": {
-      "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
-      "dwarven_resilience": { "name": "矮人韌性", "description": "對毒素傷害有抗性，對抗毒素的豁免有優勢。" }
-    },
-    "subraces": {
-      "hill_dwarf": {
-        "name": "丘陵矮人",
-        "name_en": "Hill Dwarf",
-        "description": "丘陵矮人具有敏銳的感知和強韌的生命力。",
-        "ability_bonuses": { "wis": 1 },
-        "traits": {
-          "dwarven_toughness": { "name": "矮人健壯", "description": "生命值上限增加 1，且每次升級再增加 1。" }
-        }
-      },
-      "mountain_dwarf": {
-        "name": "山地矮人",
-        "name_en": "Mountain Dwarf",
-        "description": "山地矮人強壯且適應艱苦環境。",
-        "ability_bonuses": { "str": 2 },
-        "traits": {
-          "dwarven_armor_training": { "name": "矮人護甲訓練", "description": "獲得輕型與中型護甲熟練。" }
-        }
-      }
+      "versatile": { "name": "多才多藝", "description": "全屬性+1，或選擇變體人類獲得一項專長。" }
     }
   },
   "elf": {
     "name": "精靈",
     "name_en": "Elf",
-    "description": "精靈是優雅、長壽且與魔法有著緊密連結的種族。",
-    "speed": 30,
-    "size": "中型",
+    "description": "長壽且優雅的魔法種族，與自然和精類荒野有著深厚的連結。",
     "ability_bonuses": { "dex": 2 },
+    "size": "中型",
+    "speed": 30,
     "traits": {
-      "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
-      "fey_ancestry": { "name": "精靈血統", "description": "對抗魅惑有優勢，無法被魔法催眠。" },
-      "trance": { "name": "出神", "description": "不需睡眠，冥想 4 小時即可。" }
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "fey_ancestry": { "name": "精類血統", "description": "對魅惑豁免優勢，魔法無法使你入睡。" },
+      "trance": { "name": "冥想", "description": "以4小時冥想代替8小時睡眠。" }
     },
     "subraces": {
       "high_elf": {
         "name": "高等精靈",
-        "name_en": "High Elf",
-        "description": "高等精靈擁有敏銳的智力並精通至少一種魔法。",
         "ability_bonuses": { "int": 1 },
-        "traits": {
-          "cantrip": { "name": "戲法", "description": "從法師法術列表中選擇一個戲法。" }
-        }
+        "description": "擁有敏銳智力並精通至少一個戲法。",
+        "traits": { "cantrip": { "name": "戲法", "description": "從法師列表中習得一個戲法。" } }
       },
       "wood_elf": {
         "name": "木精靈",
-        "name_en": "Wood Elf",
-        "description": "木精靈擁有敏銳的感官和直覺，且步伐輕盈。",
         "ability_bonuses": { "wis": 1 },
-        "traits": {
-            "fleet_of_foot": { "name": "輕盈步伐", "description": "基礎步行速度增加至 35 呎。" },
-            "mask_of_the_wild": { "name": "野性面具", "description": "即使只有樹葉或大雨等輕微遮蔽，也可嘗試躲藏。" }
-        }
+        "description": "敏捷且感知敏銳，擅長在林間隱蹤。",
+        "traits": { "fleet_of_foot": { "name": "輕盈步伐", "description": "移動速度增加至35呎。" } }
       },
-       "drow": {
-        "name": "黑暗精靈",
-        "name_en": "Drow",
-        "description": "居住在地底幽暗地域的精靈。",
+      "drow": {
+        "name": "卓爾 (黑暗精靈)",
         "ability_bonuses": { "cha": 1 },
-        "traits": {
-            "superior_darkvision": { "name": "高等黑暗視覺", "description": "黑暗視覺範圍為 120 呎。" },
-            "sunlight_sensitivity": { "name": "日光敏感", "description": "在陽光下，攻擊檢定與依賴視覺的感知檢定具有劣勢。" },
-            "drow_magic": { "name": "卓爾魔法", "description": "習得舞光術；3級妖火術；5級黑暗術。" }
-        }
+        "description": "居住在地底幽暗地域的精靈。",
+        "traits": { "sunlight_sensitivity": { "name": "陽光敏感", "description": "在陽光下攻擊檢定與視力檢定有劣勢。" } }
+      }
+    }
+  },
+  "dwarf": {
+    "name": "矮人",
+    "name_en": "Dwarf",
+    "description": "頑固、堅韌且擅長工藝的種族。",
+    "ability_bonuses": { "con": 2 },
+    "size": "中型",
+    "speed": 25,
+    "traits": {
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "dwarven_resilience": { "name": "矮人韌性", "description": "對毒素傷害有抗性，對中毒豁免有優勢。" }
+    },
+    "subraces": {
+      "hill_dwarf": {
+        "name": "丘陵矮人",
+        "ability_bonuses": { "wis": 1 },
+        "description": "具有驚人的耐久度。",
+        "traits": { "dwarven_toughness": { "name": "矮人健壯", "description": "生命值上限每級額外+1。" } }
+      },
+      "mountain_dwarf": {
+        "name": "山地矮人",
+        "ability_bonuses": { "str": 2 },
+        "description": "強壯且擅長穿戴護甲。",
+        "traits": { "armor_training": { "name": "矮人護甲訓練", "description": "獲得輕型與中型護甲熟練。" } }
       }
     }
   },
   "halfling": {
     "name": "半身人",
     "name_en": "Halfling",
-    "description": "半身人是樂觀、喜歡舒適生活且運氣極佳的小型種族。",
-    "speed": 25,
-    "size": "小型",
+    "description": "樂觀、友善且幸運的小型種族。",
     "ability_bonuses": { "dex": 2 },
-    "traits": {
-      "lucky": { "name": "幸運", "description": "攻擊、屬性或豁免檢定擲出 1 時可重擲。" },
-      "brave": { "name": "勇敢", "description": "對抗恐懼的豁免有優勢。" },
-      "halfling_nimbleness": { "name": "半身人靈巧", "description": "可穿越體型比你大的生物佔據的空間。" }
-    },
-    "subraces": {
-      "lightfoot_halfling": {
-        "name": "輕足半身人",
-        "name_en": "Lightfoot Halfling",
-        "description": "輕足半身人擅長隱藏和社交。",
-        "ability_bonuses": { "cha": 1 },
-        "traits": {
-          "naturally_stealthy": { "name": "天生隱蔽", "description": "當被體型大於你的生物遮蔽時，你可以嘗試躲藏。" }
-        }
-      },
-      "stout_halfling": {
-        "name": "強心半身人",
-        "name_en": "Stout Halfling",
-        "description": "強心半身人血脈中可能帶有矮人血統。",
-        "ability_bonuses": { "con": 1 },
-        "traits": {
-            "stout_resilience": { "name": "強心韌性", "description": "對毒素傷害有抗性，對抗毒素的豁免有優勢。" }
-        }
-      }
-    }
-  },
-  "human": {
-    "name": "人類",
-    "name_en": "Human",
-    "description": "人類是適應力最強、野心最大的種族。",
-    "speed": 30,
-    "size": "中型",
-    "ability_bonuses": { "str": 1, "dex": 1, "con": 1, "int": 1, "wis": 1, "cha": 1 },
-    "traits": {
-      "versatile": { "name": "多才多藝", "description": "全屬性 +1 (標準人類)。" }
-    },
-    "subraces": {}
-  },
-  "dragonborn": {
-    "name": "龍裔",
-    "name_en": "Dragonborn",
-    "description": "生於龍與神之間的驕傲種族，擁有龍的吐息武器。",
-    "speed": 30,
-    "size": "中型",
-    "ability_bonuses": { "str": 2, "cha": 1 },
-    "traits": {
-      "breath_weapon": { "name": "吐息武器", "description": "根據龍族血統噴吐能量。" },
-      "damage_resistance": { "name": "傷害抗性", "description": "對應龍族血統的能量傷害抗性。" }
-    },
-    "subraces": {}
-  },
-  "gnome": {
-    "name": "侏儒",
-    "name_en": "Gnome",
-    "description": "侏儒是充滿好奇心與創造力的小型種族。",
-    "speed": 25,
     "size": "小型",
-    "ability_bonuses": { "int": 2 },
+    "speed": 25,
     "traits": {
-      "gnome_cunning": { "name": "侏儒狡思", "description": "對抗魔法的智力、感知、魅力豁免有優勢。" }
+      "lucky": { "name": "幸運", "description": "攻擊、檢定或豁免擲出1時可重擲。" },
+      "brave": { "name": "勇氣", "description": "對抗恐懼的豁免有優勢。" }
     },
     "subraces": {
-      "rock_gnome": {
-        "name": "岩侏儒",
-        "name_en": "Rock Gnome",
-        "description": "岩侏儒以發明家和工匠聞名。",
-        "ability_bonuses": { "con": 1 },
-        "traits": {
-          "artificers_lore": { "name": "工匠知識", "description": "對魔法物品、煉金物件的歷史檢定加倍熟練。" },
-          "tinker": { "name": "修補匠", "description": "可以製作微型發條裝置。" }
-        }
+      "lightfoot": {
+        "name": "輕足半身人",
+        "ability_bonuses": { "cha": 1 },
+        "description": "擅長隱匿。",
+        "traits": { "naturally_stealthy": { "name": "天生潛行", "description": "可嘗試躲藏在比你體型大的生物身後。" } }
       },
-      "forest_gnome": {
-          "name": "森林侏儒",
-          "name_en": "Forest Gnome",
-          "description": "森林侏儒具有天生的幻術天賦和與小動物溝通的能力。",
-          "ability_bonuses": { "dex": 1 },
-          "traits": {
-              "natural_illusionist": { "name": "天生幻術師", "description": "習得「像是術」戲法。" },
-              "speak_with_small_beasts": { "name": "與小獸溝通", "description": "可以透過聲音和動作與小型野獸進行簡單交流。" }
-          }
+      "stout": {
+        "name": "強心半身人",
+        "ability_bonuses": { "con": 1 },
+        "description": "帶有少量矮人血統。",
+        "traits": { "stout_resilience": { "name": "強心韌性", "description": "對毒素有抗性。" } }
       }
     }
   },
-  "half_elf": {
-    "name": "半精靈",
-    "name_en": "Half-Elf",
-    "description": "結合了精靈的優雅與人類的活力。",
-    "speed": 30,
+  "tabaxi": {
+    "name": "塔巴斯 (貓人)",
+    "name_en": "Tabaxi",
+    "description": "來自熱帶地區的貓型類人生物，以好奇心和敏捷著稱 (Volo's / MPMM)。",
+    "ability_bonuses": { "dex": 2, "cha": 1 },
     "size": "中型",
-    "ability_bonuses": { "cha": 2, "any_one": 1, "any_other": 1 },
+    "speed": 30,
     "traits": {
-      "fey_ancestry": { "name": "精靈血統", "description": "對抗魅惑有優勢，免疫魔法睡眠。" },
-      "skill_versatility": { "name": "技能多樣性", "description": "獲得兩個自選技能熟練。" }
-    },
-    "subraces": {}
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "feline_agility": { "name": "貓之敏捷", "description": "在戰鬥中，你的移動速度可以加倍直到回合結束。使用後必須移動0呎一回合才能再次使用。" },
+      "cats_claws": { "name": "貓爪", "description": "獲得20呎攀爬速度。徒手攻擊造成 1d4 + 力量調整值的揮砍傷害。" },
+      "cat_talent": { "name": "貓之天賦", "description": "熟練於「察覺」與「隱匿」技能。" }
+    }
   },
-  "half_orc": {
-    "name": "半獸人",
-    "name_en": "Half-Orc",
-    "description": "擁有獸人的力量與人類的決心。",
-    "speed": 30,
+  "aasimar": {
+    "name": "阿斯莫",
+    "name_en": "Aasimar",
+    "description": "帶有上層位面神聖血統的人類，生來便肩負光明的使命 (Volo's)。",
+    "ability_bonuses": { "cha": 2 },
     "size": "中型",
+    "speed": 30,
+    "traits": {
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "celestial_resistance": { "name": "天界抗性", "description": "對壞死傷害和光耀傷害具有抗性。" },
+      "healing_hands": { "name": "治癒之手", "description": "以動作觸碰生物，回復等於你等級的HP。長休一次。" }
+    },
+    "subraces": {
+      "protector": {
+        "name": "守護阿斯莫",
+        "ability_bonuses": { "wis": 1 },
+        "description": "致力於打擊邪惡。",
+        "traits": { "radiant_soul": { "name": "光耀之魂", "description": "3級起，可變身獲得30呎飛行速度，且攻擊附加光耀傷害。" } }
+      },
+      "scourge": {
+        "name": "災殃阿斯莫",
+        "ability_bonuses": { "con": 1 },
+        "description": "體內燃燒著強烈的神聖能量。",
+        "traits": { "radiant_consumption": { "name": "光耀吞噬", "description": "3級起，釋放體內光芒，對周圍和你自己造成光耀傷害。" } }
+      },
+      "fallen": {
+        "name": "墮落阿斯莫",
+        "ability_bonuses": { "str": 1 },
+        "description": "被黑暗觸動或年輕時轉向邪惡。",
+        "traits": { "necrotic_shroud": { "name": "壞死施裹", "description": "3級起，釋放恐怖氣場，恐懼周圍敵人並附加壞死傷害。" } }
+      }
+    }
+  },
+  "goliath": {
+    "name": "葛利亞",
+    "name_en": "Goliath",
+    "description": "居住在崇山峻嶺間的巨人後裔，崇尚公平競爭與力量 (Volo's)。",
     "ability_bonuses": { "str": 2, "con": 1 },
-    "traits": {
-      "relentless_endurance": { "name": "堅忍不拔", "description": "生命值降至 0 時可改為 1 (長休一次)。" },
-      "savage_attacks": { "name": "兇蠻攻擊", "description": "近戰重擊時額外骰一個武器傷害骰。" },
-      "menacing": { "name": "威嚇", "description": "獲得威嚇技能熟練。" }
-    },
-    "subraces": {}
-  },
-  "tiefling": {
-    "name": "提夫林",
-    "name_en": "Tiefling",
-    "description": "帶有地獄血統，常受世人誤解。",
-    "speed": 30,
     "size": "中型",
-    "ability_bonuses": { "cha": 2, "int": 1 },
+    "speed": 30,
     "traits": {
-      "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
-      "hellish_resistance": { "name": "地獄抗性", "description": "對火焰傷害有抗性。" },
-      "infernal_legacy": { "name": "煉獄遺產", "description": "獲得奇術戲法；3級獲得地獄叱喝；5級獲得黑暗術。" }
-    },
-    "subraces": {}
+      "stones_endurance": { "name": "岩石堅韌", "description": "受到傷害時，可用反應減少 1d12 + 體質調整值的傷害。短休一次。" },
+      "powerful_build": { "name": "強壯體格", "description": "計算負重和推拉抬舉時視為大體型生物。" },
+      "mountain_born": { "name": "山地之子", "description": "適應高海拔環境，對寒冷氣候有適應力。" }
+    }
+  },
+  "kenku": {
+    "name": "健古 (天狗)",
+    "name_en": "Kenku",
+    "description": "失去了翅膀與聲音的鳥人，透過模仿聲音與技藝生存 (Volo's)。",
+    "ability_bonuses": { "dex": 2, "wis": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "expert_forgery": { "name": "偽造專家", "description": "複製筆跡和工藝品時有優勢。" },
+      "mimicry": { "name": "模仿", "description": "只能透過模仿聽過的聲音來說話。察覺你的模仿需要通過對抗檢定。" },
+      "kenku_training": { "name": "健古訓練", "description": "選擇兩個技能熟練：特技、欺瞞、隱匿、巧手。" }
+    }
+  },
+  "tortle": {
+    "name": "托爾特 (龜人)",
+    "name_en": "Tortle",
+    "description": "揹著堅硬龜殼的類人生物，熱愛冒險與旅行 (MPMM)。",
+    "ability_bonuses": { "str": 2, "wis": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "natural_armor": { "name": "天生護甲", "description": "你的基礎AC為17 (敏捷無法調整此數值)。你無法穿戴護甲，但可使用盾牌。" },
+      "shell_defense": { "name": "縮殼防禦", "description": "可用動作縮入殼中。AC+4，有優勢抵抗力量/體質豁免，但移動速度歸0且無法採取動作。" },
+      "claws": { "name": "利爪", "description": "徒手攻擊造成 1d4 + 力量調整值的揮砍傷害。" }
+    }
+  },
+  "firbolg": {
+    "name": "菲爾伯格",
+    "name_en": "Firbolg",
+    "description": "森林的守護者，溫和的巨人親族，擅長隱蹤與德魯伊魔法 (Volo's)。",
+    "ability_bonuses": { "wis": 2, "str": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "firbolg_magic": { "name": "菲爾伯格魔法", "description": "可施展「偵測魔法」和「易容術」。短休恢復。" },
+      "hidden_step": { "name": "隱匿步伐", "description": "附贈動作變為隱形，直到下一回合開始或攻擊為止。短休恢復。" },
+      "speech_of_beast_and_leaf": { "name": "獸葉之語", "description": "可與野獸和植物進行有限的溝通。" }
+    }
+  },
+  "triton": {
+    "name": "特里同",
+    "name_en": "Triton",
+    "description": "來自深海的守護者，致力於對抗海中的邪惡 (Volo's)。",
+    "ability_bonuses": { "str": 1, "con": 1, "cha": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "amphibious": { "name": "水陸兩棲", "description": "可以在空氣和水中呼吸。" },
+      "control_air_and_water": { "name": "操控風水", "description": "隨等級提升可施放「雲霧術」、「造風術」和「水牆術」。" },
+      "emissary_of_the_sea": { "name": "海洋信使", "description": "可與擁有游泳速度的野獸溝通。" }
+    }
+  },
+  "lizardfolk": {
+    "name": "蜥蜴人",
+    "name_en": "Lizardfolk",
+    "description": "擁有爬蟲類思維的沼澤居民，實用主義至上 (Volo's)。",
+    "ability_bonuses": { "con": 2, "wis": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "bite": { "name": "嚙咬", "description": "徒手攻擊造成 1d6 + 力量調整值的穿刺傷害。" },
+      "natural_armor": { "name": "天生護甲", "description": "未穿甲時 AC = 13 + 敏捷調整值。" },
+      "hungry_jaws": { "name": "飢餓利顎", "description": "附贈動作嚙咬，命中獲得臨時生命。短休恢復。" },
+      "cunning_artisan": { "name": "狡詐工匠", "description": "可利用屍體製造簡易武器或盾牌。" }
+    }
+  },
+  "yuan_ti": {
+    "name": "袁梯純血者",
+    "name_en": "Yuan-Ti Pureblood",
+    "description": "蛇人帝國的後裔，外表接近人類但內心冷酷 (Volo's)。",
+    "ability_bonuses": { "cha": 2, "int": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "magic_resistance": { "name": "魔法抗性", "description": "對抗法術和其他魔法效應的豁免檢定具有優勢。" },
+      "poison_immunity": { "name": "毒素免疫", "description": "免疫毒素傷害和中毒狀態。" },
+      "innate_spellcasting": { "name": "天生施法", "description": "習得「毒氣噴濺」、無限施放「化獸為友」(限蛇類)，以及「暗示術」(長休)。" }
+    }
+  },
+  "goblin": {
+    "name": "哥布林",
+    "name_en": "Goblin",
+    "description": "狡猾、卑鄙且繁殖迅速的小型類人生物 (Volo's)。",
+    "ability_bonuses": { "dex": 2, "con": 1 },
+    "size": "小型",
+    "speed": 30,
+    "traits": {
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "nimble_escape": { "name": "靈活脫身", "description": "可在每回合使用附贈動作進行「撤離」或「躲藏」。" },
+      "fury_of_the_small": { "name": "以小博大", "description": "對體型大於你的生物造成傷害時，可額外造成等於你等級的傷害。短休一次。" }
+    }
+  },
+  "kobold": {
+    "name": "狗頭人",
+    "name_en": "Kobold",
+    "description": "宣稱擁有龍族血統的穴居小型生物，擅長陷阱與群體戰術 (Volo's)。",
+    "ability_bonuses": { "dex": 2 },
+    "size": "小型",
+    "speed": 30,
+    "traits": {
+      "pack_tactics": { "name": "群體戰術", "description": "若目標5呎內有你意識清醒的盟友，你的攻擊檢定具有優勢。" },
+      "sunlight_sensitivity": { "name": "陽光敏感", "description": "在陽光下攻擊檢定與視力檢定有劣勢。" },
+      "grovel_cower_and_beg": { "name": "卑躬屈膝", "description": "動作：直到下回合結束，盟友攻擊你周圍敵人有優勢。短休一次。" }
+    }
+  },
+  "orc": {
+    "name": "獸人",
+    "name_en": "Orc",
+    "description": "強壯、兇猛，為戰爭與掠奪而生的種族 (Volo's)。",
+    "ability_bonuses": { "str": 2, "con": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "aggressive": { "name": "侵略如火", "description": "附贈動作：向敵人的方向移動速度這般的距離。" },
+      "powerful_build": { "name": "強壯體格", "description": "計算負重和推拉抬舉時視為大體型生物。" }
+    }
+  },
+  "hobgoblin": {
+    "name": "大地精",
+    "name_en": "Hobgoblin",
+    "description": "具有嚴格軍事紀律與戰略頭腦的地精類生物 (Volo's)。",
+    "ability_bonuses": { "con": 2, "int": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "darkvision": { "name": "黑暗視覺", "description": "60呎黑暗視覺。" },
+      "martial_training": { "name": "軍事訓練", "description": "熟練兩項軍用武器與輕型護甲。" },
+      "saving_face": { "name": "顧全顏面", "description": "攻擊、檢定或豁免失敗時，可加上周圍盟友數量(最多+5)的加值。短休一次。" }
+    }
+  },
+  "bugbear": {
+    "name": "熊地精",
+    "name_en": "Bugbear",
+    "description": "地精類中體型最大、毛髮最茂盛的蠻兵，擅長突襲 (Volo's)。",
+    "ability_bonuses": { "str": 2, "dex": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "long_limbed": { "name": "長臂", "description": "近戰攻擊觸及範圍增加5呎。" },
+      "powerful_build": { "name": "強壯體格", "description": "計算負重和推拉抬舉時視為大體型生物。" },
+      "surprise_attack": { "name": "突襲攻擊", "description": "若你在戰鬥首輪突襲了一個生物，攻擊額外造成 2d6 傷害。" }
+    }
+  },
+  "changeling": {
+    "name": "變形者",
+    "name_en": "Changeling",
+    "description": "能夠隨意改變面容與外觀的神秘種族 (Eberron / MPMM)。",
+    "ability_bonuses": { "cha": 2, "any_one": 1 },
+    "size": "中型",
+    "speed": 30,
+    "traits": {
+      "shapechanger": { "name": "變形", "description": "可用動作改變你的外觀、聲音。無法改變數值。" },
+      "changeling_instincts": { "name": "變形者直覺", "description": "熟練欺瞞或威嚇等社交技能(二選二)。" }
+    }
   }
 }

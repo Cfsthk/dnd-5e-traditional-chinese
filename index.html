@@ -3,260 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D 5E 完整資料庫 - 繁體中文</title>
+    <title>D&D 5E 完整資料庫</title>
     <link rel="icon" href="data:,">
     <style>
         :root {
-            --primary-color: #4a69bd;
-            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            --bg-gradient: linear-gradient(180deg, #5a77e6 0%, #8e54e9 100%);
+            --primary: #4a69bd;
+            --secondary: #1e3c72;
+            --bg-grad: linear-gradient(180deg, #5a77e6 0%, #8e54e9 100%);
+            --light-gray: #f8f9fa;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Microsoft JhengHei', sans-serif;
+            background: var(--bg-grad);
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            display: flex; justify-content: center; align-items: flex-start;
         }
-        .main-container {
+        .container {
             width: 100%; max-width: 600px;
             background: white; border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden; min-height: 400px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden; min-height: 500px;
+            display: flex; flex-direction: column;
         }
-        .header { background: var(--header-bg); color: white; padding: 30px 20px; text-align: center; }
-        .header-icon { font-size: 3em; margin-bottom: 10px; display: block; }
-        .menu-btn {
-            width: 100%; padding: 25px; background: white; border: none;
-            border-bottom: 2px solid #f0f0f0; color: var(--primary-color);
-            font-size: 1.3em; font-weight: bold; cursor: pointer; text-align: center;
-        }
-        .menu-btn:hover { background: #f0f5ff; }
-        #content-view { display: none; padding: 20px; background: #f9f9f9; }
-        .controls-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-        .search-input, .filter-select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
-        .filter-select { display: none; background: white; }
-        .grid { display: grid; gap: 15px; grid-template-columns: 1fr; }
-        @media (min-width: 768px) { .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } }
-        .card {
-            background: white; border-radius: 12px; padding: 20px;
-            cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-3px); border: 1px solid var(--primary-color); }
-        .card h3 { color: #2a4a8b; margin-bottom: 5px; }
-        .card .subtitle { color: #888; font-size: 0.9em; margin-bottom: 10px; }
         
-        /* Modal Styles */
+        /* Header */
+        .header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 30px; text-align: center; }
+        .header h1 { margin: 10px 0; font-size: 1.8em; }
+        
+        /* Menu */
+        .menu-view { padding: 0; flex-grow: 1; display: flex; flex-direction: column; }
+        .menu-btn {
+            padding: 25px; border: none; background: white;
+            border-bottom: 1px solid #eee; text-align: left; font-size: 1.2em;
+            color: var(--primary); font-weight: bold; cursor: pointer;
+            transition: 0.2s; display: flex; justify-content: space-between;
+        }
+        .menu-btn:hover { background: #f0f5ff; padding-left: 35px; }
+        .menu-btn::after { content: '›'; font-size: 1.5em; color: #ccc; }
+
+        /* Content View */
+        .content-view { display: none; padding: 20px; background: #fcfcfc; flex-grow: 1; }
+        .top-bar { display: flex; gap: 10px; margin-bottom: 15px; }
+        .back-btn { padding: 8px 15px; background: #eee; border: none; border-radius: 8px; cursor: pointer; }
+        .search-box { flex-grow: 1; padding: 8px; border: 1px solid #ddd; border-radius: 8px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .card {
+            background: white; padding: 15px; border-radius: 10px;
+            border: 1px solid #eee; cursor: pointer; transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .card:hover { transform: translateY(-2px); border-color: var(--primary); }
+        .card h3 { color: var(--secondary); margin-bottom: 5px; }
+        .card small { color: #888; }
+
+        /* Modal & Accordion */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); z-index: 1000;
+            background: rgba(0,0,0,0.8); z-index: 999;
             justify-content: center; align-items: center; padding: 20px;
         }
         .modal.active { display: flex; }
-        .modal-content {
-            background: white; padding: 30px; border-radius: 15px;
-            width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto;
-            position: relative;
+        .modal-box {
+            background: white; width: 100%; max-width: 800px; max-height: 85vh;
+            border-radius: 15px; padding: 25px; overflow-y: auto; position: relative;
         }
-        .close { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; color: #aaa; }
         
-        /* Sub-items in Modal */
-        .sub-section { background: #f0f5ff; padding: 15px; border-radius: 8px; margin-top: 15px; }
-        .sub-section h4 { color: #1e3c72; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        .sub-item { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
-        .sub-item:last-child { border-bottom: none; }
-        .tag { display: inline-block; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
+        .stat-tag {
+            display: inline-block; background: #eef2ff; color: var(--primary);
+            padding: 3px 8px; border-radius: 4px; font-size: 0.9em; margin: 2px;
+            font-weight: bold; border: 1px solid #dde5ff;
+        }
+
+        /* Accordion Styles */
+        .accordion { margin-top: 20px; border-top: 1px solid #eee; }
+        .acc-item { border-bottom: 1px solid #eee; }
+        .acc-btn {
+            width: 100%; padding: 15px 10px; border: none; background: none;
+            text-align: left; font-size: 1.1em; font-weight: bold; color: #333;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .acc-btn:hover { background: #f9f9f9; }
+        .acc-btn::after { content: '+'; font-size: 1.2em; color: #888; }
+        .acc-btn.active::after { content: '-'; }
+        .acc-panel {
+            display: none; padding: 15px; background: #fafafa; border-radius: 8px; margin-bottom: 10px;
+        }
+        .feature-block { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
+        .feature-block:last-child { border-bottom: none; }
     </style>
 </head>
 <body>
-    <div class="main-container">
+    <div class="container">
         <div class="header">
-            <span class="header-icon">🐉</span>
             <h1>D&D 5E 資料庫</h1>
-            <p>SRD 5.1 繁體中文版</p>
+            <p>種族・職業・法術查詢</p>
         </div>
 
-        <div id="loading" style="text-align:center; padding:40px;">載入中...</div>
-
-        <div id="landing-view" style="display: none;">
-            <button class="menu-btn" onclick="navigateTo('races')">種族 (Races)</button>
-            <button class="menu-btn" onclick="navigateTo('classes')">職業 (Classes)</button>
-            <button class="menu-btn" onclick="navigateTo('spells')">法術 (Spells)</button>
+        <div id="menu-view" class="menu-view">
+            <button class="menu-btn" onclick="nav('races')">🧝 種族 (Races)</button>
+            <button class="menu-btn" onclick="nav('classes')">⚔️ 職業 (Classes)</button>
+            <button class="menu-btn" onclick="nav('spells')">✨ 法術 (Spells)</button>
         </div>
 
-        <div id="content-view">
-            <button onclick="showLanding()" style="margin-bottom:10px; padding:5px 10px; cursor:pointer;">← 返回</button>
-            <h2 id="section-title" style="text-align:center; margin-bottom:15px; color:#4a69bd;"></h2>
-            
-            <div class="controls-area">
-                <input type="text" id="searchInput" class="search-input" placeholder="搜尋名稱...">
-                <select id="spellClassFilter" class="filter-select"><option value="">所有職業</option></select>
+        <div id="content-view" class="content-view">
+            <div class="top-bar">
+                <button class="back-btn" onclick="showMenu()">←</button>
+                <input type="text" id="search" class="search-box" placeholder="搜尋..." onkeyup="render()">
+                <select id="spell-filter" class="search-box" style="display:none; max-width:120px;" onchange="render()">
+                    <option value="">全部職業</option>
+                </select>
             </div>
-            <div id="content-grid" class="grid"></div>
+            <div id="grid" class="grid"></div>
         </div>
     </div>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modal-body"></div>
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
         </div>
     </div>
 
     <script>
-        let db = { classes: {}, races: {}, spells: {} };
-        let currentSection = null;
+        let db = { races: {}, classes: {}, spells: {} };
+        let currentSec = '';
+        const abilityMap = { str:'力量', dex:'敏捷', con:'體質', int:'智力', wis:'感知', cha:'魅力' };
 
-        async function loadData() {
+        // Load Data
+        async function init() {
             try {
-                // 假設檔案位於 data/ 資料夾
-                const [c, r, s] = await Promise.all([
-                    fetch('data/dnd5e_classes_complete_tc.json').then(res => res.json()),
-                    fetch('data/dnd5e_races_complete_tc.json').then(res => res.json()),
-                    fetch('data/dnd5e_spells_complete_tc.json').then(res => res.json())
+                const [r, c, s] = await Promise.all([
+                    fetch('data/dnd5e_races_complete_tc.json').then(res=>res.json()),
+                    fetch('data/dnd5e_classes_complete_tc.json').then(res=>res.json()),
+                    fetch('data/dnd5e_spells_complete_tc.json').then(res=>res.json())
                 ]);
-                db.classes = c; db.races = r; db.spells = s;
+                db = { races: r, classes: c, spells: s };
                 
-                // 提取法術職業以供過濾
-                let spellClasses = new Set();
-                Object.values(db.spells).forEach(sp => sp.classes?.forEach(c => spellClasses.add(c)));
-                const sel = document.getElementById('spellClassFilter');
-                Array.from(spellClasses).sort().forEach(sc => {
-                    let opt = document.createElement('option');
-                    opt.value = sc; opt.textContent = sc;
-                    sel.appendChild(opt);
+                // Populate Spell Filter
+                const classes = new Set();
+                Object.values(s).forEach(sp => sp.classes?.forEach(c => classes.add(c)));
+                const sel = document.getElementById('spell-filter');
+                Array.from(classes).sort().forEach(c => {
+                    sel.innerHTML += `<option value="${c}">${c}</option>`;
                 });
-
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('landing-view').style.display = 'block';
-            } catch (e) {
-                document.getElementById('loading').innerHTML = '載入失敗，請確認 JSON 檔案存在且格式正確。';
-                console.error(e);
-            }
+            } catch(e) { alert('資料載入失敗，請確保 JSON 檔案位於 data/ 資料夾中。'); }
         }
 
-        function navigateTo(sec) {
-            currentSection = sec;
-            document.getElementById('landing-view').style.display = 'none';
+        function nav(sec) {
+            currentSec = sec;
+            document.getElementById('menu-view').style.display = 'none';
             document.getElementById('content-view').style.display = 'block';
-            document.getElementById('section-title').textContent = 
-                sec === 'races' ? '種族列表' : sec === 'classes' ? '職業列表' : '法術列表';
-            document.getElementById('spellClassFilter').style.display = sec === 'spells' ? 'block' : 'none';
+            document.getElementById('spell-filter').style.display = sec === 'spells' ? 'block' : 'none';
+            document.getElementById('search').value = '';
             render();
         }
 
-        function showLanding() {
+        function showMenu() {
             document.getElementById('content-view').style.display = 'none';
-            document.getElementById('landing-view').style.display = 'block';
+            document.getElementById('menu-view').style.display = 'flex';
         }
 
         function render() {
-            const grid = document.getElementById('content-grid');
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filter = document.getElementById('spellClassFilter').value;
+            const term = document.getElementById('search').value.toLowerCase();
+            const filter = document.getElementById('spell-filter').value;
+            const grid = document.getElementById('grid');
             grid.innerHTML = '';
+            
+            const data = db[currentSec];
+            if(!data) return;
 
-            const data = db[currentSection];
-            if (!data) return;
+            Object.entries(data).forEach(([k, v]) => {
+                if(currentSec === 'spells' && filter && !v.classes?.includes(filter)) return;
+                const name = (v.name || k).toLowerCase();
+                const en = (v.name_en || '').toLowerCase();
+                if(!name.includes(term) && !en.includes(term)) return;
 
-            Object.entries(data).forEach(([key, item]) => {
-                const name = (item.name || key).toLowerCase();
-                const en = (item.name_en || '').toLowerCase();
-                if (!name.includes(term) && !en.includes(term)) return;
+                const div = document.createElement('div');
+                div.className = 'card';
+                div.innerHTML = `<h3>${v.name}</h3><small>${v.name_en || ''}</small>`;
                 
-                if (currentSection === 'spells' && filter) {
-                    if (!item.classes || !item.classes.includes(filter)) return;
-                }
+                // Add quick info tags
+                if(currentSec === 'races') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.size || ''} | ${v.speed}呎</div>`;
+                if(currentSec === 'classes') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">HD: ${v.hit_die}</div>`;
+                if(currentSec === 'spells') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.level==0?'戲法':v.level+'環'} | ${v.school}</div>`;
 
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `<h3>${item.name || key}</h3><div class="subtitle">${item.name_en || ''}</div>`;
-                
-                // 根據類型顯示簡短資訊
-                if (currentSection === 'races') card.innerHTML += `<div style="font-size:0.9em; color:#666;">${item.speed}呎 | ${item.size}</div>`;
-                if (currentSection === 'classes') card.innerHTML += `<div style="font-size:0.9em; color:#666;">HD: ${item.hit_die}</div>`;
-                if (currentSection === 'spells') card.innerHTML += `<div style="font-size:0.9em; color:#666;">${item.level === 0 ? '戲法' : item.level+'環'} | ${item.school}</div>`;
-
-                card.onclick = () => showDetail(item);
-                grid.appendChild(card);
+                div.onclick = () => openModal(k, v);
+                grid.appendChild(div);
             });
         }
 
-        function showDetail(item) {
-            const modalBody = document.getElementById('modal-body');
-            let html = `<h2>${item.name} <small style="font-size:0.6em; color:#666;">${item.name_en || ''}</small></h2><hr><br>`;
+        function openModal(key, item) {
+            const box = document.getElementById('modal-content');
+            let html = `<h2>${item.name} <small style="color:#888; font-size:0.6em">(${item.name_en})</small></h2><hr style="margin:15px 0; border:0; border-top:1px solid #eee;">`;
             
-            html += `<p>${item.description || '無描述'}</p><br>`;
-
-            // --- 處理職業 (Classes) 與其子職業 ---
-            if (currentSection === 'classes') {
-                html += `<p><strong>生命骰:</strong> ${item.hit_die}</p>`;
-                html += `<p><strong>專精武器:</strong> ${(item.weapon_proficiency||[]).join(', ')}</p>`;
+            // --- RACES ---
+            if(currentSec === 'races') {
+                html += formatBonuses(item.ability_bonuses);
+                html += `<p style="margin:10px 0; line-height:1.6;">${item.description}</p>`;
+                html += `<p><strong>速度:</strong> ${item.speed} 呎</p>`;
+                html += `<p><strong>體型:</strong> ${item.size}</p>`;
                 
-                // 顯示子職業
-                if (item.subclasses) {
-                    html += `<div class="sub-section"><h4>子職業 (Subclasses)</h4>`;
-                    Object.values(item.subclasses).forEach(sub => {
-                        html += `<div class="sub-item">
-                            <strong>${sub.name} (${sub.name_en})</strong>
-                            <p style="font-size:0.9em; margin-top:5px;">${sub.description}</p>
-                        </div>`;
-                    });
-                    html += `</div>`;
-                }
-            }
-
-            // --- 處理種族 (Races) 與其子種族 ---
-            else if (currentSection === 'races') {
-                html += `<p><strong>速度:</strong> ${item.speed} 呎</p><p><strong>體型:</strong> ${item.size}</p>`;
-                
-                // 顯示特質
-                if (item.traits) {
-                    html += `<br><strong>種族特質:</strong><ul style="padding-left:20px; margin-top:5px;">`;
+                if(item.traits) {
+                    html += `<div style="margin-top:15px;"><strong>種族特質:</strong></div>`;
+                    html += `<ul style="padding-left:20px; margin-top:5px;">`;
                     Object.values(item.traits).forEach(t => {
-                        html += `<li><span class="tag">${t.name}</span> ${t.description}</li>`;
+                        html += `<li><strong>${t.name}:</strong> ${t.description}</li>`;
                     });
                     html += `</ul>`;
                 }
 
-                // 顯示子種族
-                if (item.subraces && Object.keys(item.subraces).length > 0) {
-                    html += `<div class="sub-section"><h4>亞種/子種族 (Subraces)</h4>`;
-                    Object.values(item.subraces).forEach(sub => {
-                        html += `<div class="sub-item">
-                            <strong>${sub.name} (${sub.name_en})</strong>
-                            <p style="font-size:0.9em; margin-top:5px;">${sub.description}</p>
-                            ${sub.traits ? `<div style="margin-top:5px; font-size:0.85em; color:#555;">特質: ` + Object.values(sub.traits).map(t=>t.name).join(', ') + `</div>` : ''}
+                if(item.subraces) {
+                    html += `<h3 style="margin-top:20px;">亞種 / 子種族</h3><div class="accordion">`;
+                    Object.values(item.subraces).forEach((sub, idx) => {
+                        html += `
+                        <div class="acc-item">
+                            <button class="acc-btn" onclick="toggleAcc(this)">${sub.name}</button>
+                            <div class="acc-panel">
+                                ${formatBonuses(sub.ability_bonuses)}
+                                <p>${sub.description}</p>
+                                ${sub.traits ? renderTraits(sub.traits) : ''}
+                            </div>
+                        </div>`;
+                    });
+                    html += `</div>`;
+                }
+            }
+            
+            // --- CLASSES ---
+            else if(currentSec === 'classes') {
+                html += `<p style="margin-bottom:10px;">${item.description}</p>`;
+                html += `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
+                    <span class="stat-tag">生命骰: ${item.hit_die}</span>
+                    <span class="stat-tag">豁免: ${(item.saving_throws||[]).join(', ')}</span>
+                </div>`;
+
+                if(item.subclasses) {
+                    html += `<h3 style="margin-top:20px;">子職業 (Subclasses)</h3><div class="accordion">`;
+                    Object.values(item.subclasses).forEach(sub => {
+                        html += `
+                        <div class="acc-item">
+                            <button class="acc-btn" onclick="toggleAcc(this)">${sub.name}</button>
+                            <div class="acc-panel">
+                                <p style="font-style:italic; color:#555; margin-bottom:10px;">${sub.description}</p>
+                                ${renderFeatures(sub.features)}
+                            </div>
                         </div>`;
                     });
                     html += `</div>`;
                 }
             }
 
-            // --- 處理法術 (Spells) ---
-            else if (currentSection === 'spells') {
-                const lv = item.level === 0 || item.level === "0" ? '戲法' : `${item.level}環`;
-                html += `<p><strong>${lv} ${item.school}系</strong></p>`;
-                html += `<p><strong>施法時間:</strong> ${item.casting_time}</p>`;
-                html += `<p><strong>射程:</strong> ${item.range}</p>`;
-                html += `<p><strong>成分:</strong> ${item.components}</p>`;
-                html += `<p><strong>持續:</strong> ${item.duration}</p>`;
-                if (item.classes) html += `<br><p><small>可用職業: ${item.classes.join(', ')}</small></p>`;
+            // --- SPELLS ---
+            else {
+                html += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; background:#f9f9f9; padding:15px; border-radius:8px; margin-bottom:15px;">
+                    <div><strong>環級:</strong> ${item.level==0?'戲法':item.level+'環'}</div>
+                    <div><strong>學派:</strong> ${item.school}</div>
+                    <div><strong>施法時間:</strong> ${item.casting_time}</div>
+                    <div><strong>射程:</strong> ${item.range}</div>
+                    <div><strong>成分:</strong> ${item.components}</div>
+                    <div><strong>持續:</strong> ${item.duration}</div>
+                </div>`;
+                html += `<p style="line-height:1.8;">${item.description}</p>`;
+                if(item.classes) html += `<p style="margin-top:15px; color:#666; font-size:0.9em;"><strong>可用職業:</strong> ${item.classes.join(', ')}</p>`;
             }
 
-            modalBody.innerHTML = html;
+            box.innerHTML = html;
             document.getElementById('modal').classList.add('active');
         }
 
-        function closeModal() { document.getElementById('modal').classList.remove('active'); }
-        document.getElementById('searchInput').addEventListener('input', () => setTimeout(render, 300));
-        document.getElementById('spellClassFilter').addEventListener('change', render);
+        // Helpers
+        function formatBonuses(bonuses) {
+            if(!bonuses) return '';
+            let html = '<div style="margin-bottom:10px;">';
+            Object.entries(bonuses).forEach(([k, v]) => {
+                const label = abilityMap[k] || k;
+                html += `<span class="stat-tag">${label} +${v}</span>`;
+            });
+            html += '</div>';
+            return html;
+        }
 
-        loadData();
+        function renderTraits(traits) {
+            let html = '<ul style="margin-top:10px; padding-left:20px;">';
+            Object.values(traits).forEach(t => {
+                html += `<li><strong>${t.name}:</strong> ${t.description}</li>`;
+            });
+            html += '</ul>';
+            return html;
+        }
+
+        function renderFeatures(features) {
+            if(!features) return '';
+            // Sort by level key if possible
+            const levels = Object.keys(features).sort((a,b)=>parseInt(a)-parseInt(b));
+            let html = '';
+            levels.forEach(lv => {
+                const feat = features[lv];
+                // Sometimes features is an object of objects, or just one object
+                // If structure is features: { "3": { "name":..., "desc":... } }
+                // OR features: { "3": { "feature1": {...}, "feature2": {...} } }
+                
+                // Let's assume structure from previous JSON: features -> level -> list of named features
+                Object.values(feat).forEach(f => {
+                     // Check if f has name/description (single feature) or needs deeper iteration
+                     if(f.name && f.description) {
+                        html += `<div class="feature-block">
+                            <strong>[Lv.${lv}] ${f.name}</strong>
+                            <p style="font-size:0.95em; color:#444; margin-top:3px;">${f.description}</p>
+                        </div>`;
+                     } else {
+                         // Nested features
+                         Object.values(f).forEach(subF => {
+                             if(subF.name) {
+                                html += `<div class="feature-block">
+                                    <strong>[Lv.${lv}] ${subF.name}</strong>
+                                    <p style="font-size:0.95em; color:#444; margin-top:3px;">${subF.description}</p>
+                                </div>`;
+                             }
+                         });
+                     }
+                });
+            });
+            return html;
+        }
+
+        function toggleAcc(btn) {
+            btn.classList.toggle('active');
+            const panel = btn.nextElementSibling;
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        init();
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     "description": "矮人是堅韌如同大地本身的戰士與工匠，他們居住在山脈深處的宏偉廳堂中。",
     "speed": 25,
     "size": "中型",
+    "ability_bonuses": { "con": 2 },
     "traits": {
       "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
       "dwarven_resilience": { "name": "矮人韌性", "description": "對毒素傷害有抗性，對抗毒素的豁免有優勢。" }
@@ -14,8 +15,18 @@
         "name": "丘陵矮人",
         "name_en": "Hill Dwarf",
         "description": "丘陵矮人具有敏銳的感知和強韌的生命力。",
+        "ability_bonuses": { "wis": 1 },
         "traits": {
           "dwarven_toughness": { "name": "矮人健壯", "description": "生命值上限增加 1，且每次升級再增加 1。" }
+        }
+      },
+      "mountain_dwarf": {
+        "name": "山地矮人",
+        "name_en": "Mountain Dwarf",
+        "description": "山地矮人強壯且適應艱苦環境。",
+        "ability_bonuses": { "str": 2 },
+        "traits": {
+          "dwarven_armor_training": { "name": "矮人護甲訓練", "description": "獲得輕型與中型護甲熟練。" }
         }
       }
     }
@@ -26,6 +37,7 @@
     "description": "精靈是優雅、長壽且與魔法有著緊密連結的種族。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "dex": 2 },
     "traits": {
       "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
       "fey_ancestry": { "name": "精靈血統", "description": "對抗魅惑有優勢，無法被魔法催眠。" },
@@ -36,8 +48,30 @@
         "name": "高等精靈",
         "name_en": "High Elf",
         "description": "高等精靈擁有敏銳的智力並精通至少一種魔法。",
+        "ability_bonuses": { "int": 1 },
         "traits": {
           "cantrip": { "name": "戲法", "description": "從法師法術列表中選擇一個戲法。" }
+        }
+      },
+      "wood_elf": {
+        "name": "木精靈",
+        "name_en": "Wood Elf",
+        "description": "木精靈擁有敏銳的感官和直覺，且步伐輕盈。",
+        "ability_bonuses": { "wis": 1 },
+        "traits": {
+            "fleet_of_foot": { "name": "輕盈步伐", "description": "基礎步行速度增加至 35 呎。" },
+            "mask_of_the_wild": { "name": "野性面具", "description": "即使只有樹葉或大雨等輕微遮蔽，也可嘗試躲藏。" }
+        }
+      },
+       "drow": {
+        "name": "黑暗精靈",
+        "name_en": "Drow",
+        "description": "居住在地底幽暗地域的精靈。",
+        "ability_bonuses": { "cha": 1 },
+        "traits": {
+            "superior_darkvision": { "name": "高等黑暗視覺", "description": "黑暗視覺範圍為 120 呎。" },
+            "sunlight_sensitivity": { "name": "日光敏感", "description": "在陽光下，攻擊檢定與依賴視覺的感知檢定具有劣勢。" },
+            "drow_magic": { "name": "卓爾魔法", "description": "習得舞光術；3級妖火術；5級黑暗術。" }
         }
       }
     }
@@ -48,17 +82,29 @@
     "description": "半身人是樂觀、喜歡舒適生活且運氣極佳的小型種族。",
     "speed": 25,
     "size": "小型",
+    "ability_bonuses": { "dex": 2 },
     "traits": {
       "lucky": { "name": "幸運", "description": "攻擊、屬性或豁免檢定擲出 1 時可重擲。" },
-      "brave": { "name": "勇敢", "description": "對抗恐懼的豁免有優勢。" }
+      "brave": { "name": "勇敢", "description": "對抗恐懼的豁免有優勢。" },
+      "halfling_nimbleness": { "name": "半身人靈巧", "description": "可穿越體型比你大的生物佔據的空間。" }
     },
     "subraces": {
       "lightfoot_halfling": {
         "name": "輕足半身人",
         "name_en": "Lightfoot Halfling",
         "description": "輕足半身人擅長隱藏和社交。",
+        "ability_bonuses": { "cha": 1 },
         "traits": {
           "naturally_stealthy": { "name": "天生隱蔽", "description": "當被體型大於你的生物遮蔽時，你可以嘗試躲藏。" }
+        }
+      },
+      "stout_halfling": {
+        "name": "強心半身人",
+        "name_en": "Stout Halfling",
+        "description": "強心半身人血脈中可能帶有矮人血統。",
+        "ability_bonuses": { "con": 1 },
+        "traits": {
+            "stout_resilience": { "name": "強心韌性", "description": "對毒素傷害有抗性，對抗毒素的豁免有優勢。" }
         }
       }
     }
@@ -69,8 +115,9 @@
     "description": "人類是適應力最強、野心最大的種族。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "str": 1, "dex": 1, "con": 1, "int": 1, "wis": 1, "cha": 1 },
     "traits": {
-      "versatile": { "name": "多才多藝", "description": "全屬性 +1 (標準) 或 兩項屬性 +1 並獲得專長 (變體)。" }
+      "versatile": { "name": "多才多藝", "description": "全屬性 +1 (標準人類)。" }
     },
     "subraces": {}
   },
@@ -80,6 +127,7 @@
     "description": "生於龍與神之間的驕傲種族，擁有龍的吐息武器。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "str": 2, "cha": 1 },
     "traits": {
       "breath_weapon": { "name": "吐息武器", "description": "根據龍族血統噴吐能量。" },
       "damage_resistance": { "name": "傷害抗性", "description": "對應龍族血統的能量傷害抗性。" }
@@ -92,6 +140,7 @@
     "description": "侏儒是充滿好奇心與創造力的小型種族。",
     "speed": 25,
     "size": "小型",
+    "ability_bonuses": { "int": 2 },
     "traits": {
       "gnome_cunning": { "name": "侏儒狡思", "description": "對抗魔法的智力、感知、魅力豁免有優勢。" }
     },
@@ -100,10 +149,21 @@
         "name": "岩侏儒",
         "name_en": "Rock Gnome",
         "description": "岩侏儒以發明家和工匠聞名。",
+        "ability_bonuses": { "con": 1 },
         "traits": {
           "artificers_lore": { "name": "工匠知識", "description": "對魔法物品、煉金物件的歷史檢定加倍熟練。" },
           "tinker": { "name": "修補匠", "description": "可以製作微型發條裝置。" }
         }
+      },
+      "forest_gnome": {
+          "name": "森林侏儒",
+          "name_en": "Forest Gnome",
+          "description": "森林侏儒具有天生的幻術天賦和與小動物溝通的能力。",
+          "ability_bonuses": { "dex": 1 },
+          "traits": {
+              "natural_illusionist": { "name": "天生幻術師", "description": "習得「像是術」戲法。" },
+              "speak_with_small_beasts": { "name": "與小獸溝通", "description": "可以透過聲音和動作與小型野獸進行簡單交流。" }
+          }
       }
     }
   },
@@ -113,6 +173,7 @@
     "description": "結合了精靈的優雅與人類的活力。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "cha": 2, "any_one": 1, "any_other": 1 },
     "traits": {
       "fey_ancestry": { "name": "精靈血統", "description": "對抗魅惑有優勢，免疫魔法睡眠。" },
       "skill_versatility": { "name": "技能多樣性", "description": "獲得兩個自選技能熟練。" }
@@ -125,9 +186,11 @@
     "description": "擁有獸人的力量與人類的決心。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "str": 2, "con": 1 },
     "traits": {
       "relentless_endurance": { "name": "堅忍不拔", "description": "生命值降至 0 時可改為 1 (長休一次)。" },
-      "savage_attacks": { "name": "兇蠻攻擊", "description": "近戰重擊時額外骰一個武器傷害骰。" }
+      "savage_attacks": { "name": "兇蠻攻擊", "description": "近戰重擊時額外骰一個武器傷害骰。" },
+      "menacing": { "name": "威嚇", "description": "獲得威嚇技能熟練。" }
     },
     "subraces": {}
   },
@@ -137,6 +200,7 @@
     "description": "帶有地獄血統，常受世人誤解。",
     "speed": 30,
     "size": "中型",
+    "ability_bonuses": { "cha": 2, "int": 1 },
     "traits": {
       "darkvision": { "name": "黑暗視覺", "description": "在微光或黑暗中可視 60 呎。" },
       "hellish_resistance": { "name": "地獄抗性", "description": "對火焰傷害有抗性。" },

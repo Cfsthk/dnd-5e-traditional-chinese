@@ -8,60 +8,8 @@
     "range": "60呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "你向一個或兩個你能看到且在範圍內的生物投擲一個酸液球。如果目標相鄰,可以同時攻擊兩個目標。目標必須成功通過一次敏捷豁免,否則受到1d6點強酸傷害。",
-    "classes": [
-      "wizard",
-      "sorcerer"
-    ]
-  },
-  "blade_ward": {
-    "name": "刃鋒結界",
-    "name_en": "Blade Ward",
-    "level": 0,
-    "school": "防護",
-    "casting_time": "1動作",
-    "range": "自身",
-    "components": "V, S",
-    "duration": "1輪",
-    "description": "你伸出手並描繪保護符文。直到你的下一回合結束前,你對武器攻擊造成的揮砍、穿刺和鈍擊傷害有抗性。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "chill_touch": {
-    "name": "寒冷之觸",
-    "name_en": "Chill Touch",
-    "level": 0,
-    "school": "死靈",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S",
-    "duration": "1輪",
-    "description": "你創造出一隻幽靈般的骷髏手,對範圍內你能看到的一個生物進行遠程法術攻擊。命中時造成1d8點黯蝕傷害,目標直到你的下一回合開始前無法恢復生命值。如果目標是不死生物,其下一次攻擊檢定有劣勢。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "dancing_lights": {
-    "name": "舞光術",
-    "name_en": "Dancing Lights",
-    "level": 0,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "你創造至多四個火炬大小的光源,它們在持續時間內看起來像火炬、燈籠或發光球體。你可以用附贈動作移動這些光源至多60呎。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "你投擲一個酸液球。選擇範圍內一個生物，或兩個相距不超過5呎的生物。目標必須通過敏捷豁免，否則受到 1d6 強酸傷害。",
+    "classes": ["法師", "術士"]
   },
   "eldritch_blast": {
     "name": "魔能爆",
@@ -72,10 +20,8 @@
     "range": "120呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "你向一個生物發射一道破裂能量束。進行一次遠程法術攻擊。命中時造成1d10點力場傷害。5級時創造兩道能量束,11級時三道,17級時四道。",
-    "classes": [
-      "warlock"
-    ]
+    "description": "向目標發射爆裂的能量束。進行一次遠程法術攻擊，命中造成 1d10 力場傷害。高等級時可發射多發。",
+    "classes": ["邪術師"]
   },
   "fire_bolt": {
     "name": "火焰箭",
@@ -86,11 +32,8 @@
     "range": "120呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "你向一個生物或物體投擲一粒火焰。進行一次遠程法術攻擊。命中時造成1d10點火焰傷害。未被穿戴或攜帶的可燃物品會被點燃。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "投擲一團火焰。進行一次遠程法術攻擊，命中造成 1d10 火焰傷害。易燃物品會被點燃。",
+    "classes": ["法師", "術士"]
   },
   "guidance": {
     "name": "神導術",
@@ -100,12 +43,9 @@
     "casting_time": "1動作",
     "range": "接觸",
     "components": "V, S",
-    "duration": "專注,至多1分鐘",
-    "description": "你接觸一個自願的生物。持續時間內,該生物可以在進行一次屬性檢定時擲一個d4並將結果加到檢定中。",
-    "classes": [
-      "cleric",
-      "druid"
-    ]
+    "duration": "專注，至多1分鐘",
+    "description": "觸碰一個自願生物。在法術結束前，目標可以選擇一次屬性檢定，並加上擲出的 d4 數值。",
+    "classes": ["牧師", "德魯伊"]
   },
   "light": {
     "name": "光亮術",
@@ -116,13 +56,8 @@
     "range": "接觸",
     "components": "V, M",
     "duration": "1小時",
-    "description": "你接觸一個物體,使其在20呎半徑內發出明亮光線,再往外20呎範圍內發出微光。",
-    "classes": [
-      "bard",
-      "cleric",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "觸碰一個物體，使其發出半徑20呎的明亮光照，以及額外20呎的微光光照。",
+    "classes": ["吟遊詩人", "牧師", "法師", "術士"]
   },
   "mage_hand": {
     "name": "法師之手",
@@ -133,50 +68,11 @@
     "range": "30呎",
     "components": "V, S",
     "duration": "1分鐘",
-    "description": "你創造一隻幽靈般的手。你可以用動作控制這隻手操縱物體、開門或容器、存取或拿取物品。它無法攻擊、啟動魔法物品或攜帶超過10磅的物品。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "mending": {
-    "name": "修復術",
-    "name_en": "Mending",
-    "level": 0,
-    "school": "變化",
-    "casting_time": "1分鐘",
-    "range": "接觸",
-    "components": "V, S, M",
-    "duration": "立即",
-    "description": "此法術修復物體上的單一裂縫、破損或撕裂,只要破損不超過1呎。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid",
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "message": {
-    "name": "傳訊術",
-    "name_en": "Message",
-    "level": 0,
-    "school": "變化",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S, M",
-    "duration": "1輪",
-    "description": "你指向範圍內你能看到的一個生物並悄聲說一條訊息。目標(只有目標)能聽到這條訊息並能以悄聲回覆。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "創造一隻幽靈手浮在空中。你可以用動作控制它操縱物體、開門或拿取物品，但不能攻擊或啟動魔法物品。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "minor_illusion": {
-    "name": "次級幻影",
+    "name": "像是術",
     "name_en": "Minor Illusion",
     "level": 0,
     "school": "幻術",
@@ -184,33 +80,11 @@
     "range": "30呎",
     "components": "S, M",
     "duration": "1分鐘",
-    "description": "你創造一個聲音或物體的幻象。如果是聲音,可以是任何你選擇的音量。如果是物體,必須不大於5呎立方體。幻象是靜態的。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "poison_spray": {
-    "name": "毒霧噴射",
-    "name_en": "Poison Spray",
-    "level": 0,
-    "school": "咒法",
-    "casting_time": "1動作",
-    "range": "10呎",
-    "components": "V, S",
-    "duration": "立即",
-    "description": "你向範圍內的一個生物噴射毒霧。目標必須通過體質豁免,失敗則受到1d12點毒素傷害。",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "創造一個聲音或圖像的幻影。圖像必須是靜止的且不超過5呎立方。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "prestidigitation": {
-    "name": "魔法伎倆",
+    "name": "魔法技倆",
     "name_en": "Prestidigitation",
     "level": 0,
     "school": "變化",
@@ -218,28 +92,8 @@
     "range": "10呎",
     "components": "V, S",
     "duration": "至多1小時",
-    "description": "這是一個小戲法,新手施法者用來練習。你創造一個無害的感官效果、點燃或熄滅火焰、清潔或弄髒物品、冷卻或加熱物品、製造標記或符號,或創造小物品幻象。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "ray_of_frost": {
-    "name": "寒冰射線",
-    "name_en": "Ray of Frost",
-    "level": 0,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V, S",
-    "duration": "立即",
-    "description": "一道藍白色的寒冰光束射向範圍內的一個生物。進行遠程法術攻擊。命中時造成1d8點寒冷傷害,且目標速度降低10呎直到你的下一回合開始。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "施展一個無害的小戲法，例如製造火花、清潔物品、加熱食物或製造短暫的幻象印記。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "sacred_flame": {
     "name": "聖火術",
@@ -250,10 +104,8 @@
     "range": "60呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "火焰般的光芒降臨到範圍內你能看到的一個生物上。目標必須通過敏捷豁免,失敗則受到1d8點光耀傷害。目標無法從掩蔽中獲得此豁免的好處。",
-    "classes": [
-      "cleric"
-    ]
+    "description": "火焰般的輝光降臨。目標必須通過敏捷豁免，否則受到 1d8 光耀傷害。此傷害無視掩護。",
+    "classes": ["牧師"]
   },
   "shocking_grasp": {
     "name": "電爪",
@@ -264,92 +116,23 @@
     "range": "接觸",
     "components": "V, S",
     "duration": "立即",
-    "description": "閃電從你的手中湧出,試圖電擊一個生物。進行近戰法術攻擊。命中時造成1d8點閃電傷害,目標無法使用反應直到其下一回合開始。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "從手中放出閃電。進行一次近戰法術攻擊（對穿金屬甲目標有優勢），命中造成 1d8 閃電傷害，且目標該回合無法使用反應。",
+    "classes": ["法師", "術士"]
   },
-  "thaumaturgy": {
-    "name": "神術",
-    "name_en": "Thaumaturgy",
-    "level": 0,
-    "school": "變化",
-    "casting_time": "1動作",
-    "range": "30呎",
-    "components": "V",
-    "duration": "至多1分鐘",
-    "description": "你展現一個小型超自然跡象。你可以放大聲音、讓火焰閃爍、製造無害震動、產生聲音、打開未鎖的門窗,或改變眼睛外觀。",
-    "classes": [
-      "cleric"
-    ]
-  },
-  "true_strike": {
-    "name": "克敵機先",
-    "name_en": "True Strike",
-    "level": 0,
-    "school": "預言",
-    "casting_time": "1動作",
-    "range": "30呎",
-    "components": "S",
-    "duration": "專注,至多1輪",
-    "description": "你伸出手指向範圍內的一個目標。你的下一回合攻擊該目標時有優勢。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "vicious_mockery": {
-    "name": "惡言譏諷",
-    "name_en": "Vicious Mockery",
-    "level": 0,
-    "school": "惑控",
-    "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V",
-    "duration": "立即",
-    "description": "你對範圍內你能看到的一個生物發出一串侮辱。目標必須通過感知豁免,失敗則受到1d4點心靈傷害,且其下一次攻擊檢定有劣勢。",
-    "classes": [
-      "bard"
-    ]
-  },
-  "burning_hands": {
-    "name": "燃燒之手",
-    "name_en": "Burning Hands",
-    "level": 1,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "自身(15呎錐狀)",
-    "components": "V, S",
-    "duration": "立即",
-    "description": "你的雙手噴出火焰薄片。15呎錐狀範圍內的每個生物必須進行敏捷豁免。失敗則受到3d6點火焰傷害,成功則傷害減半。使用更高環位施放時,每高一環多1d6傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "charm_person": {
-    "name": "魅惑人類",
-    "name_en": "Charm Person",
+  "bless": {
+    "name": "祝福術",
+    "name_en": "Bless",
     "level": 1,
     "school": "惑控",
     "casting_time": "1動作",
     "range": "30呎",
-    "components": "V, S",
-    "duration": "1小時",
-    "description": "你試圖魅惑範圍內你能看到的一個類人生物。目標必須進行感知豁免,如果你或你的同伴正在與其戰鬥則有優勢。失敗則被你魅惑直到法術結束或你或你的同伴傷害它。",
-    "classes": [
-      "bard",
-      "druid",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "components": "V, S, M",
+    "duration": "專注，至多1分鐘",
+    "description": "祝福至多三個生物。他們在進行攻擊檢定或豁免檢定時，可以額外加上 d4 的數值。",
+    "classes": ["牧師", "聖騎士"]
   },
   "cure_wounds": {
-    "name": "治療傷害",
+    "name": "治療傷勢",
     "name_en": "Cure Wounds",
     "level": 1,
     "school": "塑能",
@@ -357,14 +140,8 @@
     "range": "接觸",
     "components": "V, S",
     "duration": "立即",
-    "description": "你接觸的生物恢復1d8+你的施法屬性調整值的生命值。此法術對不死生物和構裝體無效。使用更高環位施放時,每高一環多1d8治療。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid",
-      "paladin",
-      "ranger"
-    ]
+    "description": "觸碰一個生物，為其恢復 1d8 + 施法關鍵屬性調整值 的生命值。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊", "聖騎士", "遊俠"]
   },
   "detect_magic": {
     "name": "偵測魔法",
@@ -374,36 +151,24 @@
     "casting_time": "1動作",
     "range": "自身",
     "components": "V, S",
-    "duration": "專注,至多10分鐘",
-    "description": "在持續時間內,你感知30呎內的魔法存在。你可以用動作看到該範圍內任何魔法光環,並得知其魔法學派。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid",
-      "paladin",
-      "ranger",
-      "sorcerer",
-      "wizard"
-    ]
+    "duration": "專注，至多10分鐘",
+    "description": "感知30呎內魔法的存在。可以看到魔法物品或法術效果發出的靈光，並辨識其學派。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊", "聖騎士", "遊俠", "法師", "術士"]
   },
-  "disguise_self": {
-    "name": "易容術",
-    "name_en": "Disguise Self",
+  "guiding_bolt": {
+    "name": "導引箭",
+    "name_en": "Guiding Bolt",
     "level": 1,
-    "school": "幻術",
+    "school": "塑能",
     "casting_time": "1動作",
-    "range": "自身",
+    "range": "120呎",
     "components": "V, S",
-    "duration": "1小時",
-    "description": "你改變自己的外觀,包括服裝、盔甲、武器和其他物品。你可以讓自己看起來高或矮1呎,胖或瘦,但必須保持基本體型。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "duration": "1輪",
+    "description": "射出一道光束。進行遠程法術攻擊，命中造成 4d6 光耀傷害，且下一次對該目標的攻擊檢定具有優勢。",
+    "classes": ["牧師"]
   },
   "healing_word": {
-    "name": "醫療之語",
+    "name": "治癒真言",
     "name_en": "Healing Word",
     "level": 1,
     "school": "塑能",
@@ -411,12 +176,8 @@
     "range": "60呎",
     "components": "V",
     "duration": "立即",
-    "description": "範圍內你能看到的一個生物恢復1d4+你的施法屬性調整值的生命值。此法術對不死生物和構裝體無效。使用更高環位時,每高一環多1d4治療。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid"
-    ]
+    "description": "能看見的生物恢復 1d4 + 施法關鍵屬性調整值 的生命值。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊"]
   },
   "mage_armor": {
     "name": "法師護甲",
@@ -427,11 +188,8 @@
     "range": "接觸",
     "components": "V, S, M",
     "duration": "8小時",
-    "description": "你接觸一個未穿戴盔甲的自願生物。保護性魔法力場環繞目標,直到法術結束。目標的AC變為13+其敏捷調整值。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "觸碰一個未穿甲生物，其基礎 AC 變為 13 + 敏捷調整值。",
+    "classes": ["法師", "術士"]
   },
   "magic_missile": {
     "name": "魔法飛彈",
@@ -442,11 +200,8 @@
     "range": "120呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "你創造三個發光飛彈。每個飛彈擊中範圍內你選擇的一個生物,造成1d4+1點力場傷害。使用更高環位時,每高一環多一個飛彈。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "創造三支發光的魔法飛鏢。每支自動命中目標，造成 1d4 + 1 力場傷害。",
+    "classes": ["法師", "術士"]
   },
   "shield": {
     "name": "護盾術",
@@ -457,11 +212,8 @@
     "range": "自身",
     "components": "V, S",
     "duration": "1輪",
-    "description": "當你被攻擊命中或成為魔法飛彈目標時的反應。無形的魔法力場保護你。直到你的下一回合開始,你的AC+5,且不受魔法飛彈傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "被攻擊或成為魔法飛彈目標時施放。直到下回合開始，AC +5 且免疫魔法飛彈。",
+    "classes": ["法師", "術士"]
   },
   "sleep": {
     "name": "睡眠術",
@@ -472,12 +224,8 @@
     "range": "90呎",
     "components": "V, S, M",
     "duration": "1分鐘",
-    "description": "範圍內20呎半徑內的生物陷入魔法沉睡。從最低當前HP的生物開始,擲5d8。該值等於此法術能影響的總HP。不死生物和免疫魅惑的生物不受影響。使用更高環位時,每高一環多2d8。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "骰 5d8，按照當前生命值由低到高使範圍內的生物陷入沉睡，直到數值耗盡或持續時間結束。",
+    "classes": ["吟遊詩人", "法師", "術士"]
   },
   "thunderwave": {
     "name": "雷鳴波",
@@ -485,16 +233,11 @@
     "level": 1,
     "school": "塑能",
     "casting_time": "1動作",
-    "range": "自身(15呎立方體)",
+    "range": "15呎立方",
     "components": "V, S",
     "duration": "立即",
-    "description": "雷鳴之力從你處擴散。15呎立方範圍內的每個生物必須進行體質豁免。失敗則受到2d8點雷鳴傷害並被推開10呎。成功則傷害減半且不被推開。使用更高環位時,每高一環多1d8傷害。",
-    "classes": [
-      "bard",
-      "druid",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "發出雷鳴衝擊波。範圍內生物體質豁免失敗則受 2d8 雷鳴傷害並被推開10呎。",
+    "classes": ["吟遊詩人", "德魯伊", "法師", "術士"]
   },
   "darkness": {
     "name": "黑暗術",
@@ -504,13 +247,9 @@
     "casting_time": "1動作",
     "range": "60呎",
     "components": "V, M",
-    "duration": "專注,至多10分鐘",
-    "description": "魔法黑暗從範圍內一點擴散,填滿15呎半徑球體。黑暗繞過角落。黑暗視覺無法穿透,非魔法光線無法照亮。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "專注，至多10分鐘",
+    "description": "創造半徑15呎的魔法黑暗，普通光源和黑暗視覺無法看穿。",
+    "classes": ["術士", "邪術師", "法師"]
   },
   "hold_person": {
     "name": "人類定身術",
@@ -520,16 +259,9 @@
     "casting_time": "1動作",
     "range": "60呎",
     "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "選擇範圍內你能看到的一個類人生物。目標必須通過感知豁免否則在持續時間內被麻痺。目標可在每個回合結束時重複豁免。使用更高環位時,每高一環多一個目標。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "專注，至多1分鐘",
+    "description": "選擇一個類人生物，意志豁免失敗則陷入麻痺狀態。每回合結束可重骰豁免。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊", "法師", "術士", "邪術師"]
   },
   "invisibility": {
     "name": "隱形術",
@@ -539,14 +271,9 @@
     "casting_time": "1動作",
     "range": "接觸",
     "components": "V, S, M",
-    "duration": "專注,至多1小時",
-    "description": "你接觸的生物變為隱形,直到法術結束。目標穿戴和攜帶的物品也隱形。如果目標攻擊或施法,法術結束。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "專注，至多1小時",
+    "description": "觸碰一個生物使其隱形。如果該生物進行攻擊或施法，法術提前結束。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "misty_step": {
     "name": "迷蹤步",
@@ -557,12 +284,8 @@
     "range": "自身",
     "components": "V",
     "duration": "立即",
-    "description": "你被銀霧包圍並傳送至多30呎到你能看到的未被占據空間。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "在一陣銀色迷霧中，傳送到30呎內你能看見的未佔據位置。",
+    "classes": ["法師", "術士", "邪術師"]
   },
   "scorching_ray": {
     "name": "灼熱射線",
@@ -573,28 +296,8 @@
     "range": "120呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "你創造三道火焰射線並向範圍內的目標射擊。對每道射線進行遠程法術攻擊。命中時造成2d6點火焰傷害。使用更高環位時,每高一環多一道射線。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "shatter": {
-    "name": "粉碎音波",
-    "name_en": "Shatter",
-    "level": 2,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V, S, M",
-    "duration": "立即",
-    "description": "突然的響亮鈴聲從範圍內一點爆發。10呎半徑球體內的每個生物必須進行體質豁免。失敗則受到3d8點雷鳴傷害,成功則傷害減半。由無機材料製成的生物豁免劣勢。使用更高環位時,每高一環多1d8傷害。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "投擲三道火焰射線。分別進行遠程法術攻擊，每道命中造成 2d6 火焰傷害。",
+    "classes": ["法師", "術士"]
   },
   "spiritual_weapon": {
     "name": "靈體武器",
@@ -605,13 +308,23 @@
     "range": "60呎",
     "components": "V, S",
     "duration": "1分鐘",
-    "description": "你創造一個漂浮的靈體武器。創造時及之後的每個回合,你可以用附贈動作移動它至多20呎並對5呎內的生物進行近戰法術攻擊。命中時造成1d8+你的施法屬性調整值的力場傷害。使用更高環位時,每高兩環多1d8傷害。",
-    "classes": [
-      "cleric"
-    ]
+    "description": "創造一把浮空的幽靈武器。施法時及後續每回合可用附贈動作攻擊，造成 1d8 + 施法屬性調整值 的力場傷害。",
+    "classes": ["牧師"]
+  },
+  "web": {
+    "name": "蛛網術",
+    "name_en": "Web",
+    "level": 2,
+    "school": "咒法",
+    "casting_time": "1動作",
+    "range": "60呎",
+    "components": "V, S, M",
+    "duration": "專注，至多1小時",
+    "description": "創造充滿黏性蛛網的區域（20呎立方）。生物進入需通過敏捷豁免，否則被束縛。",
+    "classes": ["法師", "術士"]
   },
   "counterspell": {
-    "name": "反制法術",
+    "name": "法術反制",
     "name_en": "Counterspell",
     "level": 3,
     "school": "防護",
@@ -619,12 +332,8 @@
     "range": "60呎",
     "components": "S",
     "duration": "立即",
-    "description": "當範圍內你能看到的生物施放法術時的反應。如果該法術是3環或更低,自動失效。4環或更高則進行屬性檢定(DC 10+法術環數),成功則法術失效。使用更高環位時,自動反制該環數或更低的法術。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "打斷一個正在施法的生物。若法術為3環或更低，自動失敗；若更高，需進行屬性檢定（DC 10 + 法術環階）。",
+    "classes": ["法師", "術士", "邪術師"]
   },
   "dispel_magic": {
     "name": "解除魔法",
@@ -635,16 +344,8 @@
     "range": "120呎",
     "components": "V, S",
     "duration": "立即",
-    "description": "選擇範圍內一個生物、物體或魔法效果。該目標上3環或更低的法術結束。4環或更高則進行屬性檢定(DC 10+法術環數),成功則法術結束。使用更高環位時,自動解除該環數或更低的法術。",
-    "classes": [
-      "bard",
-      "cleric",
-      "druid",
-      "paladin",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "選擇一個生物、物體或魔法效應。結束其上所有3環或更低的法術。高環法術需進行檢定。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊", "聖騎士", "法師", "術士", "邪術師"]
   },
   "fireball": {
     "name": "火球術",
@@ -655,11 +356,8 @@
     "range": "150呎",
     "components": "V, S, M",
     "duration": "立即",
-    "description": "從你手指射出一道光芒,在範圍內一點爆炸成火球。20呎半徑球體內的每個生物必須進行敏捷豁免。失敗則受到8d6點火焰傷害,成功則傷害減半。使用更高環位時,每高一環多1d6傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "從指尖射出一道閃光，在指定點爆炸。半徑20呎內的生物敏捷豁免失敗受 8d6 火焰傷害，成功減半。",
+    "classes": ["法師", "術士"]
   },
   "fly": {
     "name": "飛行術",
@@ -669,13 +367,9 @@
     "casting_time": "1動作",
     "range": "接觸",
     "components": "V, S, M",
-    "duration": "專注,至多10分鐘",
-    "description": "你接觸一個自願生物。持續時間內,目標獲得60呎飛行速度。法術結束時,目標下墜除非能阻止墜落。使用更高環位時,每高一環多一個目標。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "專注，至多10分鐘",
+    "description": "觸碰一個自願生物，使其獲得60呎飛行速度。",
+    "classes": ["法師", "術士", "邪術師"]
   },
   "haste": {
     "name": "加速術",
@@ -685,12 +379,9 @@
     "casting_time": "1動作",
     "range": "30呎",
     "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "選擇範圍內一個自願生物。目標速度加倍,AC+2,敏捷豁免有優勢,並在每回合獲得額外一個動作(僅限攻擊、疾走、脫離、躲藏或使用物品)。法術結束時,目標無法移動或行動直到其下一回合結束。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "duration": "專注，至多1分鐘",
+    "description": "目標速度加倍，AC+2，敏捷豁免優勢，每回合獲得一個額外動作（僅限攻擊、疾走、撤離、躲藏或使用物件）。法術結束後目標會暈眩一回合。",
+    "classes": ["法師", "術士"]
   },
   "lightning_bolt": {
     "name": "閃電束",
@@ -698,29 +389,35 @@
     "level": 3,
     "school": "塑能",
     "casting_time": "1動作",
-    "range": "自身(100呎線狀)",
+    "range": "自身（100呎線狀）",
     "components": "V, S, M",
     "duration": "立即",
-    "description": "一道閃電從你處形成100呎長5呎寬的線狀。線上的每個生物必須進行敏捷豁免。失敗則受到8d6點閃電傷害,成功則傷害減半。使用更高環位時,每高一環多1d6傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "發出一道100呎長、5呎寬的閃電。路徑上生物敏捷豁免失敗受 8d6 閃電傷害，成功減半。",
+    "classes": ["法師", "術士"]
   },
   "revivify": {
-    "name": "復生術",
+    "name": "回生術",
     "name_en": "Revivify",
     "level": 3,
     "school": "死靈",
     "casting_time": "1動作",
     "range": "接觸",
-    "components": "V, S, M (價值300gp的鑽石,消耗)",
+    "components": "V, S, M",
     "duration": "立即",
-    "description": "你接觸一個死亡不超過1分鐘的生物。該生物復活並獲得1點生命值。此法術無法復活老死或缺少重要器官的生物。",
-    "classes": [
-      "cleric",
-      "paladin"
-    ]
+    "description": "觸碰一個在最近一分鐘內死亡的生物。該生物以1點生命值復活。消耗價值300gp的鑽石。",
+    "classes": ["牧師", "聖騎士"]
+  },
+  "spirit_guardians": {
+    "name": "靈體守衛",
+    "name_en": "Spirit Guardians",
+    "level": 3,
+    "school": "咒法",
+    "casting_time": "1動作",
+    "range": "自身（15呎半徑）",
+    "components": "V, S, M",
+    "duration": "專注，至多10分鐘",
+    "description": "召喚精魂環繞你。敵人進入範圍或在範圍內開始回合，意志豁免失敗受 3d8 光耀或壞死傷害，且速度減半。",
+    "classes": ["牧師"]
   },
   "banishment": {
     "name": "放逐術",
@@ -730,15 +427,9 @@
     "casting_time": "1動作",
     "range": "60呎",
     "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "選擇範圍內你能看到的一個生物。目標必須通過魅力豁免否則被放逐。如果目標來自其他位面,它返回家園位面。否則被送到半位面並在法術結束時返回。使用更高環位時,每高一環多一個目標。",
-    "classes": [
-      "cleric",
-      "paladin",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "專注，至多1分鐘",
+    "description": "將一個生物放逐到另一個位面。若目標來自其他位面，若專注滿1分鐘則永久遣返。",
+    "classes": ["牧師", "聖騎士", "法師", "術士", "邪術師"]
   },
   "dimension_door": {
     "name": "任意門",
@@ -749,29 +440,20 @@
     "range": "500呎",
     "components": "V",
     "duration": "立即",
-    "description": "你傳送至範圍內你指定的地點。你可以帶一個自願且體型不大於你的生物和你們能攜帶的裝備。目的地必須是未被占據的空間且在地面上。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "傳送自己和另一個自願生物到500呎內的任意位置。無需看見目的地。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "greater_invisibility": {
-    "name": "強效隱形術",
+    "name": "高等隱形術",
     "name_en": "Greater Invisibility",
     "level": 4,
     "school": "幻術",
     "casting_time": "1動作",
     "range": "接觸",
     "components": "V, S",
-    "duration": "專注,至多1分鐘",
-    "description": "你或你接觸的生物變為隱形,直到法術結束。目標穿戴和攜帶的物品也隱形。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "duration": "專注，至多1分鐘",
+    "description": "目標變得隱形。與普通隱形術不同，攻擊或施法不會使法術結束。",
+    "classes": ["吟遊詩人", "法師", "術士"]
   },
   "polymorph": {
     "name": "變形術",
@@ -781,61 +463,9 @@
     "casting_time": "1動作",
     "range": "60呎",
     "components": "V, S, M",
-    "duration": "專注,至多1小時",
-    "description": "選擇範圍內你能看到的一個生物。目標必須進行感知豁免(自願生物可選擇失敗)。失敗則變形為你選擇的野獸,其挑戰等級等於或低於目標等級。目標的遊戲數據被野獸數據取代,但保留陣營和性格。目標HP降至0、死亡或法術結束時恢復原形。",
-    "classes": [
-      "bard",
-      "druid",
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "wall_of_fire": {
-    "name": "火牆術",
-    "name_en": "Wall of Fire",
-    "level": 4,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "你在實體表面上創造火牆。牆可長達60呎、高20呎、厚1呎,或環狀直徑20呎、高20呎、厚1呎。牆不透明。進入牆或在牆內開始回合的生物必須進行敏捷豁免。失敗則受到5d8點火焰傷害,成功則傷害減半。使用更高環位時,每高一環多1d8傷害。",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "animate_objects": {
-    "name": "物品活化",
-    "name_en": "Animate Objects",
-    "level": 5,
-    "school": "變化",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S",
-    "duration": "專注,至多1分鐘",
-    "description": "選擇範圍內至多十個非魔法物體。中型目標算兩個,大型算四個,超大型算八個。你無法活化大於超大型的物體。每個目標活化並成為你控制的生物,直到摧毀或法術結束。用附贈動作可命令任意數量活化物體。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "cloudkill": {
-    "name": "致命煙雲",
-    "name_en": "Cloudkill",
-    "level": 5,
-    "school": "咒法",
-    "casting_time": "1動作",
-    "range": "120呎",
-    "components": "V, S",
-    "duration": "專注,至多10分鐘",
-    "description": "你在範圍內一點創造半徑20呎的黃綠色毒霧球體。霧繞過角落,區域內重度遮蔽。霧停留在空中持續法術時間。每個回合開始在霧中的生物必須進行體質豁免。失敗則受到5d8點毒素傷害,成功則傷害減半。使用更高環位時,每高一環多1d8傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "duration": "專注，至多1小時",
+    "description": "將一個生物變形為野獸（CR等級不高於目標等級）。目標使用野獸的數據，直到HP歸零。",
+    "classes": ["吟遊詩人", "德魯伊", "法師", "術士"]
   },
   "cone_of_cold": {
     "name": "寒冰錐",
@@ -843,59 +473,59 @@
     "level": 5,
     "school": "塑能",
     "casting_time": "1動作",
-    "range": "自身(60呎錐狀)",
+    "range": "自身（60呎錐狀）",
     "components": "V, S, M",
     "duration": "立即",
-    "description": "寒冷的爆風從你手中爆發。60呎錐狀內的每個生物必須進行體質豁免。失敗則受到8d8點寒冷傷害,成功則傷害減半。被此法術殺死的生物變成冰凍雕像。使用更高環位時,每高一環多1d8傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "噴出極寒空氣。體質豁免失敗者受 8d8 寒冷傷害。被殺死的生物將變成冰凍雕像。",
+    "classes": ["法師", "術士"]
   },
-  "dominate_person": {
-    "name": "支配人類",
-    "name_en": "Dominate Person",
+  "greater_restoration": {
+    "name": "高等復原術",
+    "name_en": "Greater Restoration",
+    "level": 5,
+    "school": "防護",
+    "casting_time": "1動作",
+    "range": "接觸",
+    "components": "V, S, M",
+    "duration": "立即",
+    "description": "解除一個狀態：魅惑、石化、詛咒、屬性值減少或最大生命值減少。消耗價值100gp鑽石粉。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊"]
+  },
+  "hold_monster": {
+    "name": "怪物定身術",
+    "name_en": "Hold Monster",
     "level": 5,
     "school": "惑控",
     "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V, S",
-    "duration": "專注,至多1分鐘",
-    "description": "選擇範圍內你能看到的一個類人生物。目標必須通過感知豁免否則被你魅惑。你與目標有心靈連結,可用動作控制其行動。目標每次受到傷害時可重複豁免。使用6環位時持續10分鐘,7環1小時,8環8小時,9環持續直到解除。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "range": "90呎",
+    "components": "V, S, M",
+    "duration": "專注，至多1分鐘",
+    "description": "如同人類定身術，但可對任何生物生效。意志豁免失敗則麻痺。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
-  "flame_strike": {
-    "name": "炎擊術",
-    "name_en": "Flame Strike",
+  "mass_cure_wounds": {
+    "name": "群體治療傷勢",
+    "name_en": "Mass Cure Wounds",
     "level": 5,
     "school": "塑能",
     "casting_time": "1動作",
     "range": "60呎",
-    "components": "V, S, M",
+    "components": "V, S",
     "duration": "立即",
-    "description": "神聖火焰柱從天而降。範圍內10呎半徑、40呎高圓柱內的每個生物必須進行敏捷豁免。失敗則受到4d6點火焰傷害和4d6點光耀傷害,成功則傷害減半。使用更高環位時,每高一環火焰或光耀傷害多1d6(你選擇)。",
-    "classes": [
-      "cleric"
-    ]
+    "description": "治療以一點為中心30呎內至多六個生物。恢復 3d8 + 施法屬性調整值 HP。",
+    "classes": ["吟遊詩人", "牧師", "德魯伊"]
   },
-  "chain_lightning": {
-    "name": "連鎖閃電",
-    "name_en": "Chain Lightning",
+  "heal": {
+    "name": "醫療術",
+    "name_en": "Heal",
     "level": 6,
     "school": "塑能",
     "casting_time": "1動作",
-    "range": "150呎",
-    "components": "V, S, M",
+    "range": "60呎",
+    "components": "V, S",
     "duration": "立即",
-    "description": "你創造一道閃電弧射向範圍內的目標。另外三個目標(每個必須在前一目標30呎內)也被閃電擊中。目標必須進行敏捷豁免。失敗則受到10d8點閃電傷害,成功則傷害減半。使用更高環位時,每高一環多一個目標(多1道閃電)。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "使一個生物恢復 70 點生命值，並治癒失明、耳聾和任何疾病。",
+    "classes": ["牧師", "德魯伊"]
   },
   "disintegrate": {
     "name": "解離術",
@@ -906,76 +536,8 @@
     "range": "60呎",
     "components": "V, S, M",
     "duration": "立即",
-    "description": "一道綠色光線從你手指射向範圍內的目標。目標必須進行敏捷豁免。失敗則受到10d6+40點力場傷害。如果此傷害將目標降至0 HP,目標被解離成灰燼。使用更高環位時,每高一環多3d6傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "sunbeam": {
-    "name": "陽炎射線",
-    "name_en": "Sunbeam",
-    "level": 6,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "自身(60呎線狀)",
-    "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "燦爛陽光從你手中射出60呎長5呎寬的線狀。線上的每個生物必須進行體質豁免。失敗則受到6d8點光耀傷害並目盲直到你的下一回合。成功則傷害減半且不目盲。你可以在之後的回合用動作創造新的陽光線。",
-    "classes": [
-      "druid",
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "delayed_blast_fireball": {
-    "name": "延遲爆裂火球",
-    "name_en": "Delayed Blast Fireball",
-    "level": 7,
-    "school": "塑能",
-    "casting_time": "1動作",
-    "range": "150呎",
-    "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "你在範圍內一點創造一個小火珠。法術結束或你終止專注時,火珠爆炸成20呎半徑火球。球體內每個生物必須進行敏捷豁免。失敗則受到12d6點火焰傷害,成功則傷害減半。每輪你保持專注,傷害增加1d6(最多25d6)。使用更高環位時,基礎傷害每高一環多1d6。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "finger_of_death": {
-    "name": "死亡一指",
-    "name_en": "Finger of Death",
-    "level": 7,
-    "school": "死靈",
-    "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V, S",
-    "duration": "立即",
-    "description": "你向範圍內的生物發送負能量。目標必須進行體質豁免。失敗則受到7d8+30點黯蝕傷害,成功則傷害減半。被此法術殺死的類人生物在你的下一回合開始時復活成殭屍,永久處於你的控制下。",
-    "classes": [
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "plane_shift": {
-    "name": "異界傳送",
-    "name_en": "Plane Shift",
-    "level": 7,
-    "school": "咒法",
-    "casting_time": "1動作",
-    "range": "接觸",
-    "components": "V, S, M",
-    "duration": "立即",
-    "description": "你和至多八個自願生物手拉手形成圓圈,傳送到不同的存在位面。或者你可以嘗試將不自願生物送到另一位面(目標進行魅力豁免避免)。",
-    "classes": [
-      "cleric",
-      "druid",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "發射綠色射線。敏捷豁免失敗受 10d6 + 40 力場傷害。若目標HP降至0則化為灰燼。",
+    "classes": ["法師", "術士"]
   },
   "teleport": {
     "name": "傳送術",
@@ -986,62 +548,32 @@
     "range": "10呎",
     "components": "V",
     "duration": "立即",
-    "description": "此法術立即將你和至多八個自願生物傳送到你選擇的目的地。目的地必須是你知道的地點,且必須在同一位面。你對目的地的熟悉程度決定傳送成功率。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "瞬間將你和至多八個生物傳送到同一位面的任意地點。準確度取決於你對目的地的熟悉程度。",
+    "classes": ["吟遊詩人", "法師", "術士"]
   },
-  "dominate_monster": {
-    "name": "支配怪物",
-    "name_en": "Dominate Monster",
-    "level": 8,
-    "school": "惑控",
+  "fire_storm": {
+    "name": "火焰風暴",
+    "name_en": "Fire Storm",
+    "level": 7,
+    "school": "塑能",
     "casting_time": "1動作",
-    "range": "60呎",
+    "range": "150呎",
     "components": "V, S",
-    "duration": "專注,至多1小時",
-    "description": "選擇範圍內你能看到的一個生物。目標必須通過感知豁免否則被你魅惑。你與目標有心靈連結,可用動作控制其行動。目標每次受到傷害時可重複豁免。使用9環位時持續8小時。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "duration": "立即",
+    "description": "創造十個10呎立方的火焰區域。範圍內生物敏捷豁免失敗受 7d10 火焰傷害。",
+    "classes": ["牧師", "德魯伊", "術士"]
   },
-  "earthquake": {
-    "name": "地震術",
-    "name_en": "Earthquake",
+  "sunburst": {
+    "name": "陽炎爆",
+    "name_en": "Sunburst",
     "level": 8,
     "school": "塑能",
     "casting_time": "1動作",
-    "range": "500呎",
+    "range": "150呎",
     "components": "V, S, M",
-    "duration": "專注,至多1分鐘",
-    "description": "你創造半徑100呎的地震。區域內地面上的生物必須進行敏捷豁免,失敗則被擊倒。持續期間,地面變為困難地形。建築物可能倒塌,地面可能裂開。",
-    "classes": [
-      "cleric",
-      "druid",
-      "sorcerer"
-    ]
-  },
-  "power_word_stun": {
-    "name": "震懾真言",
-    "name_en": "Power Word Stun",
-    "level": 8,
-    "school": "惑控",
-    "casting_time": "1動作",
-    "range": "60呎",
-    "components": "V",
     "duration": "立即",
-    "description": "你說出一個能壓垮一個生物心智的能量之詞。如果範圍內你能看到的生物當前HP為150或更低,該生物被震懾。否則法術無效。目標可在每回合結束時進行體質豁免來結束效果。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
+    "description": "半徑60呎區域爆發耀眼陽光。體質豁免失敗受 12d6 光耀傷害並陷入目盲。",
+    "classes": ["德魯伊", "法師", "術士"]
   },
   "meteor_swarm": {
     "name": "流星爆",
@@ -1052,11 +584,8 @@
     "range": "1哩",
     "components": "V, S",
     "duration": "立即",
-    "description": "熾熱的火球墜落到地面。你在範圍內選擇四個點。每個點出現半徑40呎的火球。球體繞過角落。球體內的生物必須進行敏捷豁免。失敗則受到20d6點火焰傷害和20d6點鈍擊傷害,成功則傷害減半。重疊區域的生物只受到一次傷害。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "召喚四顆流星撞擊地面。每顆流星半徑40呎內生物受 20d6 火焰 + 20d6 鈍擊傷害。",
+    "classes": ["法師", "術士"]
   },
   "power_word_kill": {
     "name": "死亡真言",
@@ -1067,44 +596,8 @@
     "range": "60呎",
     "components": "V",
     "duration": "立即",
-    "description": "你說出一個能立即結束一個生物生命的能量之詞。如果範圍內你能看到的生物當前HP為100或更低,該生物死亡。否則法術無效。",
-    "classes": [
-      "bard",
-      "sorcerer",
-      "warlock",
-      "wizard"
-    ]
-  },
-  "time_stop": {
-    "name": "時間停止",
-    "name_en": "Time Stop",
-    "level": 9,
-    "school": "變化",
-    "casting_time": "1動作",
-    "range": "自身",
-    "components": "V",
-    "duration": "立即",
-    "description": "你短暫停止其他所有生物的時間流動。除了你,沒有時間流逝。你獲得1d4+1個回合,在此期間你可以正常行動。如果你的動作影響其他生物或其擁有物體,法術結束。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
-  },
-  "true_polymorph": {
-    "name": "真實變形",
-    "name_en": "True Polymorph",
-    "level": 9,
-    "school": "變化",
-    "casting_time": "1動作",
-    "range": "30呎",
-    "components": "V, S, M",
-    "duration": "專注,至多1小時",
-    "description": "選擇範圍內你能看到的一個生物或物體。你將生物變形為不同生物、生物變形為物體,或物體變形為生物。如果你專注整個持續時間,變形永久。",
-    "classes": [
-      "bard",
-      "warlock",
-      "wizard"
-    ]
+    "description": "說出一個令生物死亡的字眼。若目標HP低於100，立即死亡。",
+    "classes": ["吟遊詩人", "法師", "術士", "邪術師"]
   },
   "wish": {
     "name": "祈願術",
@@ -1115,10 +608,7 @@
     "range": "自身",
     "components": "V",
     "duration": "立即",
-    "description": "祈願術是凡人可施放的最強大法術。你可以改變現實的基礎。最基本的用途是複製任何8環或更低的法術。你也可以創造其他效果,但可能導致你再也無法施放祈願術。",
-    "classes": [
-      "sorcerer",
-      "wizard"
-    ]
+    "description": "凡人魔法的頂點。可複製任何8環或更低法術，或達成幾乎任何願望（伴隨極大風險）。",
+    "classes": ["法師", "術士"]
   }
 }

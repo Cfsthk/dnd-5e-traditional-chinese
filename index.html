@@ -11,13 +11,7 @@
             --header-bg: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             --bg-gradient: linear-gradient(180deg, #5a77e6 0%, #8e54e9 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
             background: var(--bg-gradient);
@@ -27,247 +21,81 @@
             justify-content: center;
             align-items: flex-start;
         }
-
-        /* Main Container */
         .main-container {
-            width: 100%;
-            max-width: 600px;
-            background: white;
-            border-radius: 20px;
+            width: 100%; max-width: 600px;
+            background: white; border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-            min-height: 400px;
-            position: relative;
+            overflow: hidden; min-height: 400px;
         }
-
-        /* --- Header Section --- */
-        .header {
-            background: var(--header-bg);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .header-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .header h1 {
-            font-size: 1.8em;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .header p {
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-
-        /* --- Landing View (Menu Buttons) --- */
-        #landing-view {
-            display: block;
-        }
-
-        .menu-buttons {
-            display: flex;
-            flex-direction: column;
-            background: #f8f9fa;
-        }
-
+        .header { background: var(--header-bg); color: white; padding: 30px 20px; text-align: center; }
+        .header-icon { font-size: 3em; margin-bottom: 10px; display: block; }
         .menu-btn {
-            padding: 25px;
-            background: white;
-            border: none;
-            border-bottom: 2px solid #f0f0f0;
-            color: var(--primary-color);
-            font-size: 1.3em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
+            width: 100%; padding: 25px; background: white; border: none;
+            border-bottom: 2px solid #f0f0f0; color: var(--primary-color);
+            font-size: 1.3em; font-weight: bold; cursor: pointer; text-align: center;
         }
-
-        .menu-btn:hover {
-            background: #f0f5ff;
-            color: #2a4a8b;
-        }
-
-        .menu-btn:last-child {
-            border-bottom: none;
-        }
-
-        /* --- Content View (Grids and Filters) --- */
-        #content-view {
-            display: none;
-            padding: 20px;
-            background: #f9f9f9;
-            min-height: 500px;
-        }
-
-        .controls-area {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .back-btn {
-            align-self: flex-start;
-            padding: 8px 15px;
-            background: #eee;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            color: #555;
-        }
-
-        .search-input, .filter-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            outline: none;
-        }
-        
-        .filter-select {
-            display: none;
-            background: white;
-        }
-
-        .section-title {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        /* --- Grid and Cards --- */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        
-        @media (min-width: 768px) {
-             .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-        }
-
+        .menu-btn:hover { background: #f0f5ff; }
+        #content-view { display: none; padding: 20px; background: #f9f9f9; }
+        .controls-area { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .search-input, .filter-select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        .filter-select { display: none; background: white; }
+        .grid { display: grid; gap: 15px; grid-template-columns: 1fr; }
+        @media (min-width: 768px) { .grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } }
         .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: white; border-radius: 12px; padding: 20px;
+            cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: var(--primary-color);
-        }
-
-        .card h3 {
-            color: #2a4a8b;
-            margin-bottom: 5px;
-            font-size: 1.2em;
-        }
-
-        .card .subtitle {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 12px;
-        }
-
-        .card .property {
-            margin: 5px 0;
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .card .property strong {
-            color: var(--primary-color);
-        }
-
-        /* --- States & Modals --- */
-        .loading-state, .error-state {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            display: none;
-        }
+        .card:hover { transform: translateY(-3px); border: 1px solid var(--primary-color); }
+        .card h3 { color: #2a4a8b; margin-bottom: 5px; }
+        .card .subtitle { color: #888; font-size: 0.9em; margin-bottom: 10px; }
         
-        .error-state { color: #d9534f; }
-        .error-icon { font-size: 3em; margin-bottom: 10px; display: block;}
-
+        /* Modal Styles */
         .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            justify-content: center; align-items: center;
-            padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); z-index: 1000;
+            justify-content: center; align-items: center; padding: 20px;
         }
-
         .modal.active { display: flex; }
-
         .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            width: 100%; max-width: 800px; max-height: 85vh;
-            overflow-y: auto;
+            background: white; padding: 30px; border-radius: 15px;
+            width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto;
             position: relative;
         }
-
-        .close {
-            position: absolute; top: 15px; right: 20px;
-            font-size: 2em; cursor: pointer; color: #999;
-        }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; }
+        
+        /* Sub-items in Modal */
+        .sub-section { background: #f0f5ff; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .sub-section h4 { color: #1e3c72; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        .sub-item { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
+        .sub-item:last-child { border-bottom: none; }
+        .tag { display: inline-block; background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
     </style>
 </head>
 <body>
     <div class="main-container">
         <div class="header">
             <span class="header-icon">🐉</span>
-            <h1>D&D 5E 完整資料庫</h1>
-            <p>繁體中文 | 種族、職業、法術完整資料</p>
+            <h1>D&D 5E 資料庫</h1>
+            <p>SRD 5.1 繁體中文版</p>
         </div>
 
-        <div id="global-loading" class="loading-state" style="display: block;">
-            正在載入資料庫...
-        </div>
-        <div id="global-error" class="error-state">
-            <span class="error-icon">❌</span>
-            載入資料時發生錯誤<br>請檢查網絡或稍後再試
-        </div>
+        <div id="loading" style="text-align:center; padding:40px;">載入中...</div>
 
         <div id="landing-view" style="display: none;">
-            <div class="menu-buttons">
-                <button class="menu-btn" onclick="navigateTo('races')">種族 Races</button>
-                <button class="menu-btn" onclick="navigateTo('classes')">職業 Classes</button>
-                <button class="menu-btn" onclick="navigateTo('spells')">法術 Spells</button>
-            </div>
-             <div style="min-height: 100px; background: #f8f9fa;"></div>
+            <button class="menu-btn" onclick="navigateTo('races')">種族 (Races)</button>
+            <button class="menu-btn" onclick="navigateTo('classes')">職業 (Classes)</button>
+            <button class="menu-btn" onclick="navigateTo('spells')">法術 (Spells)</button>
         </div>
 
         <div id="content-view">
-            <button class="back-btn" onclick="showLanding()">← 返回選單</button>
-            <h2 id="section-title" class="section-title"></h2>
+            <button onclick="showLanding()" style="margin-bottom:10px; padding:5px 10px; cursor:pointer;">← 返回</button>
+            <h2 id="section-title" style="text-align:center; margin-bottom:15px; color:#4a69bd;"></h2>
             
             <div class="controls-area">
                 <input type="text" id="searchInput" class="search-input" placeholder="搜尋名稱...">
-                
-                <select id="spellClassFilter" class="filter-select">
-                    <option value="">所有職業的法術</option>
-                </select>
+                <select id="spellClassFilter" class="filter-select"><option value="">所有職業</option></select>
             </div>
-
             <div id="content-grid" class="grid"></div>
         </div>
     </div>
@@ -280,209 +108,154 @@
     </div>
 
     <script>
-        // Data Storage
-        let db = {
-            classes: {},
-            races: {},
-            spells: {}
-        };
-        
-        // State Management
+        let db = { classes: {}, races: {}, spells: {} };
         let currentSection = null;
-        let spellClassesSet = new Set(); 
 
-        // --- Initialization ---
         async function loadData() {
             try {
-                const [classesRes, racesRes, spellsRes] = await Promise.all([
-                    fetch('data/dnd5e_classes_complete_tc.json'),
-                    fetch('data/dnd5e_races_complete_tc.json'),
-                    fetch('data/dnd5e_spells_complete_tc.json')
+                // 假設檔案位於 data/ 資料夾
+                const [c, r, s] = await Promise.all([
+                    fetch('data/dnd5e_classes_complete_tc.json').then(res => res.json()),
+                    fetch('data/dnd5e_races_complete_tc.json').then(res => res.json()),
+                    fetch('data/dnd5e_spells_complete_tc.json').then(res => res.json())
                 ]);
+                db.classes = c; db.races = r; db.spells = s;
+                
+                // 提取法術職業以供過濾
+                let spellClasses = new Set();
+                Object.values(db.spells).forEach(sp => sp.classes?.forEach(c => spellClasses.add(c)));
+                const sel = document.getElementById('spellClassFilter');
+                Array.from(spellClasses).sort().forEach(sc => {
+                    let opt = document.createElement('option');
+                    opt.value = sc; opt.textContent = sc;
+                    sel.appendChild(opt);
+                });
 
-                if(!classesRes.ok || !racesRes.ok || !spellsRes.ok) throw new Error("Fetch failed");
-
-                db.classes = await classesRes.json();
-                db.races = await racesRes.json();
-                db.spells = await spellsRes.json();
-
-                extractSpellClasses();
-
-                document.getElementById('global-loading').style.display = 'none';
+                document.getElementById('loading').style.display = 'none';
                 document.getElementById('landing-view').style.display = 'block';
-
-            } catch (error) {
-                console.error('數據載入錯誤:', error);
-                document.getElementById('global-loading').style.display = 'none';
-                document.getElementById('global-error').style.display = 'block';
+            } catch (e) {
+                document.getElementById('loading').innerHTML = '載入失敗，請確認 JSON 檔案存在且格式正確。';
+                console.error(e);
             }
         }
 
-        // Helper to extract unique class names from spell data
-        function extractSpellClasses() {
-            spellClassesSet.clear();
-            Object.values(db.spells).forEach(spell => {
-                if (spell.classes && Array.isArray(spell.classes)) {
-                    spell.classes.forEach(className => spellClassesSet.add(className));
-                }
-            });
-
-            const filterSelect = document.getElementById('spellClassFilter');
-            filterSelect.innerHTML = '<option value="">所有職業的法術</option>'; 
-            const sortedClasses = Array.from(spellClassesSet).sort();
-            sortedClasses.forEach(className => {
-                const option = document.createElement('option');
-                option.value = className;
-                option.textContent = className;
-                filterSelect.appendChild(option);
-            });
-        }
-
-        // --- Navigation ---
-        function navigateTo(section) {
-            currentSection = section;
+        function navigateTo(sec) {
+            currentSection = sec;
             document.getElementById('landing-view').style.display = 'none';
             document.getElementById('content-view').style.display = 'block';
-            
-            // Reset filters
-            document.getElementById('searchInput').value = '';
-            document.getElementById('spellClassFilter').value = '';
-
-            const titleMap = { races: '種族 Races', classes: '職業 Classes', spells: '法術 Spells' };
-            document.getElementById('section-title').textContent = titleMap[section];
-            
-            document.getElementById('spellClassFilter').style.display = (section === 'spells') ? 'block' : 'none';
-
-            renderContent();
+            document.getElementById('section-title').textContent = 
+                sec === 'races' ? '種族列表' : sec === 'classes' ? '職業列表' : '法術列表';
+            document.getElementById('spellClassFilter').style.display = sec === 'spells' ? 'block' : 'none';
+            render();
         }
 
         function showLanding() {
-            currentSection = null;
             document.getElementById('content-view').style.display = 'none';
             document.getElementById('landing-view').style.display = 'block';
         }
 
-        // --- Rendering Engine ---
-        function renderContent() {
+        function render() {
             const grid = document.getElementById('content-grid');
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filter = document.getElementById('spellClassFilter').value;
             grid.innerHTML = '';
 
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const selectedSpellClass = document.getElementById('spellClassFilter').value;
+            const data = db[currentSection];
+            if (!data) return;
 
-            // FIX: Removed the space in 'dataSource'
-            let dataSource = db[currentSection];
-            if (!dataSource) return;
-
-            Object.entries(dataSource).forEach(([key, item]) => {
-                // 1. Name Search Filter
-                const fullName = (item.name + (item.name_en || '')).toLowerCase();
-                if (!fullName.includes(searchTerm)) return;
-
-                // 2. Spell-Specific Class Filter
-                if (currentSection === 'spells' && selectedSpellClass) {
-                    if (!item.classes || !Array.isArray(item.classes) || !item.classes.includes(selectedSpellClass)) {
-                        return;
-                    }
+            Object.entries(data).forEach(([key, item]) => {
+                const name = (item.name || key).toLowerCase();
+                const en = (item.name_en || '').toLowerCase();
+                if (!name.includes(term) && !en.includes(term)) return;
+                
+                if (currentSection === 'spells' && filter) {
+                    if (!item.classes || !item.classes.includes(filter)) return;
                 }
 
-                grid.appendChild(createCard(key, item));
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<h3>${item.name || key}</h3><div class="subtitle">${item.name_en || ''}</div>`;
+                
+                // 根據類型顯示簡短資訊
+                if (currentSection === 'races') card.innerHTML += `<div style="font-size:0.9em; color:#666;">${item.speed}呎 | ${item.size}</div>`;
+                if (currentSection === 'classes') card.innerHTML += `<div style="font-size:0.9em; color:#666;">HD: ${item.hit_die}</div>`;
+                if (currentSection === 'spells') card.innerHTML += `<div style="font-size:0.9em; color:#666;">${item.level === 0 ? '戲法' : item.level+'環'} | ${item.school}</div>`;
+
+                card.onclick = () => showDetail(item);
+                grid.appendChild(card);
             });
         }
 
-        function createCard(key, item) {
-            const card = document.createElement('div');
-            card.className = 'card';
+        function showDetail(item) {
+            const modalBody = document.getElementById('modal-body');
+            let html = `<h2>${item.name} <small style="font-size:0.6em; color:#666;">${item.name_en || ''}</small></h2><hr><br>`;
             
-            let contentHtml = `
-                <h3>${item.name || key}</h3>
-                <div class="subtitle">${item.name_en || ''}</div>
-            `;
+            html += `<p>${item.description || '無描述'}</p><br>`;
 
+            // --- 處理職業 (Classes) 與其子職業 ---
             if (currentSection === 'classes') {
-                contentHtml += `<div class="property"><strong>生命骰:</strong> ${item.hit_die || 'N/A'}</div>`;
-                card.onclick = () => showClassDetail(item);
-            } else if (currentSection === 'races') {
-                const shortDesc = item.description ? (item.description.substring(0, 60) + '...') : '無描述';
-                 contentHtml += `<div class="property">${shortDesc}</div>`;
-                card.onclick = () => showRaceDetail(item);
-            } else if (currentSection === 'spells') {
-                const levelStr = item.level && item.level !== "0" ? `${item.level}環` : '戲法';
-                contentHtml = `
-                    <h3>${item.name || key} <small style="font-size:0.8em">(${levelStr})</small></h3>
-                    <div class="subtitle">${item.name_en || ''}</div>
-                    <div class="property"><strong>學派:</strong> ${item.school || 'N/A'}</div>
-                `;
-                 if(item.classes && item.classes.length > 0) {
-                     contentHtml += `<div class="property" style="font-size:0.85em; color:#666;">${item.classes.join(', ')}</div>`
-                 }
-                card.onclick = () => showSpellDetail(item);
+                html += `<p><strong>生命骰:</strong> ${item.hit_die}</p>`;
+                html += `<p><strong>專精武器:</strong> ${(item.weapon_proficiency||[]).join(', ')}</p>`;
+                
+                // 顯示子職業
+                if (item.subclasses) {
+                    html += `<div class="sub-section"><h4>子職業 (Subclasses)</h4>`;
+                    Object.values(item.subclasses).forEach(sub => {
+                        html += `<div class="sub-item">
+                            <strong>${sub.name} (${sub.name_en})</strong>
+                            <p style="font-size:0.9em; margin-top:5px;">${sub.description}</p>
+                        </div>`;
+                    });
+                    html += `</div>`;
+                }
             }
 
-            card.innerHTML = contentHtml;
-            return card;
-        }
+            // --- 處理種族 (Races) 與其子種族 ---
+            else if (currentSection === 'races') {
+                html += `<p><strong>速度:</strong> ${item.speed} 呎</p><p><strong>體型:</strong> ${item.size}</p>`;
+                
+                // 顯示特質
+                if (item.traits) {
+                    html += `<br><strong>種族特質:</strong><ul style="padding-left:20px; margin-top:5px;">`;
+                    Object.values(item.traits).forEach(t => {
+                        html += `<li><span class="tag">${t.name}</span> ${t.description}</li>`;
+                    });
+                    html += `</ul>`;
+                }
 
-        // --- Event Listeners ---
-        let debounceTimer;
-        document.getElementById('searchInput').addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(renderContent, 300);
-        });
+                // 顯示子種族
+                if (item.subraces && Object.keys(item.subraces).length > 0) {
+                    html += `<div class="sub-section"><h4>亞種/子種族 (Subraces)</h4>`;
+                    Object.values(item.subraces).forEach(sub => {
+                        html += `<div class="sub-item">
+                            <strong>${sub.name} (${sub.name_en})</strong>
+                            <p style="font-size:0.9em; margin-top:5px;">${sub.description}</p>
+                            ${sub.traits ? `<div style="margin-top:5px; font-size:0.85em; color:#555;">特質: ` + Object.values(sub.traits).map(t=>t.name).join(', ') + `</div>` : ''}
+                        </div>`;
+                    });
+                    html += `</div>`;
+                }
+            }
 
-        document.getElementById('spellClassFilter').addEventListener('change', renderContent);
+            // --- 處理法術 (Spells) ---
+            else if (currentSection === 'spells') {
+                const lv = item.level === 0 || item.level === "0" ? '戲法' : `${item.level}環`;
+                html += `<p><strong>${lv} ${item.school}系</strong></p>`;
+                html += `<p><strong>施法時間:</strong> ${item.casting_time}</p>`;
+                html += `<p><strong>射程:</strong> ${item.range}</p>`;
+                html += `<p><strong>成分:</strong> ${item.components}</p>`;
+                html += `<p><strong>持續:</strong> ${item.duration}</p>`;
+                if (item.classes) html += `<br><p><small>可用職業: ${item.classes.join(', ')}</small></p>`;
+            }
 
-        // --- Modal Functions ---
-        function showClassDetail(cls) {
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = `
-                <h2>${cls.name || ''}</h2> <h3>${cls.name_en || ''}</h3>
-                <hr><br>
-                <p><strong>生命骰:</strong> ${cls.hit_die || ''}</p>
-                <p><strong>主要屬性:</strong> ${(cls.primary_ability || []).join(', ')}</p>
-                <p><strong>豁免檢定:</strong> ${(cls.saving_throws || []).join(', ')}</p>
-                <br><p class="desc"><strong>描述:</strong><br> ${cls.description || ''}</p>
-            `;
+            modalBody.innerHTML = html;
             document.getElementById('modal').classList.add('active');
         }
 
-        function showRaceDetail(race) {
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = `
-                <h2>${race.name || ''}</h2> <h3>${race.name_en || ''}</h3>
-                 <hr><br>
-                <p><strong>屬性值提升:</strong> ${JSON.stringify(race.ability_score_increase || {}).replace(/"/g, '').replace(/,/g, ', ')}</p>
-                <p><strong>速度:</strong> ${race.speed || ''}</p>
-                <br><p><strong>描述:</strong><br> ${race.description || ''}</p>
-                <p><strong>年齡:</strong> ${race.age || ''}</p>
-                <p><strong>體型:</strong> ${race.size || ''}</p>
-            `;
-            document.getElementById('modal').classList.add('active');
-        }
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        document.getElementById('searchInput').addEventListener('input', () => setTimeout(render, 300));
+        document.getElementById('spellClassFilter').addEventListener('change', render);
 
-        function showSpellDetail(spell) {
-            const modalBody = document.getElementById('modal-body');
-            const levelStr = spell.level && spell.level !== "0" ? `${spell.level}環` : '戲法';
-            modalBody.innerHTML = `
-                <h2>${spell.name || ''} <small>(${levelStr})</small></h2>
-                <h3>${spell.name_en || ''}</h3>
-                 <hr><br>
-                <p><strong>學派:</strong> ${spell.school || ''}</p>
-                <p><strong>施法時間:</strong> ${spell.casting_time || ''}</p>
-                <p><strong>射程:</strong> ${spell.range || ''}</p>
-                <p><strong>成分:</strong> ${spell.components || ''}</p>
-                <p><strong>持續時間:</strong> ${spell.duration || ''}</p>
-                ${spell.classes ? `<p><strong>可用職業:</strong> ${spell.classes.join(', ')}</p>` : ''}
-                <br><p class="desc"><strong>描述:</strong><br> ${spell.description || ''}</p>
-            `;
-            document.getElementById('modal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-        }
-
-        // Start application
         loadData();
     </script>
 </body>

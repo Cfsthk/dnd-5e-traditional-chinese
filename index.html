@@ -1,134 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D&D 5E 完整資料庫</title>
-    <link rel="icon" href="data:,">
-    <style>
-        :root {
-            --primary: #4a69bd;
-            --secondary: #1e3c72;
-            --bg-grad: linear-gradient(180deg, #5a77e6 0%, #8e54e9 100%);
-            --light-gray: #f8f9fa;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Microsoft JhengHei', sans-serif;
-            background: var(--bg-grad);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex; justify-content: center; align-items: flex-start;
-        }
-        .container {
-            width: 100%; max-width: 600px;
-            background: white; border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            overflow: hidden; min-height: 500px;
-            display: flex; flex-direction: column;
-        }
-        
-        /* Header */
-        .header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 30px; text-align: center; }
-        .header h1 { margin: 10px 0; font-size: 1.8em; }
-        
-        /* Menu */
-        .menu-view { padding: 0; flex-grow: 1; display: flex; flex-direction: column; }
-        .menu-btn {
-            padding: 25px; border: none; background: white;
-            border-bottom: 1px solid #eee; text-align: left; font-size: 1.2em;
-            color: var(--primary); font-weight: bold; cursor: pointer;
-            transition: 0.2s; display: flex; justify-content: space-between;
-        }
-        .menu-btn:hover { background: #f0f5ff; padding-left: 35px; }
-        .menu-btn::after { content: '›'; font-size: 1.5em; color: #ccc; }
-
-        /* Content View */
-        .content-view { display: none; padding: 20px; background: #fcfcfc; flex-grow: 1; }
-        .top-bar { display: flex; gap: 10px; margin-bottom: 15px; }
-        .back-btn { padding: 8px 15px; background: #eee; border: none; border-radius: 8px; cursor: pointer; }
-        .search-box { flex-grow: 1; padding: 8px; border: 1px solid #ddd; border-radius: 8px; }
-        
-        .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .card {
-            background: white; padding: 15px; border-radius: 10px;
-            border: 1px solid #eee; cursor: pointer; transition: 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .card:hover { transform: translateY(-2px); border-color: var(--primary); }
-        .card h3 { color: var(--secondary); margin-bottom: 5px; }
-        .card small { color: #888; }
-
-        /* Modal & Accordion */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 999;
-            justify-content: center; align-items: center; padding: 20px;
-        }
-        .modal.active { display: flex; }
-        .modal-box {
-            background: white; width: 100%; max-width: 800px; max-height: 85vh;
-            border-radius: 15px; padding: 25px; overflow-y: auto; position: relative;
-        }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; color: #aaa; }
-        
-        .stat-tag {
-            display: inline-block; background: #eef2ff; color: var(--primary);
-            padding: 3px 8px; border-radius: 4px; font-size: 0.9em; margin: 2px;
-            font-weight: bold; border: 1px solid #dde5ff;
-        }
-
-        /* Accordion Styles */
-        .accordion { margin-top: 20px; border-top: 1px solid #eee; }
-        .acc-item { border-bottom: 1px solid #eee; }
-        .acc-btn {
-            width: 100%; padding: 15px 10px; border: none; background: none;
-            text-align: left; font-size: 1.1em; font-weight: bold; color: #333;
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-        }
-        .acc-btn:hover { background: #f9f9f9; }
-        .acc-btn::after { content: '+'; font-size: 1.2em; color: #888; }
-        .acc-btn.active::after { content: '-'; }
-        .acc-panel {
-            display: none; padding: 15px; background: #fafafa; border-radius: 8px; margin-bottom: 10px;
-        }
-        .feature-block { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
-        .feature-block:last-child { border-bottom: none; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>D&D 5E 資料庫</h1>
-            <p>種族・職業・法術查詢</p>
-        </div>
-
-        <div id="menu-view" class="menu-view">
-            <button class="menu-btn" onclick="nav('races')">🧝 種族 (Races)</button>
-            <button class="menu-btn" onclick="nav('classes')">⚔️ 職業 (Classes)</button>
-            <button class="menu-btn" onclick="nav('spells')">✨ 法術 (Spells)</button>
-        </div>
-
-        <div id="content-view" class="content-view">
-            <div class="top-bar">
-                <button class="back-btn" onclick="showMenu()">←</button>
-                <input type="text" id="search" class="search-box" placeholder="搜尋..." onkeyup="render()">
-                <select id="spell-filter" class="search-box" style="display:none; max-width:120px;" onchange="render()">
-                    <option value="">全部職業</option>
-                </select>
-            </div>
-            <div id="grid" class="grid"></div>
-        </div>
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="modal-box">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modal-content"></div>
-        </div>
-    </div>
-
-    <script>
+<script>
         let db = { races: {}, classes: {}, spells: {} };
         let currentSec = '';
         const abilityMap = { str:'力量', dex:'敏捷', con:'體質', int:'智力', wis:'感知', cha:'魅力' };
@@ -150,7 +20,7 @@
                 Array.from(classes).sort().forEach(c => {
                     sel.innerHTML += `<option value="${c}">${c}</option>`;
                 });
-            } catch(e) { alert('資料載入失敗，請確保 JSON 檔案位於 data/ 資料夾中。'); }
+            } catch(e) { alert('資料載入失敗，請確認 JSON 檔案格式正確。'); console.error(e); }
         }
 
         function nav(sec) {
@@ -186,9 +56,8 @@
                 div.className = 'card';
                 div.innerHTML = `<h3>${v.name}</h3><small>${v.name_en || ''}</small>`;
                 
-                // Add quick info tags
                 if(currentSec === 'races') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.size || ''} | ${v.speed}呎</div>`;
-                if(currentSec === 'classes') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">HD: ${v.hit_die}</div>`;
+                if(currentSec === 'classes') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">HD: ${v.hit_die} | ${v.primary_ability?.join('/')}</div>`;
                 if(currentSec === 'spells') div.innerHTML += `<div style="margin-top:5px; color:#666; font-size:0.9em;">${v.level==0?'戲法':v.level+'環'} | ${v.school}</div>`;
 
                 div.onclick = () => openModal(k, v);
@@ -218,7 +87,7 @@
 
                 if(item.subraces) {
                     html += `<h3 style="margin-top:20px;">亞種 / 子種族</h3><div class="accordion">`;
-                    Object.values(item.subraces).forEach((sub, idx) => {
+                    Object.values(item.subraces).forEach((sub) => {
                         html += `
                         <div class="acc-item">
                             <button class="acc-btn" onclick="toggleAcc(this)">${sub.name}</button>
@@ -235,14 +104,29 @@
             
             // --- CLASSES ---
             else if(currentSec === 'classes') {
-                html += `<p style="margin-bottom:10px;">${item.description}</p>`;
-                html += `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
+                html += `<p style="margin-bottom:15px; font-style:italic; color:#555;">${item.description}</p>`;
+                
+                // 1. 基礎數值與熟練項
+                html += `<div style="background:#f9f9f9; padding:15px; border-radius:8px; margin-bottom:20px;">`;
+                html += `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
                     <span class="stat-tag">生命骰: ${item.hit_die}</span>
+                    <span class="stat-tag">主要屬性: ${(item.primary_ability||[]).join(', ')}</span>
                     <span class="stat-tag">豁免: ${(item.saving_throws||[]).join(', ')}</span>
                 </div>`;
+                html += `<p><strong>護甲熟練:</strong> ${(item.armor_proficiency||['無']).join(', ')}</p>`;
+                html += `<p><strong>武器熟練:</strong> ${(item.weapon_proficiency||['無']).join(', ')}</p>`;
+                if(item.tool_proficiency) html += `<p><strong>工具熟練:</strong> ${item.tool_proficiency.join(', ')}</p>`;
+                html += `</div>`;
 
+                // 2. 核心職業特性 (Base Features)
+                if(item.features) {
+                     html += `<h3 style="margin-bottom:10px; color:#2a4a8b;">核心職業特性</h3>`;
+                     html += renderFeatures(item.features);
+                }
+
+                // 3. 子職業 (Subclasses)
                 if(item.subclasses) {
-                    html += `<h3 style="margin-top:20px;">子職業 (Subclasses)</h3><div class="accordion">`;
+                    html += `<h3 style="margin-top:25px; margin-bottom:10px; color:#2a4a8b;">子職業選項 (Subclasses)</h3><div class="accordion">`;
                     Object.values(item.subclasses).forEach(sub => {
                         html += `
                         <div class="acc-item">
@@ -281,7 +165,7 @@
             let html = '<div style="margin-bottom:10px;">';
             Object.entries(bonuses).forEach(([k, v]) => {
                 const label = abilityMap[k] || k;
-                html += `<span class="stat-tag">${label} +${v}</span>`;
+                html += `<span class="stat-tag" style="background:#e3f2fd; color:#1565c0; border:1px solid #bbdefb;">${label} +${v}</span>`;
             });
             html += '</div>';
             return html;
@@ -290,7 +174,7 @@
         function renderTraits(traits) {
             let html = '<ul style="margin-top:10px; padding-left:20px;">';
             Object.values(traits).forEach(t => {
-                html += `<li><strong>${t.name}:</strong> ${t.description}</li>`;
+                html += `<li style="margin-bottom:5px;"><strong>${t.name}:</strong> ${t.description}</li>`;
             });
             html += '</ul>';
             return html;
@@ -298,34 +182,23 @@
 
         function renderFeatures(features) {
             if(!features) return '';
-            // Sort by level key if possible
+            // Sort keys nicely (1, 2, 3... 10... 20)
             const levels = Object.keys(features).sort((a,b)=>parseInt(a)-parseInt(b));
             let html = '';
+            
             levels.forEach(lv => {
-                const feat = features[lv];
-                // Sometimes features is an object of objects, or just one object
-                // If structure is features: { "3": { "name":..., "desc":... } }
-                // OR features: { "3": { "feature1": {...}, "feature2": {...} } }
+                const featGroup = features[lv];
+                // Handle array of features or single object map
+                const featArray = Array.isArray(featGroup) ? featGroup : Object.values(featGroup);
                 
-                // Let's assume structure from previous JSON: features -> level -> list of named features
-                Object.values(feat).forEach(f => {
-                     // Check if f has name/description (single feature) or needs deeper iteration
-                     if(f.name && f.description) {
-                        html += `<div class="feature-block">
-                            <strong>[Lv.${lv}] ${f.name}</strong>
-                            <p style="font-size:0.95em; color:#444; margin-top:3px;">${f.description}</p>
-                        </div>`;
-                     } else {
-                         // Nested features
-                         Object.values(f).forEach(subF => {
-                             if(subF.name) {
-                                html += `<div class="feature-block">
-                                    <strong>[Lv.${lv}] ${subF.name}</strong>
-                                    <p style="font-size:0.95em; color:#444; margin-top:3px;">${subF.description}</p>
-                                </div>`;
-                             }
-                         });
-                     }
+                featArray.forEach(f => {
+                    html += `<div class="feature-block">
+                        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                            <strong style="color:#333;">${f.name}</strong>
+                            <span style="font-size:0.8em; color:#888; background:#eee; padding:2px 6px; border-radius:4px;">Lv.${lv}</span>
+                        </div>
+                        <p style="font-size:0.95em; color:#555; margin-top:5px; line-height:1.5;">${f.description}</p>
+                    </div>`;
                 });
             });
             return html;
@@ -340,5 +213,3 @@
         function closeModal() { document.getElementById('modal').classList.remove('active'); }
         init();
     </script>
-</body>
-</html>
